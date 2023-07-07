@@ -1,0 +1,28 @@
+<!--page/user/recyclerequest/recyclerequest.wxml-->
+<map
+        subkey="{{subKey}}"
+        style="width: 100%; height: 200px;"
+        latitude="{{latitude}}"
+        longitude="{{longitude}}"
+        scale="{{18}}"
+        markers="{{markers}}"
+        enable-3D="{{enable3d}}"
+        show-compass="{{showCompass}}"
+        enable-zoom="{{enableZoom}}"
+        enable-rotate="{{enableRotate}}"
+        enable-satellite="{{enableSatellite}}"
+        enable-traffic="{{enableTraffic}}"
+        enable-overlooking="{{enableOverlooking}}"
+        enable-scroll="{{enableScroll}}"
+        polygons="{{drawPolygon ? polygons : []}}"
+      >
+      </map>
+
+      <t-input prefixIcon="app" label="" placeholder="请输入联系人" status="success" model:tips="{{detail}}"  model:value="{{title}}" suffixIcon="{{ { name: 'user-avatar', ariaLabel: '通讯录' } }}" bind:click="selectedAddr"/>
+      <t-input prefixIcon="app" label="留言" placeholder="请输入留言" model:value="{{messages}}" >
+      </t-input>
+      
+<button style="width: 90%; margin-top: 35rpx; margin-bottom: 30rpx;"  
+type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" 
+disabled="{{disabled}}" bindtap="onCommit"> 提交
+</button>

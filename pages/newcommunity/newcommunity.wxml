@@ -1,0 +1,10 @@
+<!--page/newcommunity/newcommunity.wxml-->
+<t-input prefixIcon="app"  label="{{labelRecycleNodeCode}}" placeholder="{{placeholderCode}}"  value="{{nodecode}}" disabled="true"/>
+<t-input prefixIcon="app" label="{{labelCommunityAddr}}" placeholder="{{placeholderAddr}}" value="{{address}}" />
+<t-input prefixIcon="app"  label="{{labelCommunityCode}}" placeholder="{{placeholderCode}}"  model:value="{{code}}" disabled="true"/>
+<t-input prefixIcon="app" label="{{labelCommunityName}}" placeholder="{{placeholderName}}"   value="{{name}}" />
+<t-input prefixIcon="app" label="{{labelCommunityWechat}}" placeholder="{{placeholderWechat}}"  value="{{wechat}}" bindtap="wechatFromScan" />
+<button style="width: 90%; margin-top: 25rpx;" disabled="disabled" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="dataFromMap"> {{buttonTitleForMap}}
+</button>
+<button style="width: 90%; margin-top: 25rpx;" disabled="disabled" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="saveCommunity"> {{buttonTitleSave}}
+</button>

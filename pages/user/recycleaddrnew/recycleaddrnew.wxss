@@ -1,0 +1,34 @@
+/* page/user/recycleaddrnew/recycleaddrnew.wxss */
+.t-radio-padding {
+    padding: 24rpx 32rpx !important;
+  }
+  .t-radio-demo {
+    margin-top: 16px;
+  }
+  .disable-border {
+    display: none;
+  }
+  .tips {
+    text-align: right !important;
+  }
+  .suffix {
+    display: flex;
+    align-items: center;
+  }
+  .suffix--line {
+    width: 1px;
+    height: 24px;
+    background-color: #f6f6f6;
+    margin-right: 16px;
+  }
+  .verify {
+    color: rgba(0, 82, 217, 1);
+    font-size: 32rpx;
+  }
+  .image {
+    width: 72px;
+    height: 36px;
+    display: block;
+    margin-top: -6px;
+    margin-bottom: -6px;
+  }

@@ -1,0 +1,43 @@
+/* page/user/recycleaddrlist/recycleaddrlist.wxss */
+.btn-wrapper {
+    height: 100%;
+  }
+  
+  .btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 120rpx;
+    height: 100%;
+    color: white;
+  }
+  
+  .delete-btn {
+    background-color: #e34d59;
+  }
+  
+  .edit-btn {
+    background-color: #ed7b2f;
+  }
+  
+  .favor-btn {
+    background-color: #0052d9;
+  }
+  
+  .column {
+    flex-direction: column;
+  }
+  
+  .padding-bottom {
+    padding-bottom: 8rpx;
+  }
+
+  .t-radio-padding {
+    padding: 24rpx 32rpx !important;
+  }
+  .t-radio-demo {
+    margin-top: 16px;
+  }
+  .disable-border {
+    display: none;
+  }

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "新建小区",
+    "usingComponents": {
+        "t-input": "tdesign-miniprogram/input/input"
+    }
+}

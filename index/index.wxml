@@ -1,0 +1,3 @@
+<view>
+  <button bindtap="jump">jump to next page</button>
+</view>

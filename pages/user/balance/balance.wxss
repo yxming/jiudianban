@@ -1,0 +1,52 @@
+/* page/user/balance/balance.wxss */
+
+.text-box{
+    padding: 20px 0;
+    display: flex;
+    background-color: #f7f7f7;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+    color: #353535;
+    line-height: 2em;
+  }
+  .text-effective{
+    margin-bottom: 5px;
+    display: flex;
+    background-color: #f7f7f7;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+    color: #353535;
+  }
+  .button-example {
+    width: 100%;
+    margin: 0 32rpx;
+    display: flex;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32rpx;
+  }
+  
+  .button-example:not(:last-child) {
+    margin-bottom: 32rpx;
+  }
+  .button-cash {
+    display: flex;
+    justify-content: space-around;
+  }
+  .btn{
+    width: 55px;
+    border:0.5px solid rgba(226, 133, 206, 0.842);
+    background-color: rgb(172, 218, 208);
+  }
+
+  .table{
+      justify-content: space-around;
+      border-bottom:0.5px solid rgba(226, 133, 206, 0.842);
+  }
+  .item{
+      font-style: normal;
+      font-family: serif;
+  }

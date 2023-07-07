@@ -1,0 +1,35 @@
+<!--page/home/home.wxml-->
+<view class="home-page-header" >
+    <view class="swiper-wrap">
+    <t-swiper 
+      wx:if="{{imgSrcs.length > 0}}"
+      current="{{current}}"
+      autoplay="{{autoplay}}"
+      duration="{{duration}}"
+      interval="{{interval}}"
+      navigation="{{navigation}}"
+      imageProps="{{swiperImageProps}}"
+      list="{{imgSrcs}}"
+      bind:click="navToActivityDetail"
+    />
+  </view>
+</view>
+<view class="tr" style="background-color: rgb(193, 200, 202);">
+  <view class="col"  bindtap="gotoRecycle">
+    <t-image src="{{imgSrcs[0]}}" mode="aspectFill" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" />
+    <view class="text"  style="text-align: center; background-color: rgb(236, 128, 173);">回收</view>
+  </view>
+  <view class="col" bindtap="gotoCategory">
+    <t-image src="{{imgSrcs[1]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" />
+    <view class="text" style="background: chartreuse;">目录</view>
+  </view>
+  <view class="col" bindtap="gotoBalance">
+    <t-image src="{{imgSrcs[4]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" />
+    <view class="text" style="text-align: center;">余额</view>
+  </view>
+  
+  <view class="col" bindtap="gotoService">
+    <t-image src="{{imgSrcs[5]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" />
+    <view class="text" style="text-align: center;">客服</view>
+  </view>
+</view>

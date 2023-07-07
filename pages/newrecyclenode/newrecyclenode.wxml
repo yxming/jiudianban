@@ -1,0 +1,59 @@
+<!--pages/newRecycleNode/newRecycleNode.wxml-->
+<view wx:if="{{0}}" class="flex-wrp" style="background-color: #89e;">
+          <view class="flex-item demo-text-1" style="width: fit-content; background-color: #09a;">1312233</view>
+          <view class="flex-item demo-text-2"  style="width: fit-content; background-color: rgb(112, 148, 184);">32321132</view>
+          <view class="flex-item demo-text-3" style="width: fit-content; background-color: #125;">3123321</view>
+</view>
+<t-input prefixIcon="app" label="{{labelRecycleNodeAddr}}" placeholder="{{placeholderAddr}}" value="{{address}}" />
+<t-input prefixIcon="app"  label="{{labelRecycleNodeCode}}" placeholder="{{placeholderCode}}"  value="{{nodecode}}" disabled="true"/>
+<t-input prefixIcon="app" label="{{labelRecycleNodeName}}" placeholder="{{placeholderName}}"   value="{{nodename}}" />
+<t-input prefixIcon="app" label="{{labelRecycleNodeWechat}}" placeholder="{{placeholderWechat}}"  value="{{wechat}}" bindtap="wechatFromScan" />
+<button style="width: 90%; margin-top: 25rpx;" disabled="disabled" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="dataFromMap"> {{buttonTitleForMap}}
+</button>
+<button style="width: 90%; margin-top: 25rpx;" disabled="disabled" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="newCommunity"> {{buttonTitleNewCommunity}}
+</button>
+
+<scroll-view
+  scroll-y style="width: 100%; height: 360px;"
+  refresher-enabled="{{true}}"
+  refresher-threshold="{{100}}"
+  refresher-default-style="white"
+  refresher-background="lightgreen"
+  refresher-triggered="{{triggered}}"
+  bindrefresherpulling="onPulling"
+  bindrefresherrefresh="onRefresh"
+  bindrefresherrestore="onRestore"
+  bindrefresherabort="onAbort"
+>
+  <t-swipe-cell wx:if="{{condition==0}}" wx:for="{{communityArray}}" wx:key='title' right="{{right}}" bind:click="onActionClick" >
+  <t-cell title="{{item.title}}" note="{{item.note}}" bordered="{{true}}" />
+</t-swipe-cell>
+
+<t-swipe-cell wx:if="{{condition==1}}" right="{{right}}" bind:click="onActionClick">
+  <t-cell title="左滑-带图标文本双操作" note="辅助信息" bordered="{{true}}" />
+</t-swipe-cell>
+
+<t-swipe-cell wx:if="{{condition==1}}" right="{{rightIcon}}">
+  <t-cell title="左滑-仅带图标双操作" note="辅助信息" bordered="{{true}}" />
+</t-swipe-cell>
+
+<t-swipe-cell wx:if="{{condition==1}}">
+  <t-cell
+    bordered="{{true}}"
+    title="左滑大列表-仅带图标双操作"
+    description="一段很长很长的内容文字"
+    note="辅助信息"
+    image="https://tdesign.gtimg.com/miniprogram/images/default.svg"
+  />
+  <view slot="right" class="btn-wrapper">
+    <view class="btn edit-btn column" bind:tap="onEdit">
+      <t-icon class="padding-bottom" name="edit" size="32rpx"></t-icon>
+      编辑
+    </view>
+    <view class="btn delete-btn column" bind:tap="onDelete">
+      <t-icon class="padding-bottom" name="delete" size="32rpx"></t-icon>
+      删除
+    </view>
+  </view>
+</t-swipe-cell>
+</scroll-view>

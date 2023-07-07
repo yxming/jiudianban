@@ -1,0 +1,25 @@
+<!--page/user/recycleaddrnew/recycleaddrnew.wxml-->
+<text wx:if="{{!location}}">page/user/recycleaddrnew/recycleaddrnew.wxml</text>
+<t-radio-group  defaultValue="radio0" placement="right" bindchange="radioChange">
+  <view  id="{{index}}" wx:for="{{communityArray}}" wx:key='name' bindtap="onChecked">
+    <t-radio  id="{{index}}" value="radio{{index}}" label="{{item.name}}" content="{{item.addr}}" />
+  </view>
+  <t-input label="联系人" placeholder="请输入联系人" model:value="{{caller}}"></t-input>
+  <t-input label="门牌号" placeholder="请输入门牌号" model:value="{{detail}}" status="error" tips="几幢几单元几室或几弄几号" />
+  <t-input
+  label="手机号"
+  placeholder="输入手机号码"
+  model:value="{{phoneNumber}}"
+  type="number"
+  tips="{{phoneError ? '手机号输入不正确' : ''}}"
+  bindchange="onPhoneInput"
+>
+<view slot="suffix" style="display: flex; align-items: center">
+    <view class="suffix--line"></view>
+   
+  </view>
+</t-input>
+</t-radio-group>
+
+<button style="width: 90%; margin-top: 35rpx; margin-bottom: 30rpx;"  type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="saveRecycleAddress"> {{buttonTitleSave}}
+</button>
