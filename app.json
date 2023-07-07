@@ -1,19 +1,9 @@
 {
   "pages": [
-    
-    "pages/home/home",
-    "pages/user/recyclerequest/recyclerequest",
-    "pages/user/recycleaddrlist/recycleaddrlist",
-    "pages/user/recycleaddrnew/recycleaddrnew",
-    "pages/user/mine/mine",
-    "pages/user/balance/balance",
-    "pages/recyclenodelist/recyclenodelist",
-    "pages/newrecyclenode/newrecyclenode",
-    "pages/newcommunity/newcommunity",
-    "pages/customer/customer",
-    "pages/customer/service",
-    "pages/document/document",
-    "pages/document/category",
+    "page/home/home",
+    "page/discount/discount",
+    "page/neighborhood/neighborhood",
+    "page/mine/mine",
     "index/index",
     "index/test"
   ],
@@ -35,20 +25,54 @@
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
     "list": [{
-      "pagePath": "pages/home/home",
+      "pagePath": "page/home/home",
       "text": "首页"
     }, {
-      "pagePath": "pages/user/recyclerequest/recyclerequest",
-      "text": "家政"
+      "pagePath": "page/discount/discount",
+      "text": "折扣"
     }, {
-      "pagePath": "pages/recyclenodelist/recyclenodelist",
-      "text": "生活"
+      "pagePath": "page/neighborhood/neighborhood",
+      "text": "邻里"
     }, {
-      "pagePath": "pages/user/mine/mine",
+      "pagePath": "page/mine/mine",
       "text": "我的"
     }
   ]
   },
+  "subPackages": [
+    {
+      "root": "page/manage/",
+      "pages": [
+        "pages/recyclenodelist/recyclenodelist",
+        "pages/newrecyclenode/newrecyclenode",
+        "pages/newcommunity/newcommunity"
+      ]
+    },
+    {
+      "root": "page/recycleopt/",
+      "pages": [
+        "pages/recyclerequest/recyclerequest",
+        "pages/recycleaddrlist/recycleaddrlist",
+        "pages/recycleaddrnew/recycleaddrnew"
+      ]
+    },
+    {
+      "root": "page/others/",
+      "pages": [
+        "pages/customer/customer",
+        "pages/customer/service",
+        "pages/document/document",
+        "pages/document/category"
+      ]
+    },
+    {
+      "root": "page/user/",
+      "pages": [
+        "pages/balance/balance"
+      ]
+      }
+  ],
+
   "requiredPrivateInfos": [
     "chooseAddress",
     "choosePoi",

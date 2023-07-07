@@ -1,0 +1,6 @@
+<!--pages/document/category.wxml-->
+<scroll-view
+  scroll-y style="width: 100%; height: 700rpx; background-color: cadetblue;"
+>
+<image src="../../../../resource/category.jpg" mode="aspectFill"/>
+</scroll-view>

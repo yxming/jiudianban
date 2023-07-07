@@ -1,0 +1,4 @@
+<!--pages/neighborhood/neighborhood.wxml-->
+<text>pages/neighborhood/neighborhood.wxml</text>
+<t-price></t-price>
+<t-userinfo/>

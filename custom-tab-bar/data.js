@@ -2,17 +2,17 @@ export default [
   {
     icon: 'home',
     text: '首页',
-    url: 'pages/home/home',
+    url: 'page/home/home',
   },
   {
-    icon: 'sort',//sort
-    text: '分类',
-    url: 'pages/user/recyclerequest/recyclerequest',
+    icon: 'cart',//sort
+    text: '折扣',
+    url: 'page/discount/discount',
   },
   {
-    icon: 'cart',
-    text: '生活',
-    url: 'pages/recyclenodelist/recyclenodelist',
+    icon: 'sort',
+    text: '邻里',
+    url: 'page/neighborhood/neighborhood',
   },
   // {
   //   icon: 'person',
@@ -22,6 +22,6 @@ export default [
   {
     icon: 'person',
     text: '我的',
-    url: 'pages/user/mine/mine',
+    url: 'page/mine/mine',
   }
 ];
