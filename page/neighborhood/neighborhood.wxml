@@ -2,3 +2,4 @@
 <text>pages/neighborhood/neighborhood.wxml</text>
 <t-price></t-price>
 <t-userinfo/>
+<text style="margin-bottom: 20rpx;">page/recycleopt/pages/recycleordersl</text>
