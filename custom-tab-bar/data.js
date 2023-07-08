@@ -5,15 +5,20 @@ export default [
     url: 'page/home/home',
   },
   {
-    icon: 'cart',//sort
+    icon: 'star',
+    text: '集市',
+    url: 'page/market/market',
+  },
+  {
+    icon: 'discount',
     text: '折扣',
     url: 'page/discount/discount',
   },
-  {
-    icon: 'sort',
-    text: '邻里',
-    url: 'page/neighborhood/neighborhood',
-  },
+  // {
+  //   icon: 'sort',
+  //   text: '邻里',
+  //   url: 'page/neighborhood/neighborhood',
+  // },
   // {
   //   icon: 'person',
   //   text: '生活',

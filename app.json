@@ -1,6 +1,7 @@
 {
   "pages": [
     "page/home/home",
+    "page/market/market",
     "page/discount/discount",
     "page/neighborhood/neighborhood",
     "page/mine/mine",
@@ -27,13 +28,16 @@
     "list": [{
       "pagePath": "page/home/home",
       "text": "首页"
-    }, {
+    }
+    ,{
+      "pagePath": "page/market/market",
+      "text": "集市"
+    }
+    ,{
       "pagePath": "page/discount/discount",
       "text": "折扣"
-    }, {
-      "pagePath": "page/neighborhood/neighborhood",
-      "text": "邻里"
-    }, {
+    }
+    ,{
       "pagePath": "page/mine/mine",
       "text": "我的"
     }
