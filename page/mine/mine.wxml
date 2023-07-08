@@ -1,5 +1,5 @@
 <!--page/user/mine/mine.wxml-->
-<t-user-center-card
+<t-user-center-card2
   userInfo="{{userInfo}}"
   isPhoneHide="{{true}}"
   name-class="custom-name-class"

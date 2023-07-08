@@ -4,6 +4,6 @@
         "t-icon": "tdesign-miniprogram/icon/icon",
         "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
         "t-cell": "tdesign-miniprogram/cell/cell",
-        "t-user-center-card": "../../components/user-center-card/index"
+        "t-user-center-card2": "../../components/user-center-card/index"
     }
 }

@@ -28,7 +28,7 @@ Page({
                 title: '回收订单',
                 tit: '',
                 url: '',
-                type: 'recycleorder',
+                type: 'recycleorders',
               },
               {
                 title: '家政订单',
@@ -105,6 +105,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
+      this.getTabBar().init();
     },
 
     /**
@@ -147,6 +148,10 @@ Page({
         switch (type) {
           case 'address': {
             wx.navigateTo({ url: '../recycleopt/pages/recycleaddrlist/recycleaddrlist' });
+            break;
+          }
+          case 'recycleorders': {
+            wx.navigateTo({ url: '../recycleopt/pages/recycleorders/recycleorders' });
             break;
           }
           case 'service': {
