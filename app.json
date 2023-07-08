@@ -53,7 +53,8 @@
       "pages": [
         "pages/recyclerequest/recyclerequest",
         "pages/recycleaddrlist/recycleaddrlist",
-        "pages/recycleaddrnew/recycleaddrnew"
+        "pages/recycleaddrnew/recycleaddrnew",
+        "pages/recycleorders/recycleorders"
       ]
     },
     {
