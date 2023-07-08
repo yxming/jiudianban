@@ -18,7 +18,14 @@ Page({
         listData: idinfolist,  
         inputValue: '', //用于显示输入语句
         searchinput: '', //用户输入的查询语
-        cashrecord:[]
+        cashrecord:[],
+        dataList: [
+            { title: '项目1', amount: 100, type: 'income' },
+            { title: '项目2', amount: 200, type: 'expense' },
+            { title: '项目3', amount: 300, type: 'income' },
+            // 其他数据项...
+          ],
+          activeType: 'all' // 默认展示全部数据
     },
 
     /**
@@ -29,54 +36,6 @@ Page({
         //this.addCashRecord()
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    },
     addCashRecord(){
       
       wx.cloud.init({
@@ -100,6 +59,12 @@ Page({
         complete: console.log
       })
     },
+    handleTabChange(event) {
+        const type = event.currentTarget.dataset.type;
+        this.setData({
+          activeType: type
+        });
+      },
     getCashRecord(wechatid){
       var _this = this
         console.log('wechatid:',wechatid)

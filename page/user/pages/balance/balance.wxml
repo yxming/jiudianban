@@ -7,13 +7,19 @@
     <text>可提现：￥1000</text>
 </view>
 
-<view class="button-cash" style="margin-top: 20rpx; margin-bottom: 20rpx; ">
+<!-- <view class="button-cash" style="margin-top: 20rpx; margin-bottom: 20rpx; ">
   <button class="btn" >充值</button>
   <button class="btn" >提现</button>
   <button class="btn" >使用</button>
+</view> -->
+
+<view class="button-cash">
+<view class="chong">充值</view>
+<view class="ti">提现</view>
+<view class="shi">使用</view>
 </view>
 
-<view class="title"  style="display: flex;justify-content: space-around;background-color: rgb(103, 177, 199);">
+<!-- <view class="title"  style="display: flex;justify-content: space-around;background-color: rgb(103, 177, 199);">
   <view class="item" >
     <text>日期</text>
   </view>
@@ -21,8 +27,8 @@
   <view class="item" >
     <text>金额</text>
   </view>
-</view>
-<scroll-view style="width: 100%;height: 600rpx;" scroll-y="true">
+</view> -->
+<!-- <scroll-view style="width: 100%;height: 600rpx;" scroll-y="true">
 <view class="table" wx:for="{{cashrecord}}" wx:key="index" style="display: flex;justify-content: flex-start;">
   <view class="item" style=" background-color: chartreuse;">
     <text>{{item.date}}</text>
@@ -31,6 +37,20 @@
     <text>{{item.cash}}</text>
   </view>
 </view>
-</scroll-view>
+</scroll-view> -->
+<view class="tabs">
+  <view class="tab" class="{{activeType==='all'? 'active': ''}}" bindtap="handleTabChange" data-type="all">全部</view>
+  <view class="tab" class="{{activeType==='income'? 'active': ''}}" bindtap="handleTabChange" data-type="income">收入</view>
+  <view class="tab" class="{{activeType==='expense'? 'active': ''}}" bindtap="handleTabChange" data-type="expense">支出</view>
+</view>
+<view class="list">
+  <block wx:for="{{dataList}}" wx:for-item="item">
+    <view wx:if="{{activeType === 'all' || item.type === activeType}}">
+      <!-- 根据条件展示数据 -->
+      <text>{{item.title}}</text>
+      <text>{{item.amount}}</text>
+    </view>
+  </block>
+</view>
 
 

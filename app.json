@@ -6,7 +6,10 @@
     "page/neighborhood/neighborhood",
     "page/mine/mine",
     "index/index",
-    "index/test"
+    "index/test",
+    "page/components/user-center-card",
+    "page/components/user-center-card/index",
+    "page/profile/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,23 +28,24 @@
     "selectedColor": "#FF5F15",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
-    "list": [{
-      "pagePath": "page/home/home",
-      "text": "首页"
-    }
-    ,{
-      "pagePath": "page/market/market",
-      "text": "集市"
-    }
-    ,{
-      "pagePath": "page/discount/discount",
-      "text": "折扣"
-    }
-    ,{
-      "pagePath": "page/mine/mine",
-      "text": "我的"
-    }
-  ]
+    "list": [
+      {
+        "pagePath": "page/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "page/market/market",
+        "text": "集市"
+      },
+      {
+        "pagePath": "page/discount/discount",
+        "text": "折扣"
+      },
+      {
+        "pagePath": "page/mine/mine",
+        "text": "我的"
+      }
+    ]
   },
   "subPackages": [
     {
@@ -72,17 +76,11 @@
     },
     {
       "root": "page/user/",
-      "pages": [
-        "pages/balance/balance"
-      ]
-      }
+      "pages": ["pages/balance/balance"]
+    }
   ],
 
-  "requiredPrivateInfos": [
-    "chooseAddress",
-    "choosePoi",
-    "getLocation"
-  ],
+  "requiredPrivateInfos": ["chooseAddress", "choosePoi", "getLocation"],
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

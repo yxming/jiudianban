@@ -1,9 +1,13 @@
 {
     "navigationBarTitleText": "个人中心",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#6394c0",
+    "backgroundColorTop": "#6394c0",
     "usingComponents": {
         "t-icon": "tdesign-miniprogram/icon/icon",
         "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
         "t-cell": "tdesign-miniprogram/cell/cell",
-        "t-user-center-card2": "../../components/user-center-card/index"
-    }
+        "t-userinfo":"../../components/user-center-card/index"
+    },
+    "enablePullDownRefresh": true
 }

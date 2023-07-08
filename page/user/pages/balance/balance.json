@@ -1,6 +1,9 @@
 {
     "navigationBarTitleText": "11",
+    "component": true,
     "usingComponents": {
-        "t-button": "tdesign-miniprogram/button/button"
+        "t-button": "tdesign-miniprogram/button/button",
+        "t-tabs": "tdesign-miniprogram/tabs/tabs",
+        "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
     }
 }
