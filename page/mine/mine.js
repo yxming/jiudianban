@@ -74,7 +74,7 @@ Page({
                 tit: '',
                 url: '',
                 type: 'nodelist',
-                icon: 'service',
+                icon: 'logo-codepen',
               },
               {
                 title: '新建小区',
