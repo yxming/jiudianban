@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "11",
+    "navigationBarTitleText": "余额",
     "component": true,
     "usingComponents": {
         "t-button": "tdesign-miniprogram/button/button",

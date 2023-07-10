@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "1111",
+    "navigationBarTitleText": "折扣",
     "usingComponents": {
         "t-message": "tdesign-miniprogram/message/message"
     }
