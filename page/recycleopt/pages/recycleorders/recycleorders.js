@@ -5,61 +5,68 @@ Page({
      * 页面的初始数据
      */
     data: {
-        list:[{
-            id: 'view',
-            name: '视图容器',
-            open: false,
-            pages: ['view', 'scroll-view', 'swiper', 'movable-view', 'cover-view']
-          }, {
-            id: 'content',
-            name: '基础内容',
-            open: false,
-            pages: ['text', 'icon', 'progress', 'rich-text']
-          }, {
-            id: 'form',
-            name: '表单组件',
-            open: false,
-            pages: ['button', 'checkbox', 'form', 'input', 'label', 'picker', 'picker-view', 'radio', 'slider', 'switch', 'textarea', 'editor']
-          }, {
-            id: 'nav',
-            name: '导航',
-            open: false,
-            pages: ['navigator']
-          }, {
-            id: 'media',
-            name: '媒体组件',
-            open: false,
-            pages: ['image', 'video', 'camera', 'live-pusher', 'live-player']
-          }, {
-            id: 'map',
-            name: '地图',
-            open: false,
-            pages: ['map', { appid: 'wxe3f314db2e921db0', name: '腾讯位置服务示例中心'}]
-          }, {
-            id: 'canvas',
-            name: '画布',
-            open: false,
-            pages: ['canvas-2d', 'webgl']
-          }, {
-            id: 'open',
-            name: '开放能力',
-            open: false,
-            pages: ['ad', 'open-data', 'web-view']
-          }, {
-            id: 'obstacle-free',
-            name: '无障碍访问',
-            open: false,
-            pages: ['aria-component']
-          }
-        ],
-        theme: 'light'
+      orderlist:[],
+      theme: 'light'
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+      this.setData({
+        theme: wx.getSystemInfoSync().theme || 'light'
+      })
+      if (wx.onThemeChange) {
+        wx.onThemeChange(({theme}) => {
+          this.setData({theme})
+        })
+      }
+      var _this = this
+        wx.cloud.init({
+          env: 'cloud1-7go51v8te374de35',
+        })
+        const db = wx.cloud.database()
+        const _ = db.command
+        var coll=db.collection('order_recycle').where({
+          wechatsale:'y7668'
+        })
 
+        coll.field({
+          _id:0,
+          _openid:0
+        })
+        .get({
+          success: function(res) {
+            if(res.data.length>0){
+              var list=[]
+              var index = 0
+              res.data.forEach(element=>{
+                list.push({
+                  'index':index++,
+                  'orderid':element.orderid,
+                  'communityname':element.communityname,
+                  'flat':element.flat,
+                  'caller':element.caller,
+                  'phonenum':element.phonenum,
+                  'amount':element.amount,
+                  'cost':element.cost,
+                  'price':element.price,
+                  'message':element.message,
+                  'wechatbuy':element.wechatbuy,
+                  'wechatsale':element.wechatsale,
+                  'date':element.date,
+                  'type':element.type,
+                  'status':element.status,
+                  'open':false
+                })
+              })
+              console.log('orderlist:',list)
+              _this.setData({
+                orderlist:list
+              })
+            }
+          }
+        })
     },
 
     /**
@@ -76,53 +83,62 @@ Page({
 
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    }
-    ,
     kindToggle(e) {
         const id = e.currentTarget.id
-        const list = this.data.list
-        for (let i = 0, len = list.length; i < len; ++i) {
-          if (list[i].id === id) {
-            list[i].open = !list[i].open
+        const orderlist = this.data.orderlist
+        
+        for (let i = 0, len = orderlist.length; i < len; ++i) {
+          if (orderlist[i].orderid === id) {
+            orderlist[i].open = !orderlist[i].open
           } else {
-            list[i].open = false
+            orderlist[i].open = false
           }
         }
         this.setData({
-          list
+          orderlist
         })
+    },
+    onPayClicked(e){
+      console.log('pay:',e.currentTarget.id)
+      var _this = this
+      var orderlist = this.data.orderlist
+      var index  = e.currentTarget.id
+      var item = orderlist[index]
+      item.status = 1
+      wx.cloud.init({
+        env: 'cloud1-7go51v8te374de35',
+      })
+      const db = wx.cloud.database()
+      const _ = db.command
+      db.collection('order_recycle').where({
+      orderid:item.orderid
+    }).update({
+      data:{
+        cost:item.cost,
+        amount:item.amount,
+        status:item.status
+      },
+      success: function(res) {
+        console.log(res.data)
+        _this.setData({
+          orderlist
+        })
+      },
+      fail: function(res){
+        item.status = 0
+      }
+    })
+    },
+
+    onCostChanged(e){
+      var index  = e.currentTarget.id
+      var item = this.data.orderlist[index]
+      item.cost = e.detail.value
+    },
+
+    onAmountChanged(e){
+      var index  = e.currentTarget.id
+      var item = this.data.orderlist[index]
+      item.amount = e.detail.value
     }
 })
