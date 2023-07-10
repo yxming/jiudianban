@@ -45,10 +45,11 @@
 </view>
 <view class="list">
   <block wx:for="{{dataList}}" wx:for-item="item">
-    <view wx:if="{{activeType === 'all' || item.type === activeType}}">
+    <view class="all" wx:if="{{activeType === 'all' || item.type === activeType}}">
       <!-- 根据条件展示数据 -->
-      <text>{{item.title}}</text>
-      <text>{{item.amount}}</text>
+      <text class="date">时间：{{item.title}}</text>
+      <text>金额：{{item.amount}}</text>
+      
     </view>
   </block>
 </view>

@@ -7,8 +7,7 @@
     "page/mine/mine",
     "index/index",
     "index/test",
-    "page/components/user-center-card",
-    "page/components/user-center-card/index",
+    
     "page/profile/index"
   ],
   "window": {

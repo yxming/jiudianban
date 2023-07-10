@@ -1,7 +1,6 @@
 {
     "navigationBarTitleText": "111",
     "usingComponents": {
-        "t-price":"../../components/price/index",
-        "t-userinfo":"../../components/user-center-card/index"
+        "t-message": "tdesign-miniprogram/message/message"
     }
 }

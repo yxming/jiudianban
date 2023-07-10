@@ -20,9 +20,9 @@ Page({
         searchinput: '', //用户输入的查询语
         cashrecord:[],
         dataList: [
-            { title: '项目1', amount: 100, type: 'income' },
-            { title: '项目2', amount: 200, type: 'expense' },
-            { title: '项目3', amount: 300, type: 'income' },
+            { title: '2023-07-01', amount: '+100', type: 'income' },
+            { title: '2023-07-02', amount: '-200', type: 'expense' },
+            { title: '2023-07-03', amount: '+300', type: 'income' },
             // 其他数据项...
           ],
           activeType: 'all' // 默认展示全部数据

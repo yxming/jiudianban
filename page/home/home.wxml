@@ -14,22 +14,70 @@
     />
   </view>
 </view>
-<view class="tr" style="background-color: rgb(193, 200, 202);">
+<view class="tr">
   <view class="col"  bindtap="gotoRecycle">
-    <t-image src="{{imgSrcs[0]}}" mode="aspectFill" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" />
-    <view class="text"  style="text-align: center; background-color: rgb(236, 128, 173);">回收</view>
+    <!-- <t-image src="{{imgSrcs[0]}}" mode="aspectFill" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+    <t-icon name="refresh" size="50" />
+    <view class="text"  style="text-align: center; ">回收</view>
   </view>
   <view class="col" bindtap="gotoCategory">
-    <t-image src="{{imgSrcs[1]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" />
-    <view class="text" style="background: chartreuse;">目录</view>
+    <!-- <t-image src="{{imgSrcs[1]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+    <t-icon name="qrcode" size="45" />
+    <view class="text" >目录</view>
   </view>
   <view class="col" bindtap="gotoBalance">
-    <t-image src="{{imgSrcs[4]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" />
+    <!-- <t-image src="{{imgSrcs[4]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+    <t-icon name="money-circle" size="45" />
     <view class="text" style="text-align: center;">余额</view>
   </view>
   
   <view class="col" bindtap="gotoService">
-    <t-image src="{{imgSrcs[5]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" />
+    <!-- <t-image src="{{imgSrcs[5]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+    <t-icon name="service" size="45" />
     <view class="text" style="text-align: center;">客服</view>
   </view>
+</view>
+<view class="quantity">
+   <view class="view-button">有偿服务</view>
+ <view class="profile">
+    <view class="profile-base">
+    <image class="avatar" src=""></image>
+    <text class="nickname">昵称</text>
+  </view>
+  <view>
+      <text class="price">价格：</text>
+      <text class="money">50元</text>
+  </view>
+ </view>
+  <view>
+      <view>需求: 1、不要告诉任何人，你不堪的过往。2、不要轻易原谅，一个伤害过你的人。3、越是进入到一个新的环境，就越要保持低调。</view>
+      <view class="quantity-image">
+          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
+          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
+          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
+      </view>
+  </view>
+  <view class="submit">接单</view>
+</view>
+<view class="quantity">
+   <view class="view-button">有偿服务</view>
+ <view class="profile">
+    <view class="profile-base">
+    <image class="avatar" src=""></image>
+    <text class="nickname">昵称</text>
+  </view>
+  <view>
+      <text class="price">价格：</text>
+      <text class="money">50元</text>
+  </view>
+ </view>
+  <view>
+      <view>需求: 1、不要告诉任何人，你不堪的过往。2、不要轻易原谅，一个伤害过你的人。3、越是进入到一个新的环境，就越要保持低调。</view>
+      <view class="quantity-image">
+          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
+          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
+          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
+      </view>
+  </view>
+  <view class="submit">提交订单</view>
 </view>

@@ -1,6 +1,8 @@
 {
     "usingComponents": {
         "t-swiper": "tdesign-miniprogram/swiper/swiper",
-        "t-image": "tdesign-miniprogram/image/image"
+        "t-image": "tdesign-miniprogram/image/image",
+        "t-icon": "tdesign-miniprogram/icon/icon",
+        "t-button": "tdesign-miniprogram/button/button"
     }
 }

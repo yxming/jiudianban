@@ -1,106 +1,113 @@
 /* page/user/balance/balance.wxss */
 .custom-tabs {
-    margin-bottom: 32rpx;
-  }
-.text-box{
-    padding: 20px 0;
-    display: flex;
-    background-color: #f7f7f7;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 15px;
-    color: #353535;
-    line-height: 2em;
-  }
-  .text-effective{
-    margin-bottom: 5px;
-    display: flex;
-    background-color: #f7f7f7;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 15px;
-    color: #353535;
-  }
-  .button-example {
-    width: 100%;
-    margin: 0 32rpx;
-    display: flex;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32rpx;
-  }
-  
-  .button-example:not(:last-child) {
-    margin-bottom: 32rpx;
-  }
-  .button-cash {
-    display: flex;
-    justify-content: space-around;
-    background-color: #fff;
-    margin: 10px 0;
-  }
-  .btn{
-    /* width: 55px;
+  margin-bottom: 32rpx;
+}
+.text-box {
+  padding: 20px 0;
+  display: flex;
+  background-color: #f7f7f7;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 15px;
+  color: #353535;
+  line-height: 2em;
+}
+.text-effective {
+  margin-bottom: 5px;
+  display: flex;
+  background-color: #f7f7f7;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 15px;
+  color: #353535;
+}
+.button-example {
+  width: 100%;
+  margin: 0 32rpx;
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32rpx;
+}
+.all {
+    padding: 0 10px;
+}
+.date {
+    display: inline-block;
+    width: 60%;
+    margin-top: 10px;
+}
+.button-example:not(:last-child) {
+  margin-bottom: 32rpx;
+}
+.button-cash {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  margin: 20px 0;
+}
+.btn {
+  /* width: 55px;
     border:0.5px solid rgba(226, 133, 206, 0.842); */
-    /* background-color: rgb(172, 218, 208); */
-  }
+  /* background-color: rgb(172, 218, 208); */
+}
 
-  .table{
-      justify-content: space-around;
-      border-bottom:0.5px solid rgba(226, 133, 206, 0.842);
-  }
-  .item{
-      font-style: normal;
-      font-family: serif;
-  }
-  .chong {
-      color: #ff3f3f;
-      border: 2px solid #ff3f3f;
-      height: 35px;
-      width: 80px;
-      text-align: center;
-      line-height: 35px;
-      border-radius: 5px;
-  }
-  .ti {
-    color: #1672fe;
-    border: 2px solid #1672fe;
-    height: 35px;
-    width: 80px;
-    text-align: center;
-    line-height: 35px;
-    border-radius: 5px;
+.table {
+  justify-content: space-around;
+  border-bottom: 0.5px solid rgba(226, 133, 206, 0.842);
+}
+.item {
+  font-style: normal;
+  font-family: serif;
+}
+.chong {
+  color: #ff3f3f;
+  border: 2px solid #ff3f3f;
+  height: 35px;
+  width: 80px;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
+}
+.ti {
+  color: #1672fe;
+  border: 2px solid #1672fe;
+  height: 35px;
+  width: 80px;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
 }
 .shi {
-    color: #0f0f0f;
-    border: 2px solid #0f0f0f;
-    height: 35px;
-    width: 80px;
-    text-align: center;
-    line-height: 35px;
-    border-radius: 5px;
+  color: #0f0f0f;
+  border: 2px solid #0f0f0f;
+  height: 35px;
+  width: 80px;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 5px;
 }
 
-  .tabs {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      height: 40px;
-      border: 1px solid #b8d4ff;
-      border-radius: 15px;
-  }
-  .tab {
-    background-color: #ffffff;
-    height: 40px;
-    width: 100px;
-    border-radius: 20px;
-    text-align: center;
-    line-height: 40px;
-    color: rgb(7, 7, 7);
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  border: 1px solid #b8d4ff;
+  border-radius: 15px;
+}
+.tab {
+  background-color: #ffffff;
+  height: 40px;
+  width: 100px;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 40px;
+  color: rgb(7, 7, 7);
 }
 .active {
-    border-bottom: 3px solid #0b6bfe;
-    height: 40px;
-    line-height: 40px;
+  border-bottom: 3px solid #0b6bfe;
+  height: 40px;
+  line-height: 40px;
 }

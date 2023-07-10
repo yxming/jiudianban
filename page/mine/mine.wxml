@@ -1,8 +1,8 @@
 <!--page/user/mine/mine.wxml-->
   <view class="profile">
   <view class="profile-base">
-    <image class="avatar" src="{{avatar}}"></image>
-    <text bind:tap="goLogin" class="nickname">{{nickName || '请先登录'}}</text>
+    <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+    <text bind:tap="handleGetUserProfile" class="nickname">{{userInfo.nickName || '请先登录'}}</text>
     <navigator hover-class="none" class="link" url="/page/profile/index">
       去完善信息
       <!-- <t-icon name="chevron-right" size="48rpx" slot="note" /> -->

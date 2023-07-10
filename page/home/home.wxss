@@ -1,7 +1,9 @@
 /* page/home/home.wxss */
 .tr {
   display: flex;
-  justify-content: space-around;  
+  height: 100px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .col {
@@ -17,7 +19,69 @@
 
 .text {
   font-size: 28rpx;
-  color: rgba(0, 0, 0, .6);
+  color: rgba(0, 0, 0, 0.6);
   line-height: 44rpx;
   margin-bottom: 32rpx;
+}
+.swiper-wrap {
+  margin: 5px 10px 0;
+}
+.text {
+  margin-top: 5px;
+  font-weight: 700;
+}
+/* .t-swiper {
+    border-radius: 20px;
+} */
+.profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+.price {
+    font-weight: 700;
+}
+.money {
+    color: #f41136;
+}
+.quantity-image {
+    display: flex;
+    justify-content: space-between;
+}
+.image-img {
+    width: 32%;
+    height: 150px;
+    margin: 10px 0;
+}
+.view-button {
+    font-weight: 700;
+}
+.submit {
+    width: 100px;
+    height: 30px;
+    background: #ff5a73;
+    color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 30px;
+    margin: 0 auto;
+}
+.quantity {
+    margin: 10px;
+    padding: 10px;
+    background-color: #f6f6ff;
+    border-radius: 10px;
+}
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background-image: url(https://lotjol.github.io/static-store/enjoy-plus/images/user_placeholder.png);
+  background-size: cover;
+}
+.profile-base {
+  display: flex;
+  align-items: center;
 }

@@ -1,2 +1,5 @@
 <!--pages/customer/service.wxml-->
-<image src="../../../../resource/customer.jpg" mode="aspectFill"/>
+<!-- <image src="../../../../resource/customer.jpg" mode="aspectFill"/> -->
+<view class="body-box">
+    <image class="img" src="../../../../resource/customer.jpg" mode="aspectFill"/>
+</view>
