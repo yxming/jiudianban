@@ -1,4 +1,5 @@
 // page/user/recyclerequest/recyclerequest.js
+const util = require('../../../../util/util.js')
 Page({
 
     /**
@@ -9,6 +10,8 @@ Page({
       communitycode:'',
       title:'',
       detail:'选择详细地址',
+      caller:'',
+      phonenum:'',
       theme: 'light',
       latitude: 23.099994,
       longitude: 113.324520,
@@ -115,7 +118,7 @@ Page({
       coll.field({
         _id:0,
         caller:1,
-        detail:1,
+        flat:1,
         phonenum:1,
         latitude:1,
         longitude:1,
@@ -130,12 +133,16 @@ Page({
             //_this.data.recycleArray = res.data
             var item=res.data[res.data.length-1]  
             var title=item.caller+'----'+item.phonenum
-            var detail = item.communityaddress+item.communityname+item.detail   
+            var detail = item.communityaddress+item.communityname+item.flat   
             var array=[{latitude:item.latitude,longitude:item.longitude,name:'UU'}]
             console.log('default code:',item.communitycode)
             _this.setData({
               title:title,
               detail:detail,
+              caller:item.caller,
+              phonenum:item.phonenum,
+              communityname:item.communityname,
+              flat:item.flat,
               latitude:item.latitude,
               longitude:item.longitude,
               markers:array,
@@ -158,6 +165,10 @@ Page({
               _this.setData({
                 title:data.data.title,
                 detail:data.data.detail,
+                caller:data.data.caller,
+                phonenum:data.data.phonenum,
+                communityname:data.data.communityname,
+                flat:data.data.flat,
                 latitude:data.data.latitude,
                 longitude:data.data.longitude,
                 markers:array,
@@ -207,15 +218,20 @@ Page({
       // data 字段表示需新增的 JSON 数据
       data: {
         orderid:orderid,
-        wechatsale: 'y7665', // 用 {openid} 变量，后台会自动替换为当前用户 openid
+        wechatsale: 'y7668', // 用 {openid} 变量，后台会自动替换为当前用户 openid
         wechatbuy: wechatbuy,
         type: 0,
         amount:0,
         cost:0,
         price:0,
-        status:1,
+        status:0,
         communitycode:this.data.communitycode,
-        messages:this.data.messages
+        communityname:this.data.communityname,
+        flat:this.data.flat,
+        caller:this.data.caller,
+        phonenum:this.data.phonenum,
+        messages:this.data.messages,
+        date:util.formatDateTime(new Date())
       },
       success: function(res) {
         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id

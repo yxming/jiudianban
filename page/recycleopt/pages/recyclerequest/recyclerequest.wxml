@@ -18,8 +18,8 @@
       >
       </map>
 
-      <t-input prefixIcon="app" label="" placeholder="请输入联系人" status="success" model:tips="{{detail}}"  model:value="{{title}}" suffixIcon="{{ { name: 'user-avatar', ariaLabel: '通讯录' } }}" bind:click="selectedAddr"/>
-      <t-input prefixIcon="app" label="留言" placeholder="请输入留言" model:value="{{messages}}" >
+      <t-input prefixIcon="home" label="" placeholder="请输入联系人" status="success" model:tips="{{detail}}"  model:value="{{title}}" suffixIcon="{{ { name: 'location', ariaLabel: '通讯录' } }}" bind:click="selectedAddr"/>
+      <t-input prefixIcon="edit-1" label="留言" placeholder="请输入留言" model:value="{{messages}}" >
       </t-input>
       
 <button style="width: 90%; margin-top: 35rpx; margin-bottom: 30rpx;"  

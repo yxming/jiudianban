@@ -7,7 +7,7 @@ Page({
      */
     data: {
       caller:'',
-      detail:'',
+      flat:'',
       phoneError: false,
       phoneNumber: '',
       location : false,
@@ -114,7 +114,7 @@ Page({
     },
     onPhoneInput(e) {
       const { phoneError } = this.data;
-      const isPhoneNumber = /^[1][3,4,5,7,8,9][0-9]{9}$/.test(e.detail.value);
+      const isPhoneNumber = /^[1][3,4,5,7,8,9][0-9]{9}$/.test(e.flat.value);
       if (phoneError === isPhoneNumber) {
         this.setData({
           phoneError: !isPhoneNumber,
@@ -182,7 +182,7 @@ Page({
         data: {
           communitycode: this.data.communityArray[index].code, // 用 {openid} 变量，后台会自动替换为当前用户 openid
           caller: user,
-          detail: this.data.detail,
+          flat: this.data.flat,
           phonenum:phone,
           communityname:name,
           communityaddress:address,
@@ -195,7 +195,7 @@ Page({
           console.log(res)
           _this.setData({
             caller:'',
-            detail:'',
+            flat:'',
             phoneNumber:''
           })
         },

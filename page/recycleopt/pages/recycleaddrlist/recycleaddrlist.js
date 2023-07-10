@@ -216,7 +216,7 @@ Page({
         coll.field({
           _id:0,
           caller:1,
-          detail:1,
+          flat:1,
           phonenum:1,
           latitude:1,
           longitude:1,
@@ -232,8 +232,17 @@ Page({
               var arr=[]
               res.data.forEach(element=>{
                 var title=element.caller+'----'+element.phonenum
-                var detail = element.communityaddress+element.communityname+element.detail
-                arr.push({'title':title,'detail':detail,'latitude':element.latitude,'longitude':element.longitude,'communitycode':element.communitycode})
+                var detail = element.communityaddress+element.communityname+element.flat
+                arr.push({'title':title,
+                'detail':detail,
+                'latitude':element.latitude,
+                'longitude':element.longitude,
+                'communitycode':element.communitycode,
+                'communityname':element.communityname,
+                'flat':element.flat,
+                'caller':element.caller,
+                'phonenum':element.phonenum
+              })
               })
               _this.setData({
                 recycleArray:arr
