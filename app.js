@@ -5,9 +5,10 @@ App({
     openid: null,
     appid:null,
     iconTabbar: '/page/weui/example/images/icon_tabbar.png',
-    role:2,
+    role:1,
     db:null,
-    _command:null
+    _command:null,
+    userinfo:{}
   },
 
   initDataBase(){
@@ -37,6 +38,8 @@ App({
       success: function(res) {
         if(res.data.length>0 && res.data[0].userinfo){
           self.globalData.hasLogin = true
+          self.globalData.role = res.data[0].role
+          self.globalData.userinfo = res.data[0].userinfo
         }else{
           self.globalData.hasLogin = false
         }

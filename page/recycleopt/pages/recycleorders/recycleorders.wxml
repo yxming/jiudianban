@@ -44,7 +44,7 @@
                 </view>
               </view>
               <view class="button">
-                <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':''}} " bindtap="handlePopup">付款</button>
+                <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':role==2?'':'hidden'}}" bindtap="handlePopup">付款</button>
               </view>
             </view>
           </view>
