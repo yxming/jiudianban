@@ -27,12 +27,11 @@ Page({
         content: "需求: 1、不要告诉任何人，你不堪的过往。2、不要轻易原谅，一个伤害过你的人。3、越是进入到一个新的环境，就越要保持低调。需求: 1、不要告诉任何人，你不堪的过往。2、不要轻易原谅，一个伤害过你的人。3、越是进入到一个新的环境，就越要保持低调。",
         isExpanded: false,
         // -------------- 关于图片的变量
-        images: [ 'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/a.jpg',
-                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/b.jpg',
-                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/c.png',
-                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/d.png',
-                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/e.jpg',
-                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/f.png',
+        images: [ 
+                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/xiyi.png',
+                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/h1.png',
+                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/h2.png',
+                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/h3.png'
                 ],
         isImageExpanded: false,
         currentImageIndex: 0,

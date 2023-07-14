@@ -39,8 +39,8 @@
   <view class="view-profile">
     <view class="profile">
       <view class="profile-base">
-        <image class="avatar" src=""></image>
-        <text class="nickname">昵称</text>
+        <image class="avatar" src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJib08Z8K6zgp4VibsAObsV7fVz23n2gtGap3VGPQdw6E2ViaxKalYunrAHl0U8Sda5UAiamTtNoGmYcw/132"></image>
+        <text class="nickname">唐僧爱飘柔</text>
       </view>
       <view class="price-money">
         <text class="price">50</text>
@@ -49,7 +49,7 @@
     </view>
     <view>
       <view>
-        <text class="{{isExpanded? '' : 'content'}}">{{content}}</text>
+        <text class="{{isExpanded? '' : 'content'}}">洗衣机总是有一股异味，表面看洗衣机滚筒里很干净，就是一直有一股异味，也买过洗衣机泡泡丸，但一直没办法清除异味，我出50元，有谁能帮我拆开来洗一洗。周末才有时间在家哦。</text>
         <text class="toggle" bindtap="toggleExpand">{{isExpanded ? '收起' : '展开'}}</text>
       </view>
       <!-- <view class="quantity-image">
@@ -59,8 +59,8 @@
     </view> -->
       <view class="quantity-image">
         <image style="background-image: url('{{images[0]}}')" src="" bindtap="toggleImage" aquamarine data-index="0" class="image-img"></image>
-        <image style="background-image: url('{{images[1]}}')" src="" bindtap="toggleImage" aquamarine data-index="1" class="image-img"></image>
-        <image style="background-image: url('{{images[4]}}')" src="" bindtap="toggleImage" aquamarine data-index="4" class="image-img"></image>
+        <!-- <image style="background-image: url('{{images[1]}}')" src="" bindtap="toggleImage" aquamarine data-index="1" class="image-img"></image>
+        <image style="background-image: url('{{images[4]}}')" src="" bindtap="toggleImage" aquamarine data-index="4" class="image-img"></image> -->
       </view>
       <view class="expanded-image-container" wx:if="{{isImageExpanded}}">
         <image class="expanded-image" src="{{images[currentImageIndex]}}" bindtap="closeExpandedImage"></image>
@@ -72,17 +72,17 @@
   <view class="view-profile">
     <view class="profile">
       <view class="profile-base">
-        <image class="avatar" src=""></image>
-        <text class="nickname">昵称</text>
+        <image class="avatar" src="https://thirdwx.qlogo.cn/mmopen/vi_32/OyMUywAdtNA4ANiaG4P0mZHR4Bh0H538Z47sTeS1kemJvypL4oKLOSOsW2ZTNPnWlH56f9tDWpXjKymFyibxVuEA/132"></image>
+        <text class="nickname">哈士奇不2啊</text>
       </view>
       <view class="price-money">
-        <text class="price">50</text>
+        <text class="price">300</text>
         <text class="money">元</text>
       </view>
     </view>
     <view>
       <view>
-        <text class="{{isExpanded? '' : 'content'}}">{{content}}</text>
+        <text class="{{isExpanded? '' : 'content'}}">8月1日开始要出差一周，家里的二哈没人照看，找个同小区的邻居帮忙照看7天，我愿意出300元报酬。需要洗澡一次，每天带出去溜半个小时，每天需要和我视频一次。</text>
         <text class="toggle" bindtap="toggleExpand">{{isExpanded ? '收起' : '展开'}}</text>
       </view>
       <!-- <view class="quantity-image">
@@ -91,9 +91,9 @@
       <image src="" mode="" style="background-color: aquamarine;" class="image-img" />
     </view> -->
       <view class="quantity-image">
+        <image style="background-image: url('{{images[1]}}')" src="" bindtap="toggleImage" aquamarine data-index="1" class="image-img"></image>
         <image style="background-image: url('{{images[2]}}')" src="" bindtap="toggleImage" aquamarine data-index="2" class="image-img"></image>
         <image style="background-image: url('{{images[3]}}')" src="" bindtap="toggleImage" aquamarine data-index="3" class="image-img"></image>
-        <image style="background-image: url('{{images[5]}}')" src="" bindtap="toggleImage" aquamarine data-index="5" class="image-img"></image>
       </view>
       <view class="expanded-image-container" wx:if="{{isImageExpanded}}">
         <image class="expanded-image" src="{{images[currentImageIndex]}}" bindtap="closeExpandedImage"></image>
