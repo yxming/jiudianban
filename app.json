@@ -1,85 +1,90 @@
 {
-  "pages": [
-    "page/home/home",
-    "page/market/market",
-    "page/discount/discount",
-    "page/neighborhood/neighborhood",
-    "page/mine/mine",
-    "index/index",
-    "index/test",
-    
-    "page/profile/index"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "九点伴",
-    "navigationBarTextStyle": "black"
-  },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示"
-    }
-  },
-  "tabBar": {
-    "custom": true,
-    "color": "#666666",
-    "selectedColor": "#FF5F15",
-    "backgroundColor": "#ffffff",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "page/home/home",
-        "text": "首页"
-      },
-      {
-        "pagePath": "page/market/market",
-        "text": "集市"
-      },
-      {
-        "pagePath": "page/discount/discount",
-        "text": "折扣"
-      },
-      {
-        "pagePath": "page/mine/mine",
-        "text": "我的"
-      }
-    ]
-  },
-  "subPackages": [
-    {
-      "root": "page/manage/",
-      "pages": [
-        "pages/recyclenodelist/recyclenodelist",
-        "pages/newrecyclenode/newrecyclenode",
-        "pages/newcommunity/newcommunity"
-      ]
+    "pages": [
+        "page/home/home",
+        "page/market/market",
+        "page/discount/discount",
+        "page/neighborhood/neighborhood",
+        "page/mine/mine",
+        "index/index",
+        "index/test",
+        "page/profile/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "九点伴",
+        "navigationBarTextStyle": "black"
     },
-    {
-      "root": "page/recycleopt/",
-      "pages": [
-        "pages/recyclerequest/recyclerequest",
-        "pages/recycleaddrlist/recycleaddrlist",
-        "pages/recycleaddrnew/recycleaddrnew",
-        "pages/recycleorders/recycleorders"
-      ]
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
     },
-    {
-      "root": "page/others/",
-      "pages": [
-        "pages/customer/customer",
-        "pages/customer/service",
-        "pages/document/document",
-        "pages/document/category"
-      ]
+    "tabBar": {
+        "custom": true,
+        "color": "#666666",
+        "selectedColor": "#FF5F15",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "page/home/home",
+                "text": "首页"
+            },
+            {
+                "pagePath": "page/market/market",
+                "text": "集市"
+            },
+            {
+                "pagePath": "page/discount/discount",
+                "text": "折扣"
+            },
+            {
+                "pagePath": "page/mine/mine",
+                "text": "我的"
+            }
+        ]
     },
-    {
-      "root": "page/user/",
-      "pages": ["pages/balance/balance"]
-    }
-  ],
-
-  "requiredPrivateInfos": ["chooseAddress", "choosePoi", "getLocation"],
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+    "subPackages": [
+        {
+            "root": "page/manage/",
+            "pages": [
+                "pages/recyclenodelist/recyclenodelist",
+                "pages/newrecyclenode/newrecyclenode",
+                "pages/newcommunity/newcommunity"
+            ]
+        },
+        {
+            "root": "page/recycleopt/",
+            "pages": [
+                "pages/recyclerequest/recyclerequest",
+                "pages/recycleaddrlist/recycleaddrlist",
+                "pages/recycleaddrnew/recycleaddrnew",
+                "pages/recycleorders/recycleorders"
+            ]
+        },
+        {
+            "root": "page/others/",
+            "pages": [
+                "pages/customer/customer",
+                "pages/customer/service",
+                "pages/document/document",
+                "pages/document/category"
+            ]
+        },
+        {
+            "root": "page/user/",
+            "pages": [
+                "pages/balance/balance",
+                "pages/coupon/index"
+            ]
+        }
+    ],
+    "requiredPrivateInfos": [
+        "chooseAddress",
+        "choosePoi",
+        "getLocation"
+    ],
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
 }

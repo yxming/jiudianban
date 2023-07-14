@@ -6,15 +6,41 @@ Page({
      */
     data: {
       orderlist:[],
-      theme: 'light'
+      theme: 'light',
+      isShow: true,
+      visible: false,
+      textPassword: ''
     },
+    handlePopup(e) {
+      console.log(e);
+    const { item } = e.currentTarget.dataset;
 
+    this.setData(
+      {
+        cur: item,
+      },
+      () => {
+        this.setData({ visible: true });
+      },
+    );
+  },
+  onVisibleChange(e) {
+    this.setData({
+      visible: e.detail.visible,
+    });
+  },
+  onClose() {
+    this.setData({
+      visible: false,
+    });
+  },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
       this.setData({
         theme: wx.getSystemInfoSync().theme || 'light'
+       
       })
       if (wx.onThemeChange) {
         wx.onThemeChange(({theme}) => {
@@ -60,7 +86,7 @@ Page({
                   'open':false
                 })
               })
-              console.log('orderlist:',list)
+              console.log('orderlist:', list)
               _this.setData({
                 orderlist:list
               })
@@ -68,6 +94,7 @@ Page({
           }
         })
     },
+  
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -80,6 +107,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
+      // console.log(this.orderlist);
 
     },
 

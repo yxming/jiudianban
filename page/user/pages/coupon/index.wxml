@@ -1,0 +1,10 @@
+<view class="pages-textar">
+    <t-textarea class="external-class" placeholder-style="font-size: 13px; color: #aaaaaa;" placeholder="写下点什么吧..." disableDefaultPadding="{{true}}" maxlength="200" disableDefaultPadding="{{true}}" indicator />
+    <view class="wrapper">
+        <view class="title">添加图片</view>
+        <t-upload media-type="{{['video','image']}}" files="{{originFiles}}" gridConfig="{{gridConfig}}" bind:success="handleSuccess" bind:remove="handleRemove" bind:click="handleClick" />
+       
+    </view>
+
+    <view class="submit">发布</view>
+</view>

@@ -1,5 +1,9 @@
 /* page/recycleopt/pages/recycleorders/recycleorders.wxss */
 @import "../../../../style/weui.wxss";
+page {
+  background-color: #f0f0f0 !important; /* 设置背景颜色 */
+  font-size: 13px;
+}
 .index-hd {
     padding: 40px 40px 20px;
     text-align: center;
@@ -7,7 +11,7 @@
   .index-bd {
     /* padding: 0 15px 20px; */
     padding: 0 15px 20px;
-    background-color: rgb(191, 209, 224);
+    /* background-color: rgb(191, 209, 224); */
   }
   .index-ft {
     padding-bottom: 10px;
@@ -108,9 +112,10 @@
     flex: 1;
   }
   .order-detail-item{
-    border-bottom: 0.5rpx solid coral;
+    /* border-bottom: 0.5rpx solid coral; */
     display: flex; 
     flex-direction: row;
+    align-items: center;
   }
 
   .order-detail-text{
@@ -145,8 +150,56 @@
     overflow: hidden;
   }
   .order-detail-item-bd-show {
+    padding: 0 10px;
     height: auto;
-    border:1px solid #a1a1a1;
+    /* border:1px solid #a1a1a1; */
     border-radius:5px;
     background:#dddddd;
+  }
+  .fw {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .flex-button {
+    display: flex;
+  }
+  button {
+    background-color: #fc664f;
+    color: #fff;
+    margin-top: 15px;
+    font-weight: 400;
+  }
+  .block {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    background: #fff;
+    border-radius: 16rpx;
+  }
+  
+  .block-title {
+      width: 100%;
+      height: 40px;
+      background-color: #2196f3;
+      color: #fff;
+      line-height: 40px;
+      text-align: center;
+      /* border-radius: 5px; */
+  }
+  .image-image {
+      width: 100%;
+      height: 100px;
+      background-color: #333;
+  }
+  .image {
+      width: 100%;
+      /* height: 300px; */
+      height: 100%;
+  }
+  .mini-queren {
+      background-color: #169bd5;
+      color: #fff;
+      font-weight: normal;
+      width: 40px;
+      margin-top: -7px;
   }

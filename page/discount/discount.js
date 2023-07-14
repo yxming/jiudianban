@@ -13,7 +13,7 @@ Page({
                 wx.switchTab({
                     url: '/page/home/home' // 跳转到其他页面
                   });
-             }, 2000);
+             }, 500);
             }
           });
         }

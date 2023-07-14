@@ -2,9 +2,9 @@
   <view class="profile">
   <view class="profile-base">
     <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-    <text bind:tap="handleGetUserProfile" class="nickname">{{userInfo.nickName || 'гКох╣гб╪'}}</text>
+    <text bind:tap="handleGetUserProfile" class="nickname">{{userInfo.nickName || 'Х╞╥Г≥╩Е╫∙'}}</text>
     <navigator hover-class="none" class="link" url="/page/profile/index">
-      х╔мЙифпео╒
+      Х╞╥Е╝▄Е√└Д©║Ф│╞
       <!-- <t-icon name="chevron-right" size="48rpx" slot="note" /> -->
     </navigator>
   </view>

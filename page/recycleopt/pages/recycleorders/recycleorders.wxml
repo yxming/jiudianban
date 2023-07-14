@@ -1,41 +1,69 @@
 <!--page/recycleopt/pages/recycleorders/recycleorders.wxml-->
 <view class="index-bd">
-      <view class="order-list">
-        <block wx:for-items="{{orderlist}}" wx:key="{{item.orderid}}">
-          <view style="background-color: {{item.status?'jcadetblue':'yellowgreen'}};" class="order-list-item">
-            <view  id="{{item.orderid}}" class="order-list-item-hd {{item.open ? 'order-list-item-hd-show' : ''}}" bindtap="kindToggle">
-              <view style="display: flex; flex-direction: column;">
-                <view class="order-list-text">{{item.communityname}}{{item.flat}}</view>
-                <view class="order-list-text">{{item.date}}</view>
-              </view>
-              <!--<image wx:if="{{theme === 'dark'}}" class="kind-list-img" src="../../../../resources/kind/{{item.id}}_dark.png"></image>
-              <image wx:else class="kind-list-img" src="../../../../resources/kind/{{item.id}}.png"></image>-->
-            </view>
+  <view class="order-list" wx:for-items="{{orderlist}}" wx:key="{{item.orderid}}">
+    <!-- <block wx:for-items="{{orderlist}}" wx:key="{{item.orderid}}"> -->
+    <view style="background-color: {{item.status?'#fff':'#c9f1f8'}};" class="order-list-item">
+      <view id="{{item.orderid}}" class="order-list-item-hd {{item.open ? 'order-list-item-hd-show' : ''}}" bindtap="kindToggle">
+        <view style="display: flex; flex-direction: column;">
+          <view class="order-detail-item">
+            <view class="order-detail-text fw">鍗曞彿:</view>
+            <view class="order-detail-text">{{item.orderid}}</view>
+          </view>
+          <view class="order-detail-item">
+            <view class="order-detail-text fw">鏃堕棿:</view>
+            <view class="order-list-text">{{item.date}}</view>
+          </view>
 
-            <view style="background-color: {{item.status?'jcadetblue':'yellowgreen'}};" class="order-detail-item-bd {{item.open ? 'order-detail-item-bd-show' : ''}}">
-              <view class="order-detail-item">
-                    <view class="order-detail-text">订单编号：</view>
-                    <view class="order-detail-text">{{item.orderid}}</view>
-              </view>
-              <view style="display: flex;">
-                <view style="display: flex;flex-direction: column;">
-                  
-                  <view class="order-detail-item">
-                    <view class="order-detail-text">金额：</view>
-                    <input id="{{item.index}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" value="{{item.cost}}" maxlength="8" placeholder="0" />
-                  </view>
-                  <view class="order-detail-item">
-                    <view class="order-detail-text">重量：</view>
-                    <input id="{{item.index}}" bindblur="onAmountChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" value="{{item.amount}}" maxlength="8" placeholder="0" />
-                  </view>
-                  <view class="order-detail-item">
-                    <view class="order-detail-text">状态：{{item.status?'已完成':'未完成'}}</view>
-                  </view>
+        </view>
+        <!--<image wx:if="{{theme === 'dark'}}" class="kind-list-img" src="../../../../resources/kind/{{item.id}}_dark.png"></image>
+              <image wx:else class="kind-list-img" src="../../../../resources/kind/{{item.id}}.png"></image>-->
+      </view>
+
+      <view style="background-color: {{item.status?'#fff':'#c9f1f8'}};" class="order-detail-item-bd {{item.open ? 'order-detail-item-bd-show' : ''}}">
+
+        <view style="display: flex;">
+          <view style="display: flex;flex-direction: column;">
+            <view class="order-detail-item">
+              <view class="order-detail-text fw">??:</view>
+              <view class="order-list-text order-detail-item order-detail-text">{{item.communityname}} {{item.flat}}</view>
+              <!-- <view class="order-list-text order-detail-item order-detail-text">{{item.flat}}</view> -->
+            </view>
+            <view class="flex-button">
+              <view>
+                <view class="order-detail-item">
+                  <view class="order-detail-text fw">??:</view>
+                  <input id="{{item.index}}" placeholder="{{item.status? item.cost: '?????'}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
                 </view>
-                <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':''}}; width:50%;margin-right: 0%; align-items: center;" bindtap="onPayClicked" >付款</button>
+                <view class="order-detail-item">
+                  <view class="order-detail-text fw">??:</view>
+                  <input id="{{item.index}}" bindblur="onAmountChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" placeholder="0" placeholder="{{item.status? item.amount:'?????'}}" />
+                </view>
+                <view class="order-detail-item">
+                  <view class="order-detail-text fw">??:</view>
+                  <view class="order-detail-text ">{{item.status?'???':'???'}}</view>
+                </view>
+              </view>
+              <view class="button">
+                <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':''}} " bindtap="handlePopup">??</button>
               </view>
             </view>
           </view>
-        </block>
+          <!-- <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':''}}; width:50%;margin-right: 0%; align-items: center;" bindtap="onPayClicked">??</button> -->
+        </view>
       </view>
     </view>
+    <!-- </block> -->
+  </view>
+</view>
+<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
+    <view class="block">
+        <view class="block-title">
+            ????
+        </view>
+       <view class="image-image">
+        <image class="image" src="https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner1.png" alt=""/>
+       </view>
+       <t-input label="????" type="password" value="{{textPassword}}" clearable />
+       <button class="mini-queren" >??</button>
+    </view>
+</t-popup>

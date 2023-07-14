@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "发布",
+    "component": true,
+    "usingComponents": {
+        "t-textarea": "tdesign-miniprogram/textarea/textarea",
+        "t-upload": "tdesign-miniprogram/upload/upload"
+    }
+}

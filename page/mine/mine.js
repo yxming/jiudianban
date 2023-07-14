@@ -43,7 +43,7 @@ Page({
               //   type: 'domesticorder',
               // },
               {
-                title: '优惠券',
+                title: '发布',
                 tit: '',
                 url: '',
                 type: 'coupon',
@@ -105,6 +105,12 @@ Page({
           case 'address': {
             wx.navigateTo({ url: '../recycleopt/pages/recycleaddrlist/recycleaddrlist' });
             break;
+          }
+          case 'coupon': {
+            wx.navigateTo({
+              url: '../user/pages/coupon/index',
+            })
+            break
           }
           case 'recycleorders': {
             wx.navigateTo({ url: '../recycleopt/pages/recycleorders/recycleorders' });

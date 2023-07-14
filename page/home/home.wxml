@@ -1,83 +1,132 @@
 <!--page/home/home.wxml-->
-<view class="home-page-header" >
+<view class="home-page-header">
+  <view class="custom-navbar">
+    <!-- 导航栏内容 -->
+    <view class="custom-navbar-title">一袋生活</view>
     <view class="swiper-wrap">
-    <t-swiper 
-      wx:if="{{imgSrcs.length > 0}}"
-      current="{{current}}"
-      autoplay="{{autoplay}}"
-      duration="{{duration}}"
-      interval="{{interval}}"
-      navigation="{{navigation}}"
-      imageProps="{{swiperImageProps}}"
-      list="{{imgSrcs}}"
-      bind:click="navToActivityDetail"
-    />
+      <t-swiper custom-indicator-class="custom-swiper-dots" wx:if="{{imgSrcs.length > 0}}" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" navigation="{{navigation}}" imageProps="{{swiperImageProps}}" list="{{imgSrcs}}" bind:click="navToActivityDetail" />
+    </view>
+    <view class="tr">
+      <view class="col" bindtap="gotoRecycle">
+        <!-- <t-image src="{{imgSrcs[0]}}" mode="aspectFill" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+        <t-icon name="refresh" size="40" />
+        <view class="text" style="text-align: center; ">回收</view>
+      </view>
+      <view class="col" bindtap="gotoCategory">
+        <!-- <t-image src="{{imgSrcs[1]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+        <t-icon name="qrcode" size="40" />
+        <view class="text">目录</view>
+      </view>
+      <view class="col" bindtap="gotoBalance">
+        <!-- <t-image src="{{imgSrcs[4]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+        <t-icon name="money-circle" size="40" />
+        <view class="text" style="text-align: center;">余额</view>
+      </view>
+
+      <view class="col" bindtap="gotoService">
+        <!-- <t-image src="{{imgSrcs[5]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+        <t-icon name="service" size="40" />
+        <view class="text" style="text-align: center;">客服</view>
+      </view>
+    </view>
   </view>
+
 </view>
-<view class="tr">
-  <view class="col"  bindtap="gotoRecycle">
-    <!-- <t-image src="{{imgSrcs[0]}}" mode="aspectFill" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
-    <t-icon name="refresh" size="50" />
-    <view class="text"  style="text-align: center; ">回收</view>
-  </view>
-  <view class="col" bindtap="gotoCategory">
-    <!-- <t-image src="{{imgSrcs[1]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
-    <t-icon name="qrcode" size="45" />
-    <view class="text" >目录</view>
-  </view>
-  <view class="col" bindtap="gotoBalance">
-    <!-- <t-image src="{{imgSrcs[4]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
-    <t-icon name="money-circle" size="45" />
-    <view class="text" style="text-align: center;">余额</view>
-  </view>
-  
-  <view class="col" bindtap="gotoService">
-    <!-- <t-image src="{{imgSrcs[5]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
-    <t-icon name="service" size="45" />
-    <view class="text" style="text-align: center;">客服</view>
-  </view>
-</view>
+
+<view class="col-button"></view>
 <view class="quantity">
-   <view class="view-button">有偿服务</view>
- <view class="profile">
-    <view class="profile-base">
-    <image class="avatar" src=""></image>
-    <text class="nickname">昵称</text>
+  <view class="view-button">有偿服务</view>
+  <view class="view-profile">
+    <view class="profile">
+      <view class="profile-base">
+        <image class="avatar" src=""></image>
+        <text class="nickname">昵称</text>
+      </view>
+      <view class="price-money">
+        <text class="price">50</text>
+        <text class="money">元</text>
+      </view>
+    </view>
+    <view>
+      <view>
+        <text class="{{isExpanded? '' : 'content'}}">{{content}}</text>
+        <text class="toggle" bindtap="toggleExpand">{{isExpanded ? '收起' : '展开'}}</text>
+      </view>
+      <!-- <view class="quantity-image">
+      <image src="" mode="" style="background-color: aquamarine;" class="image-img" />
+      <image src="" mode="" style="background-color: aquamarine;" class="image-img" />
+      <image src="" mode="" style="background-color: aquamarine;" class="image-img" />
+    </view> -->
+      <view class="quantity-image">
+        <image class="image" src="{{images[0]}}" bindtap="toggleImage" aquamarine data-index="0" class="image-img"></image>
+        <image class="image" src="{{images[1]}}" bindtap="toggleImage" aquamarine data-index="1" class="image-img"></image>
+        <image class="image" src="{{images[2]}}" bindtap="toggleImage" aquamarine data-index="2" class="image-img"></image>
+      </view>
+      <view class="expanded-image-container" wx:if="{{isImageExpanded}}">
+        <image class="expanded-image" src="{{images[currentImageIndex]}}" bindtap="closeExpandedImage"></image>
+        <view class="overlay" bindtap="closeExpandedImage"></view>
+      </view>
+    </view>
+    <view class="submit">接单</view>
   </view>
-  <view>
+  <view class="view-profile">
+    <view class="profile">
+      <view class="profile-base">
+        <image class="avatar" src=""></image>
+        <text class="nickname">昵称</text>
+      </view>
+      <view class="price-money">
+        <text class="price">50</text>
+        <text class="money">元</text>
+      </view>
+    </view>
+    <view>
+      <view>
+        <text class="{{isExpanded? '' : 'content'}}">{{content}}</text>
+        <text class="toggle" bindtap="toggleExpand">{{isExpanded ? '收起' : '展开'}}</text>
+      </view>
+      <!-- <view class="quantity-image">
+      <image src="" mode="" style="background-color: aquamarine;" class="image-img" />
+      <image src="" mode="" style="background-color: aquamarine;" class="image-img" />
+      <image src="" mode="" style="background-color: aquamarine;" class="image-img" />
+    </view> -->
+      <view class="quantity-image">
+        <image style="background-image: url('{{images[0]}}')" src="" bindtap="toggleImage" aquamarine data-index="0" class="image-img"></image>
+        <image style="background-image: url('{{images[1]}}')" src="" bindtap="toggleImage" aquamarine data-index="1" class="image-img"></image>
+        <image style="background-image: url('{{images[2]}}')" src="" bindtap="toggleImage" aquamarine data-index="2" class="image-img"></image>
+      </view>
+      <view class="expanded-image-container" wx:if="{{isImageExpanded}}">
+        <image class="expanded-image" src="{{images[currentImageIndex]}}" bindtap="closeExpandedImage"></image>
+        <view class="overlay" bindtap="closeExpandedImage"></view>
+      </view>
+    </view>
+    <view class="submit">接单</view>
+  </view>
+</view>
+<view class="zhanwei">----- 没有更多了 -----</view>
+<!-- <view class="quantity">
+  <view class="view-button">有偿服务</view>
+  <view class="profile">
+    <view class="profile-base">
+      <image class="avatar" src=""></image>
+      <text class="nickname">昵称</text>
+    </view>
+    <view>
       <text class="price">价格：</text>
       <text class="money">50元</text>
-  </view>
- </view>
-  <view>
-      <view>需求: 1、不要告诉任何人，你不堪的过往。2、不要轻易原谅，一个伤害过你的人。3、越是进入到一个新的环境，就越要保持低调。</view>
-      <view class="quantity-image">
-          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
-          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
-          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
-      </view>
-  </view>
-  <view class="submit">接单</view>
-</view>
-<view class="quantity">
-   <view class="view-button">有偿服务</view>
- <view class="profile">
-    <view class="profile-base">
-    <image class="avatar" src=""></image>
-    <text class="nickname">昵称</text>
+    </view>
   </view>
   <view>
-      <text class="price">价格：</text>
-      <text class="money">50元</text>
-  </view>
- </view>
-  <view>
-      <view>需求: 1、不要告诉任何人，你不堪的过往。2、不要轻易原谅，一个伤害过你的人。3、越是进入到一个新的环境，就越要保持低调。</view>
-      <view class="quantity-image">
-          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
-          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
-          <image src="" mode="" style="background-color: aquamarine;" class="image-img"/>
-      </view>
+    <view>需求: 1、不要告诉任何人，你不堪的过往。2、不要轻易原谅，一个伤害过你的人。3、越是进入到一个新的环境，就越要保持低调。</view>
+    <view class="image-container">
+      <image class="image" src="{{images[0]}}" bindtap="toggleImage" data-index="0"></image>
+      <image class="image" src="{{images[1]}}" bindtap="toggleImage" data-index="1"></image>
+      <image class="image" src="{{images[2]}}" bindtap="toggleImage" data-index="2"></image>
+    </view>
+    <view class="expanded-image-container" wx:if="{{isImageExpanded}}">
+      <image class="expanded-image" src="{{images[currentImageIndex]}}" bindtap="closeExpandedImage"></image>
+      <view class="overlay" bindtap="closeExpandedImage"></view>
+    </view>
   </view>
   <view class="submit">提交订单</view>
-</view>
+</view> -->
