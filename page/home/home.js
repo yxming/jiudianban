@@ -2,12 +2,14 @@
 Page({
     data: {
         imgSrcs: [
-            'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner1.png',
-            'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner2.png',
-            'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner3.png',
-            'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner4.png',
-            'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner5.png',
-            'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner6.png'
+            // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner1.png',
+            // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner2.png',
+            'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/lb2.png',
+            'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/lb1.jpg'
+            // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner3.png',
+            // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner4.png',
+            // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner5.png',
+            // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner6.png'
         ],
         tabList: [],
         goodsList: [],
