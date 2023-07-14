@@ -2,6 +2,7 @@ App({
   globalData: {
     theme: wx.getSystemInfoSync().theme,
     hasLogin: false,
+    paypwd:null,
     openid: null,
     appid:null,
     iconTabbar: '/page/weui/example/images/icon_tabbar.png',
@@ -38,6 +39,7 @@ App({
       success: function(res) {
         if(res.data.length>0 && res.data[0].userinfo){
           self.globalData.hasLogin = true
+          self.globalData.paypwd = res.data[0].paypwd
           self.globalData.role = res.data[0].role
           self.globalData.userinfo = res.data[0].userinfo
         }else{

@@ -11,21 +11,40 @@ Page({
       role:app.globalData.role,
       isShow: true,
       visible: false,
-      textPassword: ''
+      textPassword: '',
+      index:0,
     },
     handlePopup(e) {
       console.log(e);
-    const { item } = e.currentTarget.dataset;
-
     this.setData(
       {
-        cur: item,
+        index: e.currentTarget.id,
       },
       () => {
         this.setData({ visible: true });
       },
     );
   },
+
+  submit(e){
+    if(this.data.textPassword===app.globalData.paypwd){
+      var index  = this.data.index
+      var item = this.data.orderlist[index]
+      this.onUpdateOreder()
+      this.queryUserinfo(item.wechatbuy,-item.cost)
+      this.queryUserinfo(item.wechatsale,item.cost)
+       this.setData({
+        visible: false
+      })
+    }else{
+      this.setData({
+        textPassword: ''
+      })
+    }
+  },
+
+
+
   onVisibleChange(e) {
     this.setData({
       visible: e.detail.visible,
@@ -54,10 +73,16 @@ Page({
         })
         const db = wx.cloud.database()
         const _ = db.command
-        var coll=db.collection('order_recycle').where({
-          wechatsale:'y7668'
-        })
-
+        var coll = null
+        if(app.globalData.role==2){
+          coll=db.collection('order_recycle').where({
+            wechatbuy:app.globalData.openid
+          })
+        }else{
+          coll=db.collection('order_recycle').where({
+            wechatsale:app.globalData.openid
+          })
+        }
         coll.field({
           _id:0,
           _openid:0
@@ -125,11 +150,10 @@ Page({
           orderlist
         })
     },
-    onPayClicked(e){
-      console.log('pay:',e.currentTarget.id)
+    onUpdateOreder(){
       var _this = this
       var orderlist = this.data.orderlist
-      var index  = e.currentTarget.id
+      var index  = this.data.index
       var item = orderlist[index]
       item.status = 1
       wx.cloud.init({
@@ -146,7 +170,6 @@ Page({
         status:item.status
       },
       success: function(res) {
-        console.log(res.data)
         _this.setData({
           orderlist
         })
@@ -154,6 +177,46 @@ Page({
       fail: function(err){
         item.status = 0
         console.log('payfor:',err)
+      }
+    })
+    },
+    writeCashToBalance(wechatid, balance,cash){
+      wx.cloud.init({
+        env: 'cloud1-7go51v8te374de35',
+      })
+      const db = wx.cloud.database()
+      const _ = db.command
+      db.collection('user_info').where({
+        wechatid:wechatid
+    }).update({
+      data:{
+        balance:balance,
+        cash:cash,
+      },
+      success: function(res) {
+        console.log('payok:',res)
+      },
+      fail: function(err){
+        console.log('payerr:',err)
+      }
+    })
+    },
+    queryUserinfo(wechatid,cost){
+      console.log('wechatid:',wechatid, 'cost:', cost)
+      var self = this
+      wx.cloud.init({
+        env: 'cloud1-7go51v8te374de35',
+      })
+      const db = wx.cloud.database()
+      const _ = db.command
+      db.collection('user_info').where({
+        wechatid:wechatid
+    }).get({
+      success: function(res) {
+        self.writeCashToBalance(wechatid,res.data[0].balance+cost,res.data[0].cash+cost)
+      },
+      fail:function(err){
+        console.log('queryUserCash:',err)
       }
     })
     },

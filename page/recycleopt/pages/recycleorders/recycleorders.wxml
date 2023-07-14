@@ -63,7 +63,7 @@
        <view class="image-image">
         <image class="image" src="https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner1.png" alt=""/>
        </view>
-       <t-input label="输入密码" type="password" value="{{textPassword}}" clearable />
-       <button class="mini-queren" >确认</button>
+       <t-input label="输入密码" type="password" model:value="{{textPassword}}" clearable />
+       <button class="mini-queren" bindtap="submit">确认</button>
     </view>
 </t-popup>
