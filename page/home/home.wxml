@@ -58,9 +58,9 @@
       <image src="" mode="" style="background-color: aquamarine;" class="image-img" />
     </view> -->
       <view class="quantity-image">
-        <image class="image" src="{{images[0]}}" bindtap="toggleImage" aquamarine data-index="0" class="image-img"></image>
-        <image class="image" src="{{images[1]}}" bindtap="toggleImage" aquamarine data-index="1" class="image-img"></image>
-        <image class="image" src="{{images[2]}}" bindtap="toggleImage" aquamarine data-index="2" class="image-img"></image>
+        <image style="background-image: url('{{images[0]}}')" src="" bindtap="toggleImage" aquamarine data-index="0" class="image-img"></image>
+        <image style="background-image: url('{{images[1]}}')" src="" bindtap="toggleImage" aquamarine data-index="1" class="image-img"></image>
+        <image style="background-image: url('{{images[4]}}')" src="" bindtap="toggleImage" aquamarine data-index="4" class="image-img"></image>
       </view>
       <view class="expanded-image-container" wx:if="{{isImageExpanded}}">
         <image class="expanded-image" src="{{images[currentImageIndex]}}" bindtap="closeExpandedImage"></image>
@@ -91,9 +91,9 @@
       <image src="" mode="" style="background-color: aquamarine;" class="image-img" />
     </view> -->
       <view class="quantity-image">
-        <image style="background-image: url('{{images[0]}}')" src="" bindtap="toggleImage" aquamarine data-index="0" class="image-img"></image>
-        <image style="background-image: url('{{images[1]}}')" src="" bindtap="toggleImage" aquamarine data-index="1" class="image-img"></image>
         <image style="background-image: url('{{images[2]}}')" src="" bindtap="toggleImage" aquamarine data-index="2" class="image-img"></image>
+        <image style="background-image: url('{{images[3]}}')" src="" bindtap="toggleImage" aquamarine data-index="3" class="image-img"></image>
+        <image style="background-image: url('{{images[5]}}')" src="" bindtap="toggleImage" aquamarine data-index="5" class="image-img"></image>
       </view>
       <view class="expanded-image-container" wx:if="{{isImageExpanded}}">
         <image class="expanded-image" src="{{images[currentImageIndex]}}" bindtap="closeExpandedImage"></image>
