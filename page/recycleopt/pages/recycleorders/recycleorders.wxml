@@ -24,31 +24,31 @@
         <view style="display: flex;">
           <view style="display: flex;flex-direction: column;">
             <view class="order-detail-item">
-              <view class="order-detail-text fw">??:</view>
+              <view class="order-detail-text fw">地址:</view>
               <view class="order-list-text order-detail-item order-detail-text">{{item.communityname}} {{item.flat}}</view>
               <!-- <view class="order-list-text order-detail-item order-detail-text">{{item.flat}}</view> -->
             </view>
             <view class="flex-button">
               <view>
                 <view class="order-detail-item">
-                  <view class="order-detail-text fw">??:</view>
-                  <input id="{{item.index}}" placeholder="{{item.status? item.cost: '?????'}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
+                  <view class="order-detail-text fw">金额:</view>
+                  <input id="{{item.index}}" placeholder="{{item.status? item.cost: '请输入金额'}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
                 </view>
                 <view class="order-detail-item">
-                  <view class="order-detail-text fw">??:</view>
-                  <input id="{{item.index}}" bindblur="onAmountChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" placeholder="0" placeholder="{{item.status? item.amount:'?????'}}" />
+                  <view class="order-detail-text fw">重量:</view>
+                  <input id="{{item.index}}" bindblur="onAmountChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" placeholder="0" placeholder="{{item.status? item.amount:'请输入重量'}}" />
                 </view>
                 <view class="order-detail-item">
-                  <view class="order-detail-text fw">??:</view>
-                  <view class="order-detail-text ">{{item.status?'???':'???'}}</view>
+                  <view class="order-detail-text fw">状态:</view>
+                  <view class="order-detail-text ">{{item.status?'已完成':'未完成'}}</view>
                 </view>
               </view>
               <view class="button">
-                <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':''}} " bindtap="handlePopup">??</button>
+                <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':''}} " bindtap="handlePopup">付款</button>
               </view>
             </view>
           </view>
-          <!-- <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':''}}; width:50%;margin-right: 0%; align-items: center;" bindtap="onPayClicked">??</button> -->
+          <!-- <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':''}}; width:50%;margin-right: 0%; align-items: center;" bindtap="onPayClicked">付款</button> -->
         </view>
       </view>
     </view>
@@ -58,12 +58,12 @@
 <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
     <view class="block">
         <view class="block-title">
-            ????
+            支付弹窗
         </view>
        <view class="image-image">
         <image class="image" src="https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner1.png" alt=""/>
        </view>
-       <t-input label="????" type="password" value="{{textPassword}}" clearable />
-       <button class="mini-queren" >??</button>
+       <t-input label="输入密码" type="password" value="{{textPassword}}" clearable />
+       <button class="mini-queren" >确认</button>
     </view>
 </t-popup>

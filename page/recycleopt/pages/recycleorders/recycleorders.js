@@ -1,4 +1,5 @@
 // page/recycleopt/pages/recycleorders/recycleorders.js
+const app = getApp()
 Page({
 
     /**
@@ -7,6 +8,7 @@ Page({
     data: {
       orderlist:[],
       theme: 'light',
+      role:app.globalData.role,
       isShow: true,
       visible: false,
       textPassword: ''
@@ -40,7 +42,6 @@ Page({
     onLoad(options) {
       this.setData({
         theme: wx.getSystemInfoSync().theme || 'light'
-       
       })
       if (wx.onThemeChange) {
         wx.onThemeChange(({theme}) => {
@@ -86,7 +87,7 @@ Page({
                   'open':false
                 })
               })
-              console.log('orderlist:', list)
+              console.log('orderlist:',list)
               _this.setData({
                 orderlist:list
               })
@@ -94,7 +95,6 @@ Page({
           }
         })
     },
-  
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -107,7 +107,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-      // console.log(this.orderlist);
 
     },
 
@@ -152,8 +151,9 @@ Page({
           orderlist
         })
       },
-      fail: function(res){
+      fail: function(err){
         item.status = 0
+        console.log('payfor:',err)
       }
     })
     },

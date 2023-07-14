@@ -1,5 +1,5 @@
 // page/user/mine/mine.js
-
+const app = getApp()
 Page({
   
     /**
@@ -86,18 +86,46 @@ Page({
             ],
           ]
     },
-    handleGetUserProfile(e) {
-        console.log(e);
-        wx.getUserProfile({
-        desc:'九点伴',
-        success: (res) => {
-            console.log(res)
-            this.setData({
-                userInfo: res.userInfo,
-            })
-        }
+    onLoad(){
+      if(app.globalData.hasLogin){
+        app.globalData.db.collection('user_info').where({
+          wechatid:app.globalData.openid
+        }).field({
+          _id:0
         })
+        .get({
+          success: (res)=>{
+            console.log('user_info:',res.data)
+            if(res.data[0].userinfo){
+              this.setData({
+                userInfo: res.data[0].userinfo,
+            })
+            }
+          }
+        })
+      }
     },
+    onShow() {
+      this.getTabBar().init()
+    },
+
+    handleGetUserProfile(e) {
+      if(app.globalData.hasLogin){
+        console.log('user was logined')
+      }else{
+        wx.getUserProfile({
+          desc:'九点伴',
+          success: (res) => {
+              this.setData({
+                  userInfo: res.userInfo,
+              })
+              app.saveUserInfo(app.globalData.openid,res.userInfo)
+              app.globalData.hasLogin = true
+          }
+          })
+      }
+    },
+
     onClickCell({ currentTarget }) {
         const { type } = currentTarget.dataset;
         console.log('type:',type)
