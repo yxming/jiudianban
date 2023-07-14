@@ -3,7 +3,7 @@
   <view class="profile-base">
     <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
     <text bind:tap="handleGetUserProfile" class="nickname">{{userInfo.nickName || '请登录'}}</text>
-    <navigator hover-class="none" class="link" url="/page/profile/index">
+    <navigator hover-class="none" class="link" url="/page/user/pages/profile/index">
       请完善信息
       <!-- <t-icon name="chevron-right" size="48rpx" slot="note" /> -->
     </navigator>
