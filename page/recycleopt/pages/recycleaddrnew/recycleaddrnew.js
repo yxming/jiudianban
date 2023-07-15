@@ -186,7 +186,7 @@ Page({
           communityaddress:address,
           latitude:latitude,
           longitude:longitude,
-          wechatid: app.globalData.opendid
+          wechatid: app.globalData.openid
         },
         success: function(res) {
           // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id

@@ -55,7 +55,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-      this.setDefaultRecycleAddr(app.globalData.opendid)
+      this.setDefaultRecycleAddr(app.globalData.openid)
     },
 
     /**
@@ -113,7 +113,7 @@ Page({
       const db = wx.cloud.database()
       const _ = db.command
       var coll=db.collection('recycleaddr_list').where({
-        wechatid:app.globalData.opendid
+        wechatid:app.globalData.openid
       })
       
       coll.field({
@@ -219,7 +219,7 @@ Page({
       // data 字段表示需新增的 JSON 数据
       data: {
         orderid:orderid,
-        wechatsale: app.globalData.opendid, // 用 {openid} 变量，后台会自动替换为当前用户 openid
+        wechatsale: app.globalData.openid, // 用 {openid} 变量，后台会自动替换为当前用户 openid
         wechatbuy: wechatbuy,
         type: 0,
         amount:0,
