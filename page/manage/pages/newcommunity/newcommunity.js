@@ -1,7 +1,7 @@
 // page/newcommunity/newcommunity.js
 const util = require('../../../../util/util.js')
 const preset = require('../../../../resource/presets.js')
-const app = getapp()
+const app = getApp()
 Page({
 
     /**
