@@ -40,6 +40,9 @@ Page({
         startX: 0,
         endX: 0
     },
+    onShow(){
+      this.getTabBar().init()
+    },
     toggleImage(event) {
         console.log(event);
         const index = event.currentTarget.dataset.index;
