@@ -219,7 +219,7 @@ Page({
       // data 字段表示需新增的 JSON 数据
       data: {
         orderid:orderid,
-        wechatsale: 'y7668', // 用 {openid} 变量，后台会自动替换为当前用户 openid
+        wechatsale: app.globalData.opendid, // 用 {openid} 变量，后台会自动替换为当前用户 openid
         wechatbuy: wechatbuy,
         type: 0,
         amount:0,
