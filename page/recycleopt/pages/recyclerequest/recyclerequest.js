@@ -212,6 +212,7 @@ Page({
       })
     },
     saveRecycleOrder(db,wechatbuy){
+      var _this = this
       var timestamp = new Date().getTime()
       var orderid = this.data.communitycode+timestamp
       console.log('orderid:',this.data.communitycode,timestamp)
@@ -236,12 +237,13 @@ Page({
       },
       success: function(res) {
         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-        console.log(res)
         _this.setData({
           caller:'',
           detail:'',
-          phoneNumber:''
+          phoneNumber:'',
+          messages:''
         })
+
       },
       fail: console.error,
       complete: console.log
