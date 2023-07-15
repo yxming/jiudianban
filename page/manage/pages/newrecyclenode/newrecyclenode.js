@@ -1,6 +1,7 @@
 // pages/newRecycleNode/newRecycleNode.js
 const util = require('../../../../util/util.js')
 const preset = require('../../../../resource/presets.js')
+const app = getApp()
 Page({
 
     /**
@@ -161,6 +162,9 @@ Page({
                           latitude:res.latitude,
                           longitude:res.longitude
                       })
+                },
+                fail: err=>{
+                  console.log(err)
                 }
               })
              
