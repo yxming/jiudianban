@@ -7,6 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+      range:0.0003,
       caller:'',
       flat:'',
       phoneError: false,
@@ -127,10 +128,10 @@ Page({
       const db = wx.cloud.database()
       const _ = db.command
       db.collection('community_info').where({
-        latitude: _.lt(latitude+0.005),
-        latitude: _.gt(latitude-0.005),
-        longitude: _.lt(longitude+0.005),
-        longitude: _.gt(longitude-0.005)
+        latitude: _.lt(latitude+this.data.range),
+        latitude: _.gt(latitude-this.data.range),
+        longitude: _.lt(longitude+this.data.range),
+        longitude: _.gt(longitude-this.data.range)
       })
       .get({
         success: function(res) {
