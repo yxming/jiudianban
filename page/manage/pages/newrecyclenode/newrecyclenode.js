@@ -216,9 +216,9 @@ Page({
                 nodecode: this.data.nodecode,
                 nodename: this.data.nodename, // 用 {openid} 变量，后台会自动替换为当前用户 openid
                 nodeaddr: this.data.address,
-                wechatid: 'y7665',
-                latitude:this.data.latitude,
-                longitude:this.data.longitude,
+                wechatid: app.globalData.openid,
+                latitude: this.data.latitude,
+                longitude: this.data.longitude,
                 recycleamount:0
               },
               success: function(res) {

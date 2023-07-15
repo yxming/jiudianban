@@ -1,5 +1,6 @@
 // page/user/recyclerequest/recyclerequest.js
 const util = require('../../../../util/util.js')
+const app = getApp()
 Page({
 
     /**
@@ -54,7 +55,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-      this.setDefaultRecycleAddr('y7665')
+      this.setDefaultRecycleAddr(app.globalData.opendid)
     },
 
     /**
@@ -112,7 +113,7 @@ Page({
       const db = wx.cloud.database()
       const _ = db.command
       var coll=db.collection('recycleaddr_list').where({
-        wechatid:'y7665'
+        wechatid:app.globalData.opendid
       })
       
       coll.field({

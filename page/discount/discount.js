@@ -1,6 +1,7 @@
 // // pages/discount/discount.js
 Page({
     onShow: function () {
+        this.getTabBar().init()
 //         // 检查功能是否开放
 //         // if (!getApp().globalData.tabBarEnabled) {
 //           // 功能未开放，提示用户并跳转离开

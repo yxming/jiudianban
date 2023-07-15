@@ -30,12 +30,12 @@ Page({
                 url: '',
                 type: 'recycleorders',
               },
-              {
-                title: '家政订单',
-                tit: '',
-                url: '',
-                type: 'domesticorder',
-              },
+              // {
+              //   title: '家政订单',
+              //   tit: '',
+              //   url: '',
+              //   type: 'domesticorder',
+              // },
               // {
               //   title: '本地生活订单',
               //   tit: '',
@@ -76,13 +76,13 @@ Page({
                 type: 'nodelist',
                 icon: 'logo-codepen',
               },
-              {
-                title: '新建小区',
-                tit: '',
-                url: '',
-                type: 'community',
-                icon: 'service',
-              },
+              // {
+              //   title: '新建小区',
+              //   tit: '',
+              //   url: '',
+              //   type: 'community',
+              //   icon: 'service',
+              // },
             ],
           ]
     },

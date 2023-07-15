@@ -67,6 +67,10 @@ Component({
           this.setData({
             tiao: true
           })
+        },
+        onShow(){
+          this.getTabBar().init()
         }
       },
+
 })

@@ -1,6 +1,6 @@
 // page/user/recycleaddrlist/recycleaddrlist.js
 const preset = require('../../../../resource/presets')
-
+const app = getApp()
 Page({
 
     /**
@@ -18,10 +18,7 @@ Page({
         condition:0,
         triggered: false,
         codeArray:[],
-        recycleArray: [{
-            title: 'foo',
-            note:''
-          }],
+        recycleArray: [],
         right: [
             {
               text: '编辑',
@@ -57,7 +54,7 @@ Page({
      */
     onLoad(options) {
       var _this = this
-      this.getRecycleAddr('y7665')
+      this.getRecycleAddr(app.globalData.openid)
       const eventChannel= this.getOpenerEventChannel()
       eventChannel.on('acceptDataFromOpenerPage', function (data) {
         console.log('where from:',data.data.opener)
@@ -210,7 +207,7 @@ Page({
         const db = wx.cloud.database()
         const _ = db.command
         var coll=db.collection('recycleaddr_list').where({
-          wechatid:'y7665'
+          wechatid:wechatid
         })
         
         coll.field({
@@ -306,7 +303,7 @@ Page({
           name: 'asyncCall',//'getRecycleItemAddr',
           // 传给云函数的参数
           data: {
-            wechatid:'y7665'
+            wechatid:app.globalData.openid
           },
           success: function(res) {
             console.log(res.result) // 3

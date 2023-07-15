@@ -1,5 +1,6 @@
 // page/user/recycleaddrnew/recycleaddrnew.js
 const preset = require('../../../../resource/presets')
+const app = getApp()
 Page({
 
     /**
@@ -13,10 +14,7 @@ Page({
       location : false,
       buttonTitleSave : preset.appPreSets.buttonTitleSave,
       seletedIndex:0,
-      communityArray : [
-        {name:'community1',addr:'klsakdfjaslfjalsdf'},
-        {name:'community2',addr:'klsakdfjaslfjalsdf'},
-        {name:'community3',addr:'klsakdfjaslfjalsdf'},]
+      communityArray : []
     },
 
     /**
@@ -35,7 +33,7 @@ Page({
               _this.setData({
                 location : true
               })
-              _this.getUseableCommnity(30.32948247,120.15055432)
+              _this.getUseableCommnity(latitude,longitude)
               // _this.getUseableCommnity(res.latitude,res.longitude)
             }
            })
@@ -188,7 +186,7 @@ Page({
           communityaddress:address,
           latitude:latitude,
           longitude:longitude,
-          wechatid: 'y7665'
+          wechatid: app.globalData.opendid
         },
         success: function(res) {
           // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id

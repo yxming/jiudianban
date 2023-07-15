@@ -12,7 +12,7 @@ exports.main = async (event, context) => {
         var $ = db.command.aggregate
         coll=db.collection('recycleaddr_list')
         coll.where({
-            wechatid:'y7665'
+            wechatid:app.globalData.openid
         }).get({
           success: function(res) {
             console.log(res)

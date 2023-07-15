@@ -1,6 +1,7 @@
 // page/newcommunity/newcommunity.js
 const util = require('../../../../util/util.js')
 const preset = require('../../../../resource/presets.js')
+const app = getapp()
 Page({
 
     /**
@@ -130,7 +131,7 @@ Page({
               communitycode: this.data.code, // 用 {openid} 变量，后台会自动替换为当前用户 openid
               communityname: this.data.name,
               communityaddress: this.data.address,
-              wechatid: 'y7665',
+              wechatid: app.globalData.openid,
               latitude:this.data.latitude,
               longitude:this.data.longitude,
               recycleamount:0
