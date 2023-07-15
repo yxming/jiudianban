@@ -199,7 +199,7 @@ Page({
       }).get({
         success:function(res){
           db.collection('node_info').where({
-            nodecode:res.data.nodecode
+            nodecode:res.data[0].nodecode
           }).field({
             _id:0,
             wechatid:1
