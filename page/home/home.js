@@ -4,8 +4,8 @@ Page({
         imgSrcs: [
             // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner1.png',
             // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner2.png',
-            'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/lb2.png',
-            'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/lb1.jpg'
+            'cloud://cloud1-7go51v8te374de35.636c-cloud1-7go51v8te374de35-1318782235/微信图片_20230717091040.png',
+            'cloud://cloud1-7go51v8te374de35.636c-cloud1-7go51v8te374de35-1318782235/微信图片_20230717091052.jpg'
             // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner3.png',
             // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner4.png',
             // 'https://cdn-we-retail.ym.tencent.com/tsr/home/v2/banner5.png',
