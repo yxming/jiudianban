@@ -9,7 +9,9 @@ App({
     role:1,
     db:null,
     _command:null,
-    userinfo:{}
+    userinfo:{},
+    defaultLocation:{},
+    locationRange:0.003
   },
 
   initDataBase(){
@@ -22,8 +24,24 @@ App({
     this.globalData._command = _
   },
 
+  getDefaultSettings(){
+    var self = this
+    self.globalData.db.collection('defaultSettings')
+    .get({
+      success: function(res) {
+        var item = res.data[0]
+        self.globalData.defaultLocation = item.location
+        self.globalData.locationRange = item.range
+      },
+      fail:function(err){
+        console.log('settings:',err)
+      }
+    })
+  },
+
   onLaunch: function () {
     this.initDataBase()
+    this.getDefaultSettings()
     this.checkSession()
   },
 
