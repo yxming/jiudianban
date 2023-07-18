@@ -7,12 +7,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-      range:0.0003,
+      range:app.globalData.locationRange,
       caller:'',
       flat:'',
       phoneError: false,
       phoneNumber: '',
-      location : false,
       buttonTitleSave : preset.appPreSets.buttonTitleSave,
       seletedIndex:0,
       communityArray : []
@@ -24,18 +23,21 @@ Page({
     onLoad(options) {
       var _this = this
         wx.getLocation({
-            type: 'wgs84',
+            type: 'gcj02',//wgs84
             success (res) {
               const latitude = res.latitude
               const longitude = res.longitude
               const speed = res.speed
               const accuracy = res.accuracy
               console.log('location:',res)
-              _this.setData({
-                location : true
-              })
               _this.getUseableCommnity(latitude,longitude)
               // _this.getUseableCommnity(res.latitude,res.longitude)
+            },
+            fail (err){
+              console.log('location:',err)
+              const latitude = res.latitude
+              const longitude = res.longitude
+              _this.getUseableCommnity(latitude,longitude)
             }
            })
 
