@@ -30,10 +30,10 @@ Page({
         isExpanded: false,
         // -------------- 关于图片的变量
         images: [ 
-                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/xiyi.png',
-                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/h1.png',
-                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/h2.png',
-                  'https://keling-1318428607.cos.ap-nanjing.myqcloud.com/h3.png'
+                  'https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230717091046.png?sign=3a223df78cb80357fae8a46ee821a555&t=1689564495',
+                  'https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230717091107.png?sign=cbe1523bbe3bb79535654639f9f9834b&t=1689564576',
+                  'https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230717091102.png?sign=126b972bdadec8cd80fd26f966c480fe&t=1689564611',
+                  'https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230717091057.png?sign=fd71bde16ff2d615432d7c1bed278141&t=1689564630'
                 ],
         isImageExpanded: false,
         currentImageIndex: 0,
