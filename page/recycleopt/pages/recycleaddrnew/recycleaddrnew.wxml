@@ -1,5 +1,4 @@
 <!--page/user/recycleaddrnew/recycleaddrnew.wxml-->
-<text wx:if="{{!location}}">page/user/recycleaddrnew/recycleaddrnew.wxml</text>
 <t-radio-group  defaultValue="radio0" placement="right" bindchange="radioChange">
   <view  id="{{index}}" wx:for="{{communityArray}}" wx:key='name' bindtap="onChecked">
     <t-radio  id="{{index}}" value="radio{{index}}" label="{{item.name}}" content="{{item.addr}}" />

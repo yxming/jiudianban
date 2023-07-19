@@ -216,7 +216,7 @@ Page({
       var timestamp = new Date().getTime()
       var orderid = this.data.communitycode+timestamp
       console.log('orderid:',this.data.communitycode,timestamp)
-      db.collection('order_recycle').add({
+      db.collection('recycle_orders').add({
       // data 字段表示需新增的 JSON 数据
       data: {
         orderid:orderid,

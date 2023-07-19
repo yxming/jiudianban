@@ -75,11 +75,11 @@ Page({
         const _ = db.command
         var coll = null
         if(app.globalData.role==2){
-          coll=db.collection('order_recycle').where({
+          coll=db.collection('recycle_orders').where({
             wechatbuy:app.globalData.openid
           })
         }else{
-          coll=db.collection('order_recycle').where({
+          coll=db.collection('recycle_orders').where({
             wechatsale:app.globalData.openid
           })
         }
@@ -161,7 +161,7 @@ Page({
       })
       const db = wx.cloud.database()
       const _ = db.command
-      db.collection('order_recycle').where({
+      db.collection('recycle_orders').where({
       orderid:item.orderid
     }).update({
       data:{
