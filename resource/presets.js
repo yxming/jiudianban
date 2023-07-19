@@ -1,4 +1,5 @@
 const appPreSets = {
+    company:'一代生活网',
     buttonTitleForMap : '从地图获取地址',
     buttonTitleNewNode : '新增站点',
     buttonTitleNewCommunity : '新增小区',
