@@ -1,4 +1,5 @@
 // page/home/home.js
+const app = getApp()
 Page({
     data: {
         imgSrcs: [
@@ -40,9 +41,36 @@ Page({
         startX: 0,
         endX: 0
     },
+    onShareAppMessage() {
+      const promise = new Promise(resolve => {
+        setTimeout(() => {
+          resolve({
+            title: '一袋生活网'
+          })
+        }, 2000)
+      })
+      return {
+        title: '一袋生活网',
+        promise 
+      }
+    },
+    onShareTimeline(){
+      const promise = new Promise(resolve => {
+        setTimeout(() => {
+          resolve({
+            title: '一袋生活网'
+          })
+        }, 2000)
+      })
+      return {
+        title: '一袋生活网',
+        promise 
+      }
+    },
     onShow(){
       this.getTabBar().init()
     },
+
     toggleImage(event) {
         console.log(event);
         const index = event.currentTarget.dataset.index;

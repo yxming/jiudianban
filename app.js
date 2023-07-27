@@ -1,12 +1,16 @@
 App({
   globalData: {
+    company:'一代生活',
     theme: wx.getSystemInfoSync().theme,
     hasLogin: false,
     paypwd:null,
     openid: null,
     appid:null,
-    iconTabbar: '/page/weui/example/images/icon_tabbar.png',
+    fasttabinfo:[],
+    tabbarinfo:[],
     role:1,
+    balance:0,
+    cash:0,
     db:null,
     _command:null,
     userinfo:{},
@@ -30,8 +34,12 @@ App({
     .get({
       success: function(res) {
         var item = res.data[0]
+        console.log('settings:',item)
         self.globalData.defaultLocation = item.location
         self.globalData.locationRange = item.range
+        self.globalData.company = item.company
+        self.globalData.fasttabinfo = item.fastTab
+        self.globalData.tabbarinfo = item.tabinfo
       },
       fail:function(err){
         console.log('settings:',err)
@@ -59,6 +67,8 @@ App({
           self.globalData.hasLogin = true
           self.globalData.paypwd = res.data[0].paypwd
           self.globalData.role = res.data[0].role
+          self.globalData.balance = res.data[0].balance
+          self.globalData.cash = res.data[0].cash
           self.globalData.userinfo = res.data[0].userinfo
         }else{
           self.globalData.hasLogin = false
@@ -158,7 +168,6 @@ App({
     })
     .get({
       success: function(res) {
-        console.log('user_info:',res.data.length)
         if(res.data.length==0){
           self.addNewWechatUser(wechatid)
           self.globalData.hasLogin = false
@@ -179,6 +188,7 @@ App({
         name:'',
         nike:'',
         phone:'',
+        paypwd:'123456',
         role:1,
         wechatid:wechatid,
       },

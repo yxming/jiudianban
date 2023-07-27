@@ -4,16 +4,16 @@ export default [
     text: '首页',
     url: 'page/home/home',
   },
-  {
-    icon: 'star',
-    text: '集市',
-    url: 'page/market/market',
-  },
-  {
-    icon: 'discount',
-    text: '折扣',
-    url: 'page/discount/discount',
-  },
+  // {
+  //   icon: 'star',
+  //   text: '服务',
+  //   url: 'page/market/market',
+  // },
+  // {
+  //   icon: 'discount',
+  //   text: '折扣',
+  //   url: 'page/discount/discount',
+  // },
   // {
   //   icon: 'sort',
   //   text: '邻里',

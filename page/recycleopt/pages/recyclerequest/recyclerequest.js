@@ -39,7 +39,7 @@ Page({
       strokeWidth: 3,
       strokeColor: '#FFFFFFAA',
     }],
-    subKey: 'B5QBZ-7JTLU-DSSVA-2BRJ3-TNXLF-2TBR7',
+    subKey: '',
     enable3d: false,
     showCompass: false,
     enableOverlooking: false,
@@ -105,6 +105,34 @@ Page({
     onShareAppMessage() {
 
     },
+
+    setCurrentLocation(){
+      var _this = this
+      wx.getLocation({
+        type: 'gcj02',//wgs84
+        success (res) {
+          const latitude = res.latitude
+          const longitude = res.longitude
+          const speed = res.speed
+          const accuracy = res.accuracy
+          console.log('location:',res)
+          _this.setData({
+            latitude,
+            longitude
+          })
+        },
+        fail (err){
+          console.log('fail-location:',err)
+          const latitude = res.latitude
+          const longitude = res.longitude
+          _this.setData({
+            latitude,
+            longitude
+          })
+        }
+    })
+    },
+
     setDefaultRecycleAddr(wechatid){
       var _this = this
       wx.cloud.init({
@@ -129,14 +157,12 @@ Page({
       })
       .get({
         success: function(res) {
-          console.log(res)
           if(res.data.length>0){
             //_this.data.recycleArray = res.data
             var item=res.data[res.data.length-1]  
             var title=item.caller+'----'+item.phonenum
             var detail = item.communityaddress+item.communityname+item.flat   
             var array=[{latitude:item.latitude,longitude:item.longitude,name:'UU'}]
-            console.log('default code:',item.communitycode)
             _this.setData({
               title:title,
               detail:detail,
@@ -149,7 +175,40 @@ Page({
               markers:array,
               communitycode:item.communitycode
             })
+          }else{
+            //
+            wx.navigateTo({
+              url: '../recycleaddrnew/recycleaddrnew',
+              events: {
+                acceptDataFromOpenedPage: function (data) {
+                  console.log('accept event:',data.item)
+                  var array=[{latitude:data.item.latitude,longitude:data.item.longitude,name:'UU'}]
+                  _this.setData({
+                    title:data.item.title,
+                    detail:data.item.detail,
+                    caller:data.item.caller,
+                    phonenum:data.item.phonenum,
+                    communityname:data.item.communityname,
+                    flat:data.item.flat,
+                    latitude:data.item.latitude,
+                    longitude:data.item.longitude,
+                    markers:array,
+                    communitycode:data.item.communitycode
+                  })
+                  if(data.item.communitycode===''){
+                    _this.showToast(3)
+                  }
+                },
+              },
+              success: function (res) {
+                console.log(res)
+                res.eventChannel.emit('acceptDataFromOpenerPage', { data: {'opener':'request'} })
+              }
+            })
           }
+        },
+        fail: function(err){
+          _this.showToast(2)
         }
       })
     },
@@ -184,6 +243,45 @@ Page({
         })
     },
 
+    showToast(type){
+      var title = '成功'
+      var  icon = 'success'
+      switch(type){
+        case 0:
+          title = '成功'
+          icon = 'success'
+        break;
+        case 1:
+          title = '失败'
+          icon = 'error'
+          break;
+        case 2:
+          title = '数据查询错误'
+          icon = 'error'
+          break;
+        case 3:
+          title = '超出服务范围'
+          icon = 'error'
+          break;
+      }
+
+      wx.showToast({
+        title: title,
+        icon: icon,
+        duration: 1000,
+        mask:true,
+        complete: ()=>{
+          var tag = setTimeout(function() {
+            wx.navigateBack({
+              delta: 3
+            })
+            clearTimeout(tag)
+         }, 1500);
+        }
+        })
+       
+    },
+
     onCommit(){
       var _this = this
       wx.cloud.init({
@@ -205,7 +303,14 @@ Page({
             wechatid:1
           }).get({
             success:function(res){
-              _this.saveRecycleOrder(db,res.data[0].wechatid)
+              if(res.data.length>0){
+                _this.saveRecycleOrder(db,res.data[0].wechatid)
+              }else{
+                _this.showToast(1)
+              }
+            },
+            fail:function(err){
+              _this.showToast(1)
             }
           })
         }
@@ -215,6 +320,7 @@ Page({
       var _this = this
       var timestamp = new Date().getTime()
       var orderid = this.data.communitycode+timestamp
+      console.log('+++++++++++++++++++++++')
       console.log('orderid:',this.data.communitycode,timestamp)
       db.collection('recycle_orders').add({
       // data 字段表示需新增的 JSON 数据
@@ -243,9 +349,12 @@ Page({
           phoneNumber:'',
           messages:''
         })
-
+        _this.showToast(0)
       },
-      fail: console.error,
+      fail: function(err){
+        console.error
+        _this.showToast(1)
+      },
       complete: console.log
     })
     }

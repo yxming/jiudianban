@@ -1,5 +1,5 @@
 <!--pages/customer/service.wxml-->
 <!-- <image src="../../../../resource/customer.jpg" mode="aspectFill"/> -->
 <view class="body-box">
-    <image class="img" src="../../../../resource/customer.jpg" mode="aspectFill"/>
+    <image class="img" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/QA.png?sign=593c5a298a4ff522e327521134372fd6&t=1690376847"/>
 </view>

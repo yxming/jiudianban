@@ -75,11 +75,15 @@
             "root": "page/user/",
             "pages": [
                 "pages/balance/balance",
-		"pages/profile/index",
+                "pages/profile/index",
                 "pages/coupon/index"
             ]
         }
     ],
+    "useExtendedLib": {
+        "kbone": true,
+        "weui": true
+    },
     "requiredPrivateInfos": [
         "chooseLocation",
         "chooseAddress",

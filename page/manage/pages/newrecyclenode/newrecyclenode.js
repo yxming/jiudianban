@@ -101,7 +101,6 @@ Page({
      */
     onHide() {
       console.log('page on hide')
-      //saveNodeInfo()
     },
 
     /**
@@ -147,7 +146,7 @@ Page({
     dataFromMap(){
       var _this = this
       wx.getLocation({
-            type: 'wgs84',
+            type: 'gcj02',
             success (locationinfo) {
               console.log(locationinfo)
               _this.data.latitude = locationinfo.latitude
@@ -208,30 +207,30 @@ Page({
         return
       }
       
-            eventChannel.emit('acceptDataFromOpenedPage', { data: this.data.nodename })
-            wx.cloud.init({
-              env: 'cloud1-7go51v8te374de35',
-            })
-            const db = wx.cloud.database()
-            const _ = db.command
-            db.collection('node_info').add({
-              // data 字段表示需新增的 JSON 数据
-              data: {
-                nodecode: this.data.nodecode,
-                nodename: this.data.nodename, // 用 {openid} 变量，后台会自动替换为当前用户 openid
-                nodeaddr: this.data.address,
-                wechatid: app.globalData.openid,
-                latitude: this.data.latitude,
-                longitude: this.data.longitude,
-                recycleamount:0
-              },
-              success: function(res) {
-                // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-                console.log(res)
-              },
-              fail: console.error,
-              complete: console.log
-            })
+      eventChannel.emit('acceptDataFromOpenedPage', { data: this.data.nodename })
+      wx.cloud.init({
+        env: 'cloud1-7go51v8te374de35',
+      })
+      const db = wx.cloud.database()
+      const _ = db.command
+      db.collection('node_info').add({
+        // data 字段表示需新增的 JSON 数据
+        data: {
+          nodecode: this.data.nodecode,
+          nodename: this.data.nodename, // 用 {openid} 变量，后台会自动替换为当前用户 openid
+          nodeaddr: this.data.address,
+          wechatid: app.globalData.openid,
+          latitude: this.data.latitude,
+          longitude: this.data.longitude,
+          recycleamount:0
+        },
+        success: function(res) {
+          // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+          console.log(res)
+        },
+        fail: console.error,
+        complete: console.log
+      })
     },
 
     onActionClick({ detail }) {

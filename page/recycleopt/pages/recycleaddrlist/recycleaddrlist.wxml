@@ -1,6 +1,6 @@
 <!--page/user/recycleaddrlist/recycleaddrlist.wxml-->
 <scroll-view
-  scroll-y style="width: 100%; height: 360px;"
+  scroll-y style="width: 100%; height:480px;"
   refresher-enabled="{{true}}"
   refresher-threshold="{{100}}"
   refresher-default-style="white"
@@ -11,22 +11,23 @@
   bindrefresherrestore="onRestore"
   bindrefresherabort="onAbort"
 >
+<image style="margin-top: 10%; width: 100%; display:{{hasRecycleAddr?'none':''}}" src="../../../../resource/norecycleaddr.png" mode="aspectFill" ></image>
 <t-radio-group bind:change="onChange" defaultValue="radio1" placement="right">
   <t-swipe-cell id="{{index}}" wx:if="{{condition==0}}" wx:for="{{recycleArray}}" wx:key='title' right="{{right}}" bind:click="onClicked" >
 <t-cell id="{{index}}" title="{{item.title}}" note="{{item.note}}" description="{{item.detail}}" bordered="{{true}}" bindtap="onActionClick"/>
 </t-swipe-cell>
 
-<t-swipe-cell wx:if="{{condition==0}}" right="{{right}}" bind:click="onActionClick">
+<t-swipe-cell wx:if="{{condition==1}}" right="{{right}}" bind:click="onActionClick">
   <t-cell title="左滑-带图标文本双操作" note="辅助信息" description="一段很长很长的内容文字" bordered="{{true}}" />
 </t-swipe-cell>
-<t-swipe-cell wx:if="{{condition==0}}" right="{{right}}" bind:click="onActionClick">
+<t-swipe-cell wx:if="{{condition==1}}" right="{{right}}" bind:click="onActionClick">
   <t-radio value="radio2" title="左滑-带图标文本双操作" label="单选" description="一段很长很长的内容文字" bordered="{{true}}"  bindtap="onActionClick"/>
 </t-swipe-cell>
-<t-swipe-cell wx:if="{{condition==0}}" right="{{rightIcon}}">
+<t-swipe-cell wx:if="{{condition==1}}" right="{{rightIcon}}">
   <t-cell title="左滑-仅带图标双操作" note="辅助信息" description="一段很长很长的内容文字" bordered="{{true}}" />
 </t-swipe-cell>
 
-<t-swipe-cell wx:if="{{condition==0}}">
+<t-swipe-cell wx:if="{{condition==1}}">
   <t-cell
     bordered="{{true}}"
     title="左滑大列表-仅带图标双操作"
@@ -47,5 +48,5 @@
 </t-swipe-cell>
 </t-radio-group>
 </scroll-view>
-<button style="width: 90%; margin-top: 35rpx;" disabled="disabled" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="newRecycleAddress"> {{buttonTitleNewRecycleAddr}}
+<button style="width: 90%; position: absolute; bottom: 100rpx; left: 20rpx; right: 20rpx;" disabled="disabled" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="newRecycleAddress"> {{buttonTitleNewRecycleAddr}}
 </button>

@@ -5,5 +5,5 @@
 <image src="../../../../resource/category.jpg" mode="aspectFill"/>
 </scroll-view> -->
 <view class="body-box">
-    <image class="img" src="../../../../resource/category.jpg" mode="aspectFill"/>
+    <image class="img" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/category.png?sign=17ef318c1e09e8a1dc1f1bff4f1d9fa8&t=1690377023"/>
 </view>

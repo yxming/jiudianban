@@ -6,6 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        hasLogin:false,
+        role:1,
         showMakePhone: false,
         userInfo: {
             avatarUrl: '',
@@ -42,12 +44,12 @@ Page({
               //   url: '',
               //   type: 'domesticorder',
               // },
-              {
-                title: '发布',
-                tit: '',
-                url: '',
-                type: 'coupon',
-              },
+              // {
+              //   title: '发布',
+              //   tit: '',
+              //   url: '',
+              //   type: 'coupon',
+              // },
               {
                 title: '余额',
                 tit: '',
@@ -88,6 +90,7 @@ Page({
     },
     onLoad(){
       if(app.globalData.hasLogin){
+        console.log('mine.openid:',app.globalData.openid)
         app.globalData.db.collection('user_info').where({
           wechatid:app.globalData.openid
         }).field({
@@ -107,20 +110,30 @@ Page({
     },
     onShow() {
       this.getTabBar().init()
+      var role=app.globalData.role
+      this.setData({
+        role
+      })
     },
 
     handleGetUserProfile(e) {
       if(app.globalData.hasLogin){
         console.log('user was logined')
+        this.setData({
+          hasLogin:true
+        })
       }else{
         wx.getUserProfile({
-          desc:'九点伴',
+          desc:'一袋收生活网',
           success: (res) => {
               this.setData({
                   userInfo: res.userInfo,
               })
               app.saveUserInfo(app.globalData.openid,res.userInfo)
               app.globalData.hasLogin = true
+          },
+          fail:(err)=>{
+            console.log('getUserProfile:',err)
           }
           })
       }
@@ -145,7 +158,7 @@ Page({
             break;
           }
           case 'service': {
-            this.openMakePhone();
+            wx.navigateTo({ url: '../others/pages/customer/service'})
             break;
           }
           case 'help-center': {

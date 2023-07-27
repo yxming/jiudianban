@@ -1,4 +1,5 @@
 // page/recycleopt/pages/recycleorders/recycleorders.js
+const util = require('../../../../util/util.js')
 const app = getApp()
 Page({
 
@@ -30,9 +31,9 @@ Page({
     if(this.data.textPassword===app.globalData.paypwd){
       var index  = this.data.index
       var item = this.data.orderlist[index]
-      this.onUpdateOreder()
-      this.queryUserinfo(item.wechatbuy,-item.cost)
-      this.queryUserinfo(item.wechatsale,item.cost)
+      this.onUpdateOrder(item)
+      this.queryUserinfo(item.wechatbuy,Number(-item.cost))
+      this.queryUserinfo(item.wechatsale,Number(item.cost))
        this.setData({
         visible: false
       })
@@ -42,8 +43,6 @@ Page({
       })
     }
   },
-
-
 
   onVisibleChange(e) {
     this.setData({
@@ -74,12 +73,12 @@ Page({
         const db = wx.cloud.database()
         const _ = db.command
         var coll = null
-        if(app.globalData.role==2){
-          coll=db.collection('recycle_orders').where({
+        if(app.globalData.role==2 || app.globalData.role==0){
+          coll=db.collection('recycle_orders').orderBy('status', 'asc').where({
             wechatbuy:app.globalData.openid
           })
         }else{
-          coll=db.collection('recycle_orders').where({
+          coll=db.collection('recycle_orders').orderBy('status', 'asc').where({
             wechatsale:app.globalData.openid
           })
         }
@@ -98,7 +97,7 @@ Page({
                   'orderid':element.orderid,
                   'communityname':element.communityname,
                   'flat':element.flat,
-                  'caller':element.caller,
+                  'saler':element.caller,
                   'phonenum':element.phonenum,
                   'amount':element.amount,
                   'cost':element.cost,
@@ -138,7 +137,7 @@ Page({
     kindToggle(e) {
         const id = e.currentTarget.id
         const orderlist = this.data.orderlist
-        
+
         for (let i = 0, len = orderlist.length; i < len; ++i) {
           if (orderlist[i].orderid === id) {
             orderlist[i].open = !orderlist[i].open
@@ -150,27 +149,22 @@ Page({
           orderlist
         })
     },
-    onUpdateOreder(){
-      var _this = this
-      var orderlist = this.data.orderlist
-      var index  = this.data.index
-      var item = orderlist[index]
-      item.status = 1
-      wx.cloud.init({
-        env: 'cloud1-7go51v8te374de35',
-      })
-      const db = wx.cloud.database()
-      const _ = db.command
+    onUpdateOrder(item){
+      var self = this
+      const db = app.globalData.db
       db.collection('recycle_orders').where({
-      orderid:item.orderid
-    }).update({
+        orderid:item.orderid
+    })
+    .update({
       data:{
         cost:item.cost,
         amount:item.amount,
-        status:item.status
+        status:1
       },
       success: function(res) {
-        _this.setData({
+        var orderlist = self.data.orderlist
+        item.status = 1
+        self.setData({
           orderlist
         })
       },
@@ -181,11 +175,7 @@ Page({
     })
     },
     writeCashToBalance(wechatid, balance,cash){
-      wx.cloud.init({
-        env: 'cloud1-7go51v8te374de35',
-      })
-      const db = wx.cloud.database()
-      const _ = db.command
+      const db = app.globalData.db
       db.collection('user_info').where({
         wechatid:wechatid
     }).update({
@@ -202,18 +192,16 @@ Page({
     })
     },
     queryUserinfo(wechatid,cost){
-      console.log('wechatid:',wechatid, 'cost:', cost)
       var self = this
-      wx.cloud.init({
-        env: 'cloud1-7go51v8te374de35',
-      })
-      const db = wx.cloud.database()
-      const _ = db.command
+      const db = app.globalData.db
       db.collection('user_info').where({
         wechatid:wechatid
     }).get({
       success: function(res) {
-        self.writeCashToBalance(wechatid,res.data[0].balance+cost,res.data[0].cash+cost)
+        var balance = res.data[0].balance
+        var cash = res.data[0].cash
+        self.writeCashToBalance(wechatid,balance+cost,cash+cost)
+        self.writeCashRecord(wechatid,cost)
       },
       fail:function(err){
         console.log('queryUserCash:',err)
@@ -221,15 +209,36 @@ Page({
     })
     },
 
+    writeCashRecord(wechatid, cash){
+      var strDate = util.formatDateTime(new Date())
+      var tag = cash>0?'income':'expense'
+      const db = app.globalData.db
+      db.collection('cash_records')
+      .add({
+        data:{
+          cash:cash,
+          date:strDate,
+          role:app.globalData.role,
+          type:tag,
+          wechatid:wechatid
+        },
+        success: function(res) {
+          console.log(res)
+        },
+        fail: console.error,
+        complete: console.log
+      })
+    },
+
     onCostChanged(e){
       var index  = e.currentTarget.id
       var item = this.data.orderlist[index]
-      item.cost = e.detail.value
+      item.cost = Number(e.detail.value)
     },
 
     onAmountChanged(e){
       var index  = e.currentTarget.id
       var item = this.data.orderlist[index]
-      item.amount = e.detail.value
+      item.amount = Number(e.detail.value)
     }
 })

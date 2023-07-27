@@ -7,6 +7,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+      opener:'',
+      hasCommunity:true,
       range:app.globalData.locationRange,
       caller:'',
       flat:'',
@@ -14,6 +16,8 @@ Page({
       phoneNumber: '',
       buttonTitleSave : preset.appPreSets.buttonTitleSave,
       seletedIndex:0,
+      latitude:0,
+      longitude:0,
       communityArray : []
     },
 
@@ -22,24 +26,30 @@ Page({
      */
     onLoad(options) {
       var _this = this
-        wx.getLocation({
-            type: 'gcj02',//wgs84
-            success (res) {
-              const latitude = res.latitude
-              const longitude = res.longitude
-              const speed = res.speed
-              const accuracy = res.accuracy
-              console.log('location:',res)
-              _this.getUseableCommnity(latitude,longitude)
-              // _this.getUseableCommnity(res.latitude,res.longitude)
-            },
-            fail (err){
-              console.log('location:',err)
-              const latitude = res.latitude
-              const longitude = res.longitude
-              _this.getUseableCommnity(latitude,longitude)
-            }
-           })
+      const eventChannel= this.getOpenerEventChannel()
+      eventChannel.on('acceptDataFromOpenerPage', function (data) {
+      console.log('where from:',data.data.opener)
+      _this.setData({
+          opener:data.data.opener
+        })
+      })
+      wx.getLocation({
+          type: 'gcj02',//wgs84
+          success (res) {
+            _this.data.latitude = res.latitude
+            _this.data.longitude = res.longitude
+            const speed = res.speed
+            const accuracy = res.accuracy
+            console.log('location:',res)
+            _this.getUseableCommnity(res.latitude,res.longitude)
+          },
+          fail (err){
+            console.log('fail-location:',err)
+            _this.data.latitude = res.latitude
+            _this.data.longitude = res.longitude
+            _this.getUseableCommnity(res.latitude,res.longitude)
+          }
+      })
 
        /* wx.getLocation({
             type: 'gcj02', //返回可以用于wx.openLocation的经纬度
@@ -129,16 +139,33 @@ Page({
       })
       const db = wx.cloud.database()
       const _ = db.command
-      db.collection('community_info').where({
-        latitude: _.lt(latitude+this.data.range),
-        latitude: _.gt(latitude-this.data.range),
-        longitude: _.lt(longitude+this.data.range),
-        longitude: _.gt(longitude-this.data.range)
-      })
+      db.collection('community_info').where(
+        _.and([
+          {
+            latitude: _.lt(latitude+this.data.range)
+          },
+          {
+            latitude: _.gt(latitude-this.data.range)
+          },
+          {
+            longitude: _.lt(longitude+this.data.range)
+          },
+          {
+            longitude: _.gt(longitude-this.data.range)
+          }
+        ])
+      )
       .get({
         success: function(res) {
           if(res.data.length>0){
             _this.updateCommunityList(res.data)
+          }else{
+            _this.setData({
+              hasCommunity:false
+            })
+            if(_this.data.opener=='request'){
+              _this.emitData(_this.packetdata())
+            }
           }
         }
       })
@@ -147,9 +174,6 @@ Page({
     updateCommunityList(list){
       var arr = []
       list.forEach(element => {
-        console.log('communitycode:',element.communitycode)
-        console.log('communityname:',element.communityname)
-        console.log('communityaddress:',element.communityaddress)
         arr.push({'code':element.communitycode,
                   'name':element.communityname,
                   'addr':element.communityaddress,
@@ -158,51 +182,94 @@ Page({
                 })
       });
       this.setData({
-        communityArray : arr
+        communityArray : arr,
+        hasCommunity:true
       })
     },
 
     saveRecycleAddress(){
       var _this = this
-      var user = this.data.caller
-      var phone = this.data.phoneNumber
-      var index = this.data.seletedIndex
-      var address = this.data.communityArray[index].addr
-      var name = this.data.communityArray[index].name
-      var latitude = this.data.communityArray[index].latitude
-      var longitude= this.data.communityArray[index].longitude
-
-      wx.cloud.init({
-        env: 'cloud1-7go51v8te374de35',
-      })
-      const db = wx.cloud.database()
-      const _ = db.command
-
+      const item = this.packetdata()
+      const db = app.globalData.db
       db.collection('recycleaddr_list').add({
         // data 字段表示需新增的 JSON 数据
         data: {
-          communitycode: this.data.communityArray[index].code, // 用 {openid} 变量，后台会自动替换为当前用户 openid
-          caller: user,
-          flat: this.data.flat,
-          phonenum:phone,
-          communityname:name,
-          communityaddress:address,
-          latitude:latitude,
-          longitude:longitude,
+          communitycode: item.communitycode, // 用 {openid} 变量，后台会自动替换为当前用户 openid
+          caller: item.caller,
+          flat: item.flat,
+          phonenum:item.phonenum,
+          communityname:item.communityname,
+          communityaddress:item.communityaddress,
+          latitude:item.latitude,
+          longitude:item.longitude,
           wechatid: app.globalData.openid
         },
         success: function(res) {
           // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-          console.log(res)
           _this.setData({
             caller:'',
             flat:'',
             phoneNumber:''
           })
+          _this.emitData(item)
+          _this.backToOpener()
         },
         fail: console.error,
         complete: console.log
       })
+    },
+
+    packetdata(){
+      var caller = this.data.caller
+      var phone = this.data.phoneNumber
+      var flat = this.data.flat
+      var index = this.data.seletedIndex
+      var communityaddress = ''
+      var communityname = ''
+      var communitycode = ''
+      var latitude = this.data.latitude
+      var longitude= this.data.longitude
+      if(this.data.communityArray.length>0)
+      {
+         communityaddress = this.data.communityArray[index].addr
+         communityname = this.data.communityArray[index].name
+         communitycode = this.data.communityArray[index].code
+         latitude = this.data.communityArray[index].latitude
+         longitude= this.data.communityArray[index].longitude
+      }
+
+      var title=caller+'----'+phone
+      var detail = communityaddress+communityname+flat
+      var item = {
+        'title':title,
+        'detail':detail,
+        'latitude':latitude,
+        'longitude':longitude,
+        'communitycode':communitycode,
+        'communityname':communityname,
+        'communityaddress':communityaddress,
+        'flat':flat,
+        'caller':caller,
+        'phonenum':phone
+      }
+      return item
+    },
+
+    emitData(item){
+      const eventChannel = this.getOpenerEventChannel()
+      eventChannel.emit('acceptDataFromOpenedPage', { item: item })
+    },
+
+    backToOpener(){
+      switch(this.data.opener){
+        case 'request':
+          wx.navigateBack({
+            delta: 1
+          })
+          break
+        case 'list':
+          break
+      }
     }
 
 })

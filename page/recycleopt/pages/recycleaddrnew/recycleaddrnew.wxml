@@ -1,5 +1,6 @@
 <!--page/user/recycleaddrnew/recycleaddrnew.wxml-->
 <t-radio-group  defaultValue="radio0" placement="right" bindchange="radioChange">
+  <image style="width: 100%; display:{{hasCommunity?'none':''}}" src="../../../../resource/noservice.png" mode="aspectFit" ></image>
   <view  id="{{index}}" wx:for="{{communityArray}}" wx:key='name' bindtap="onChecked">
     <t-radio  id="{{index}}" value="radio{{index}}" label="{{item.name}}" content="{{item.addr}}" />
   </view>
@@ -20,5 +21,5 @@
 </t-input>
 </t-radio-group>
 
-<button style="width: 90%; margin-top: 35rpx; margin-bottom: 30rpx;"  type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="saveRecycleAddress"> {{buttonTitleSave}}
+<button style="position: absolute; width: 90%; bottom: 100rpx; left: 20rpx; right: 20rpx;"  type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{hasCommunity?'':'none'}}" bindtap="saveRecycleAddress"> {{buttonTitleSave}}
 </button>

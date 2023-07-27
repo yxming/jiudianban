@@ -1,4 +1,5 @@
 // page/recyclenodelist/recyclenodelist.js
+const app = getApp()
 Page({
 
     /**
@@ -13,28 +14,7 @@ Page({
         loading: false,
         condition:0,
         triggered: false,
-        recycleArray: [{
-            title: 'foo',
-            note:''
-          },{
-            title: 'bar',
-            note:''
-          },{
-            title: 'bar',
-            note:''
-          },{
-            title: 'bar',
-            note:''
-          },{
-            title: 'bar',
-            note:''
-          },{
-            title: 'bar',
-            note:''
-          },{
-            title: 'bar',
-            note:''
-          }],
+        recycleArray: [],
         right: [
             {
               text: '编辑',
@@ -69,16 +49,22 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-      //console.log(this.recycleArray)
-       /* wx.getLocation({
-            type: 'wgs84',
-            success (res) {
-              const latitude = res.latitude
-              const longitude = res.longitude
-              const speed = res.speed
-              const accuracy = res.accuracy
-            }
-           })*/
+      var self = this
+      app.globalData.db.collection('node_info')
+      .field({
+        _id:0
+      })
+      .get({
+        success: (res)=>{
+          if(res.data.length>0){
+            console.log('nodes:',res.data.length)
+            var recycleArray = res.data
+            self.setData({
+              recycleArray
+          })
+          }
+        }
+      })
     },
 
     /**
@@ -154,7 +140,7 @@ Page({
             acceptDataFromOpenedPage: function (data) {
               console.log('accept event:',data.data)
               var list  = _this.data.recycleArray;
-              list.push({title:data.data, note:''})
+              list.splice(0,0,{nodename:data.data, note:''})
               _this.setData({
                 recycleArray:list
               })

@@ -7,6 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        hasRecycleAddr:true,
         opener: 0,
         buttonTitleNewRecycleAddr : preset.appPreSets.buttonTitleNewRecycleAddr,
         defaultSize: 'default',
@@ -163,17 +164,20 @@ Page({
           url: '../recycleaddrnew/recycleaddrnew',
           events: {
             acceptDataFromOpenedPage: function (data) {
-              console.log('accept event:',data.data)
-              var list  = _this.data.recycleArray;
-              list.push({title:data.data, note:''})
-              _this.setData({
-                recycleArray:list
-              })
+              console.log('accept event:',data.item)
+              if(data.item){
+                var list  = _this.data.recycleArray;
+                list.splice(0,0,data.item)
+                _this.setData({
+                    recycleArray:list,
+                    hasRecycleAddr:true
+                })
+              }
             },
           },
           success: function (res) {
             console.log(res)
-            //res.eventChannel.emit('acceptDataFromOpenerPage', { data: {'opener':1} })
+            res.eventChannel.emit('acceptDataFromOpenerPage', { data: {'opener':'addrlist'} })
           }
         })
     },
@@ -209,7 +213,6 @@ Page({
         var coll=db.collection('recycleaddr_list').where({
           wechatid:wechatid
         })
-        
         coll.field({
           _id:0,
           caller:1,
@@ -242,9 +245,20 @@ Page({
               })
               })
               _this.setData({
-                recycleArray:arr
+                recycleArray:arr,
+                hasRecycleAddr:true
+              })
+            }else{
+              _this.setData({
+                hasRecycleAddr:false
               })
             }
+          },
+          fail: function(err){
+            console.log(err)
+            _this.setData({
+              hasRecycleAddr:false
+            })
           }
         })
 
@@ -283,7 +297,6 @@ Page({
         })
         .get({
           success: function(res) {
-            console.log(_this.data.recycleArray)
             console.log(res.data)
             var addrDic
             res.data.forEach(element => {

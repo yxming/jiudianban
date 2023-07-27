@@ -1,10 +1,10 @@
 <!--page/user/balance/balance.wxml-->
 
 <view class="text-box">
-    <text style="font-size:5ch;">￥1000</text>
+    <text style="font-size:5ch;">{{balance}}粒</text>
 </view>
 <view class="text-effective">
-    <text>可提现：￥1000</text>
+    <text>可提：{{cash}}粒</text>
 </view>
 
 <!-- <view class="button-cash" style="margin-top: 20rpx; margin-bottom: 20rpx; ">
@@ -12,11 +12,10 @@
   <button class="btn" >提现</button>
   <button class="btn" >使用</button>
 </view> -->
-
 <view class="button-cash">
-<view class="chong">充值</view>
-<view class="ti">提现</view>
-<view class="shi">使用</view>
+<view class="chong" bindtap="addRiceAction">存米</view>
+<view class="ti" bindtap="getCashOut">取米</view>
+<!--<view class="shi" bindtap="toUseCash">使用</view>-->
 </view>
 
 <!-- <view class="title"  style="display: flex;justify-content: space-around;background-color: rgb(103, 177, 199);">
@@ -44,14 +43,21 @@
   <view class="tab" class="{{activeType==='expense'? 'active': ''}}" bindtap="handleTabChange" data-type="expense">支出</view>
 </view>
 <view class="list">
-  <block wx:for="{{dataList}}" wx:for-item="item">
+  <block wx:for="{{cashrecord}}" wx:key="date" wx:for-item="item">
     <view class="all" wx:if="{{activeType === 'all' || item.type === activeType}}">
       <!-- 根据条件展示数据 -->
-      <text class="date">时间：{{item.title}}</text>
-      <text>金额：{{item.amount}}</text>
-      
+      <text class="date">时间：{{item.date}}</text>金额：
+      <text style="color:{{item.type=='expense'? 'red':'blue'}}">{{item.type=='expense'? '':'+'}}{{item.cash}}</text>
     </view>
   </block>
 </view>
-
+<mp-halfScreenDialog 
+          bindbuttontap="callPayAction"
+          show="{{addRice}}"
+          maskClosable="{{false}}" 
+          title="存米" 
+          buttons="{{buttons}}"
+        >
+        <t-input slot="desc" label="存米数量:" placeholder="请填入整数" model:value="{{rices}}"></t-input>
+        </mp-halfScreenDialog>
 

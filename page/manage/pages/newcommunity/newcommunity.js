@@ -100,7 +100,7 @@ Page({
         wx.chooseLocation({latitude:this.data.latitude,longitude:this.data.longitude,success: res=>{
             console.log('lat:',res.latitude,'longt:',res.longitude)
             console.log('name:',res.name)
-            console.log('addr:',this.address)
+            console.log('addr:',res.address)
             this.setData({
                 address : res.address,
                 code : util.getCommunityCode(res.name),
