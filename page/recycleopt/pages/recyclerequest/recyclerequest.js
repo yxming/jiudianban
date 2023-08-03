@@ -48,8 +48,22 @@ Page({
     enableRotate: false,
     drawPolygon: false,
     enableSatellite: false,
-    enableTraffic: false
+    enableTraffic: false,
+    // 这个是单选判断
+    isChecked: false,
+    imagePath: '../mage/rectanglet.png'
     },
+    // 单选点击事件
+    changeImage: function(event) {
+       console.log("11111");
+      var isChecked = event.detail.value;
+      var imagePath = isChecked ? '../mage/Rectangles.png' : '../mage/rectanglet.png';
+      this.setData({
+        isChecked: isChecked,
+        imagePath: imagePath
+      });
+    },
+
 
     /**
      * 生命周期函数--监听页面加载

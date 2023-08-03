@@ -1,29 +1,50 @@
 <!--page/user/recyclerequest/recyclerequest.wxml-->
-<map
-        subkey="{{subKey}}"
-        style="width: 100%; height: 200px;"
-        latitude="{{latitude}}"
-        longitude="{{longitude}}"
-        scale="{{18}}"
-        markers="{{markers}}"
-        enable-3D="{{enable3d}}"
-        show-compass="{{showCompass}}"
-        enable-zoom="{{enableZoom}}"
-        enable-rotate="{{enableRotate}}"
-        enable-satellite="{{enableSatellite}}"
-        enable-traffic="{{enableTraffic}}"
-        enable-overlooking="{{enableOverlooking}}"
-        enable-scroll="{{enableScroll}}"
-        polygons="{{drawPolygon ? polygons : []}}"
-      >
-      </map>
+<!-- 这个是地图 -->
+<map subkey="{{subKey}}" style="width: 100%; height: 200px;" latitude="{{latitude}}" longitude="{{longitude}}" scale="{{18}}" markers="{{markers}}" enable-3D="{{enable3d}}" show-compass="{{showCompass}}" enable-zoom="{{enableZoom}}" enable-rotate="{{enableRotate}}" enable-satellite="{{enableSatellite}}" enable-traffic="{{enableTraffic}}" enable-overlooking="{{enableOverlooking}}" enable-scroll="{{enableScroll}}" polygons="{{drawPolygon ? polygons : []}}">
+</map>
+<view class="backgroundBlock">
+  <!-- 半圆块 -->
+  <view class="upbox"></view>
+  <view class="backgroundimageBlock">
+    <image style="width: 100%;height: 100%; position: absolute;" src="../mage/backgroundimageBlock.png" mode="" />
+    <view class="limage">
+      <image style="width: 100%; height: 100%;" src="../mage/shangbianid.png" mode="" />
+    </view>
+    <t-input class="inputBlock" borderless="false" style="padding-left: 100rpx; padding-right: 200rpx;" label="" placeholder="请输入联系人" status="success" model:tips="{{detail}}" model:value="{{title}}"  bind:click="selectedAddr" />
+    <view class="pictureRight" bindtap="selectedAddr" >
+      <image style="width: 100%; height: 100%;" src="../mage/Frame.png" mode="" />
+    </view>
+  </view>
+  <view class="backgroundimageBBlock">
+    <image style="width: 100%;height: 100%; " src="../mage/backgroundimageBlock.png" mode="" />
+    <view class="limages">
+      <image style="width: 100%; height: 100%;" src="../mage/Vectorrr.png" mode="" />
+    </view>
+    <t-input class="inputFast" style="padding-left: 100rpx;" placeholder="请输入留言" borderless="false" model:value="{{messages}}">
+    </t-input>
+  </view>
+  <view class="notice">
+    <view>回收单价：</view>
+    <view style="padding-left: 30rpx;">0.6元/公斤</view>
+    <view>上门时间：</view>
+    <view style="padding-left: 30rpx;">统一上门时间为15:30-20:00</view>
+    <view>回收清单：</view>
+    <view style="padding-left: 30rpx;">塑料瓶，易拉罐，书籍，报纸，纸盒，金属等</view>
+  </view>
+</view>
 
-      <t-input prefixIcon="home" label="" placeholder="请输入联系人" status="success" model:tips="{{detail}}"  model:value="{{title}}" suffixIcon="{{ { name: 'location', ariaLabel: '通讯录' } }}" bind:click="selectedAddr"/>
-      <t-input prefixIcon="edit-1" label="留言" placeholder="请输入留言" model:value="{{messages}}" >
-      </t-input>
-      
-<button style="width: 90%;  position: absolute; bottom: 100rpx; left: 20rpx; right: 20rpx;"  
+<!-- <button style="width: 90%;  position: absolute; bottom: 100rpx; left: 20rpx; right: 20rpx;"  
 type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" 
 disabled="{{disabled}}" bindtap="onCommit"> 提交
-</button>
-
+</button> -->
+<view class="Doradio">
+  <view class="radio-container" style="z-index: 9999;">
+    <radio-group name="radioGroup" bindchange="changeImage">
+      <label class="radio-label">
+        <image class="radio-image" src="{{imagePath}}"></image>
+        我已知悉
+      </label>
+    </radio-group>
+  </view>
+</view>
+<view class="Dbutton" bindtap="onCommit">立刻下单！</view>
