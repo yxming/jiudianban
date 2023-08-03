@@ -1,43 +1,61 @@
 <!--page/home/home.wxml-->
-<view class="home-page-header">
-  <view class="custom-navbar">
-    <!-- 导航栏内容 -->
-    <view class="custom-navbar-title">一袋生活</view>
-    <view class="swiper-wrap">
-      <t-swiper custom-indicator-class="custom-swiper-dots" wx:if="{{imgSrcs.length > 0}}" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" navigation="{{navigation}}" imageProps="{{swiperImageProps}}" list="{{imgSrcs}}" bind:click="navToActivityDetail" />
-    </view>
-    <view class="tr">
-      <view class="col" bindtap="gotoRecycle">
-        <!-- <t-image src="{{imgSrcs[0]}}" mode="aspectFill" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
-        <t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/recycle.png?sign=6cdc60f80d96597eb1ce7757f36f0d00&t=1689901399" size="40" />
+<!-- <view class="home-page-header">
+  <view class="custom-navbar"> -->
+<!-- 导航栏内容 -->
+<!-- <view class="tr">
+      <view class="col" bindtap="gotoRecycle"> -->
+<!-- <t-image src="{{imgSrcs[0]}}" mode="aspectFill" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+<!-- <t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/recycle.png?sign=6cdc60f80d96597eb1ce7757f36f0d00&t=1689901399" size="40" />
         <view class="text" style="text-align: center; ">下单</view>
-      </view>
-     
-      <view class="col" bindtap="gotoBalance">
-        <!-- <t-image src="{{imgSrcs[4]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
-        <t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/balance.png?sign=9bd3d582019d9cfc99bec2a470aaa8be&t=1689823797" size="40" />
+      </view> -->
+
+<!-- <view class="col" bindtap="gotoBalance"> -->
+<!-- <t-image src="{{imgSrcs[4]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+<!-- <t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/balance.png?sign=9bd3d582019d9cfc99bec2a470aaa8be&t=1689823797" size="40" />
         <view class="text" style="text-align: center;">米袋</view>
-      </view>
+      </view> -->
 
-      <view class="col" bindtap="gotoCategory">
-        <!-- <t-image src="{{imgSrcs[1]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
-        <t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/category2.png?sign=93bb38b0c1e9d4cfc70bd8166afdfe6e&t=1690377366" size="40" />
+<!-- <view class="col" bindtap="gotoCategory"> -->
+<!-- <t-image src="{{imgSrcs[1]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+<!-- <t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/category2.png?sign=93bb38b0c1e9d4cfc70bd8166afdfe6e&t=1690377366" size="40" />
         <view class="text">目录</view>
-      </view>
+      </view> -->
 
-      <view class="col" bindtap="gotoService">
-        <!-- <t-image src="{{imgSrcs[5]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
-        <t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/customer.png?sign=fa8ab29ebf87215fded647bb8fff50ee&t=1689824002" size="40" />
+<!-- <view class="col" bindtap="gotoService"> -->
+<!-- <t-image src="{{imgSrcs[5]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
+<!-- <t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/customer.png?sign=fa8ab29ebf87215fded647bb8fff50ee&t=1689824002" size="40" />
         <view class="text" style="text-align: center;">客服</view>
       </view>
     </view>
   </view>
+</view> -->
+<!-- 复用轮播 -->
+<!-- <view class="swiper-wrap">
+      <t-swiper custom-indicator-class="custom-swiper-dots" wx:if="{{imgSrcs.length > 0}}" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" navigation="{{navigation}}" imageProps="{{swiperImageProps}}" list="{{imgSrcs}}" bind:click="navToActivityDetail" />
+    </view> -->
+<!-- 重构 -->
+
+<view class="backgroundSection">
+<!-- 打招呼信息 -->
+  <view class="sayHello">
+    <view class="sayHelloLText">Hi !</view>
+    <view class="sayHelloLText" style="margin-left: 30rpx;">{{name}}</view>
+  </view>
+  <!-- 个人资料 -->
+  <view class="personalInformation">
+  <view class="personalInformationBox"></view>
+  </view>
 </view>
 
-<!--<view class="col-button"></view>-->
-<image style="width: 100%; margin-top: 120rpx;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230726164126.jpg?sign=5dc11dc00c7f1b2757391153468eced1&t=1690370675"  mode="widthFix"></image>
 
-<view class="zhanwei">----- 没有更多了 -----</view>
+
+
+
+
+<!--<view class="col-button"></view>-->
+<!-- <image style="width: 100%; margin-top: 120rpx;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230726164126.jpg?sign=5dc11dc00c7f1b2757391153468eced1&t=1690370675"  mode="widthFix"></image>
+
+<view class="zhanwei">----- 没有更多了 -----</view> -->
 
 <!-- <view class="quantity">
   <view class="view-button">有偿服务</view>

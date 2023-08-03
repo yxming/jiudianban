@@ -39,7 +39,8 @@ Page({
         isImageExpanded: false,
         currentImageIndex: 0,
         startX: 0,
-        endX: 0
+        endX: 0,
+        name:'请先登录！'
     },
     onShareAppMessage() {
       const promise = new Promise(resolve => {
