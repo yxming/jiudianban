@@ -78,6 +78,12 @@
                 "pages/profile/index",
                 "pages/coupon/index"
             ]
+        },{
+          "root": "page/homesmodule/",
+          "pages": [
+            "pages/reservation/reservation",
+            "pages/address/address"
+          ]
         }
     ],
     "useExtendedLib": {
