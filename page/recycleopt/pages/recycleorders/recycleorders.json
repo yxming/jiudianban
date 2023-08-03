@@ -1,8 +1,9 @@
 {
-    "navigationBarTitleText": "回收订单",
+    "navigationBarTitleText": "订单列表",
     "usingComponents": {
         "t-popup": "tdesign-miniprogram/popup/popup",
         "t-button": "tdesign-miniprogram/button/button",
         "t-input": "tdesign-miniprogram/input/input"
     }
+    
 }

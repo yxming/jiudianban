@@ -6,6 +6,9 @@ Page({
     /**
      * 页面的初始数据
      */
+    options: {
+      styleIsolation: 'apply-shared',
+    },
     data: {
       orderlist:[],
       theme: 'light',
@@ -14,6 +17,13 @@ Page({
       visible: false,
       textPassword: '',
       index:0,
+      value: '',
+      // z
+      bianhuan:0
+    },
+    // 搜索框
+    onChange(e) {
+      console.log(e.detail.value);
     },
     handlePopup(e) {
       console.log(e);
@@ -58,6 +68,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+      wx.setNavigationBarColor({
+        frontColor: '#000000',
+        backgroundColor: '#ffffff'
+      });
       this.setData({
         theme: wx.getSystemInfoSync().theme || 'light'
       })
@@ -133,14 +147,30 @@ Page({
     onShow() {
 
     },
+    switchtwe(e) {
+      const id = e.currentTarget.id
+      const orderlist = this.data.orderlist
+      for (let i = 0, len = orderlist.length; i < len; ++i) {
+        if (orderlist[i].orderid === id) {
+          orderlist[i].open = !orderlist[i].open
+        } else {
+          orderlist[i].open = false
+        }
+      }
+      this.setData({
+        orderlist
+      })
+  },
 
     kindToggle(e) {
+      console.log(e);
         const id = e.currentTarget.id
         const orderlist = this.data.orderlist
 
         for (let i = 0, len = orderlist.length; i < len; ++i) {
           if (orderlist[i].orderid === id) {
             orderlist[i].open = !orderlist[i].open
+            console.log(orderlist[i].open);
           } else {
             orderlist[i].open = false
           }
