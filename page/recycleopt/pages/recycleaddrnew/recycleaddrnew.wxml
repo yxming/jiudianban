@@ -1,25 +1,55 @@
 <!--page/user/recycleaddrnew/recycleaddrnew.wxml-->
-<t-radio-group  defaultValue="radio0" placement="right" bindchange="radioChange">
-  <image style="width: 100%; display:{{hasCommunity?'none':''}}" src="../../../../resource/noservice.png" mode="aspectFit" ></image>
-  <view  id="{{index}}" wx:for="{{communityArray}}" wx:key='name' bindtap="onChecked">
-    <t-radio  id="{{index}}" value="radio{{index}}" label="{{item.name}}" content="{{item.addr}}" />
+<view style="width: 100%; height: 100vh; position: relative;">
+  <!-- <t-radio-group defaultValue="radio0" placement="right" bindchange="radioChange"> -->
+  <image style="width: 100%; display:{{hasCommunity?'none':''}}" src="../../../../resource/noservice.png" mode="aspectFit"></image>
+  <!-- 
+  <view id="{{index}}" wx:for="{{communityArray}}" wx:key='name' bindtap="onChecked">
+    <t-radio id="{{index}}" value="radio{{index}}" label="{{item.name}}" content="{{item.addr}}" />
+  </view> -->
+  <view class="container">
+    <view class="radio-group">
+      <block style="width: 100rpx;height: 400rpx;background-color:blue; " wx:for="{{communityArray}}" wx:key="index" id="{{index}}">
+        <view class="radio-item">
+          <image class="radioItemimage" src="../mage/Rectang.png" mode="" />
+          <view class="contentBox">
+            <view class="contentupBox">{{item.name}}</view>
+            <view class="contentDBox">{{item.addr}}</view>
+          </view>
+          <view class="icon-container" bindtap="handleRadioChange" data-index="{{index}}">
+            <image class="icon" src="{{index === selected ? '../mage/Rectangles.png' : '../mage/rectanglet.png'}}"></image>
+          </view>
+        </view>
+      </block>
+    </view>
   </view>
-  <t-input label="联系人" placeholder="请输入联系人" model:value="{{caller}}"></t-input>
-  <t-input label="门牌号" placeholder="请输入门牌号" model:value="{{flat}}" status="error" tips="几幢几单元几室或几弄几号" />
-  <t-input
-  label="手机号"
-  placeholder="输入手机号码"
-  model:value="{{phoneNumber}}"
-  type="number"
-  tips="{{phoneError ? '手机号输入不正确' : ''}}"
-  bindchange="onPhoneInput"
->
-<view slot="suffix" style="display: flex; align-items: center">
-    <view class="suffix--line"></view>
-   
-  </view>
-</t-input>
-</t-radio-group>
 
-<button style="position: absolute; width: 90%; bottom: 100rpx; left: 20rpx; right: 20rpx;"  type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{hasCommunity?'':'none'}}" bindtap="saveRecycleAddress"> {{buttonTitleSave}}
-</button>
+  <view class="inputContactsBox">
+    <view class="imageBox">
+      <image style="width: 100%;height: 100%;" src="../mage/Group.png" mode="" />
+    </view>
+    <t-input style="width: calc(100%-120rpx);height: calc(100%-60rpx);  " borderless="false" placeholder="请输入联系人" model:value="{{caller}}"></t-input>
+  </view>
+  <view class="inputContactsBox">
+    <view class="imageBox">
+      <image style="width: 100%;height: 100%;" src="../mage/Groupt.png" mode="" />
+    </view>
+    <t-input borderless="false" placeholder="请输入门牌号" model:value="{{flat}}" status="error" />
+  </view>
+  <view class="inputContactsBox">
+    <view class="imageBox">
+      <image style="width: 100%;height: 100%;" src="../mage/Groups.png" mode="" />
+    </view>
+    <t-input borderless="false" placeholder="输入手机号码" model:value="{{phoneNumber}}" type="number" tips="{{phoneError ? '手机号输入不正确' : ''}}" bindchange="onPhoneInput">
+      <view slot="suffix" style="display: flex; align-items: center">
+        <view class="suffix--line"></view>
+      </view>
+    </t-input>
+  </view>
+  <!-- </t-radio-group> -->
+
+  <!-- <button style="position: absolute; width: 90%; bottom: 100rpx; left: 20rpx; right: 20rpx;" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{hasCommunity?'':'none'}}" bindtap="saveRecycleAddress"> {{buttonTitleSave}}
+
+</button> -->
+  <!-- <view class="bottomButton" bindtap="saveRecycleAddress">保存！</view> -->
+  <view class="bottomButton" bindtap="dianjid">保存！</view>
+</view>

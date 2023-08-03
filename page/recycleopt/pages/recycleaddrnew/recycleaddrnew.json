@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "新增地址",
+    "navigationBarTitleText": "编辑地址",
     "usingComponents": {
           "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
           "t-radio": "tdesign-miniprogram/radio/radio",
