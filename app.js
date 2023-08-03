@@ -1,3 +1,4 @@
+const database = require('./utils/database')
 App({
   globalData: {
     company:'一代生活',
@@ -51,6 +52,7 @@ App({
     this.initDataBase()
     this.getDefaultSettings()
     this.checkSession()
+    database.initDataBase()
   },
 
   queryLoginStatus:function(wechatid){
