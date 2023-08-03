@@ -1,9 +1,5 @@
 {
     "description": "项目配置文件",
-    "packOptions": {
-        "ignore": [],
-        "include": []
-    },
     "setting": {
         "urlCheck": true,
         "es6": true,
@@ -19,12 +15,11 @@
         },
         "condition": false,
         "ignoreUploadUnusedFiles": false,
-        "enhance": true
+        "enhance": true,
+        "showShadowRootInWxmlPanel": false,
+        "packNpmRelationList": []
     },
     "compileType": "miniprogram",
-    "libVersion": "2.10.2",
-    "appid": "wx0191693d5b08925f",
-    "projectname": "eventChannel",
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
     "condition": {},
@@ -33,5 +28,10 @@
         "tabSize": 4
     },
     "cloudfunctionRoot": "cloudfunctions/",
-    "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
+    "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+    "appid": "wx0191693d5b08925f",
+    "packOptions": {
+        "ignore": [],
+        "include": []
+    }
 }

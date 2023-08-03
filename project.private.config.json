@@ -4,5 +4,18 @@
     "setting": {
         "compileHotReLoad": true
     },
-    "libVersion": "2.33.0"
+    "libVersion": "2.33.0",
+    "condition": {
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "",
+                    "pathName": "page/recycleopt/pages/recyclerequest/recyclerequest",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                }
+            ]
+        }
+    }
 }
