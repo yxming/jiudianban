@@ -20,6 +20,8 @@ Page({
         triggered: false,
         codeArray:[],
         recycleArray: [],
+        // 选中的id
+        selectedIndex: -1,
         right: [
             {
               text: '编辑',
@@ -48,7 +50,23 @@ Page({
               className: 'btn delete-btn',
             },
           ],
+          // 测试的
+          
     },
+
+// 测试的
+handleRadioChange(e) {
+  const { index } = e.currentTarget.dataset;
+  const { recycleArray } = this.data;
+
+  recycleArray.forEach((item, i) => {
+    item.checked = i === index;
+  });
+  this.setData({
+    recycleArray: recycleArray
+  });
+},
+
 
     /**
      * 生命周期函数--监听页面加载
@@ -58,13 +76,23 @@ Page({
       this.getRecycleAddr(app.globalData.openid)
       const eventChannel= this.getOpenerEventChannel()
       eventChannel.on('acceptDataFromOpenerPage', function (data) {
-        console.log('where from:',data.data.opener)
+        // console.log('where from:',data.data.opener)
         _this.setData({
           opener:data.data.opener
         })
+        console.log('111111');
       })
     },
-
+    handleRadioClick(event) {
+      const index = event.currentTarget.dataset.index;
+      this.setData({
+        selectedRadioIndex: index,
+      });
+    },
+    dianji(event) {
+      const { value } = event.detail;
+      this.setData({ currents: value });
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -118,7 +146,7 @@ Page({
         const eventChannel= this.getOpenerEventChannel()
         var index = detail.currentTarget.id;
         var item = this.data.recycleArray[index];
-        console.log('index:',index, item)
+        var liebiao = item.data
         switch(this.data.opener){
           case 1: 
               eventChannel.emit('acceptDataFromOpenedPage', { data: item })
@@ -130,6 +158,10 @@ Page({
               break;
           default :
         }
+        this.setData({
+          optionsd:liebiao
+     })
+     
     },
     onClicked(obj){
       console.log('onClicked:',obj.currentTarget.id,'----',obj.detail.className);
@@ -138,7 +170,6 @@ Page({
       }else{
         this.data.recycleArray.splice(obj.currentTarget.id,1)
         var arr = this.data.recycleArray
-        console.log('list:',arr)
         this.setData({
              recycleArray:arr
         })
@@ -168,6 +199,7 @@ Page({
               if(data.item){
                 var list  = _this.data.recycleArray;
                 list.splice(0,0,data.item)
+                
                 _this.setData({
                     recycleArray:list,
                     hasRecycleAddr:true
@@ -176,13 +208,11 @@ Page({
             },
           },
           success: function (res) {
-            console.log(res)
             res.eventChannel.emit('acceptDataFromOpenerPage', { data: {'opener':'addrlist'} })
           }
         })
     },
     onPulling(e) {
-        console.log('onPulling:', e)
       },
     
       onRefresh() {
@@ -197,11 +227,9 @@ Page({
       },
     
       onRestore(e) {
-        console.log('onRestore:', e)
       },
     
       onAbort(e) {
-        console.log('onAbort', e)
       },
       getRecycleAddr(wechatid){
         var _this = this
@@ -226,7 +254,6 @@ Page({
         })
         .get({
           success: function(res) {
-            console.log(res)
             if(res.data.length>0){
               //_this.data.recycleArray = res.data
               var arr=[]
@@ -255,7 +282,6 @@ Page({
             }
           },
           fail: function(err){
-            console.log(err)
             _this.setData({
               hasRecycleAddr:false
             })
@@ -297,16 +323,12 @@ Page({
         })
         .get({
           success: function(res) {
-            console.log(res.data)
             var addrDic
             res.data.forEach(element => {
               var code = element.communitycode
-              console.log(code)
             })
-            console.log(addrDic)
           },
           fail:function(err){
-            console.log(err)
           }
         })
       },
@@ -319,7 +341,6 @@ Page({
             wechatid:app.globalData.openid
           },
           success: function(res) {
-            console.log(res.result) // 3
           },
           fail: console.error
         })

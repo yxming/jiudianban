@@ -1,5 +1,6 @@
 {
-    "navigationBarTitleText": "回收地址管理",
+    "navigationBarTitleText": "管理地址",
+    "component": true,
     "usingComponents": {
         "t-swipe-cell": "tdesign-miniprogram/swipe-cell/swipe-cell",
         "t-cell": "tdesign-miniprogram/cell/cell",

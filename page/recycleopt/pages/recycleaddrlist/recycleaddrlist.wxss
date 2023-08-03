@@ -7,7 +7,7 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 120rpx;
+    width: 50%;
     height: 100%;
     color: white;
   }
@@ -41,3 +41,89 @@
   .disable-border {
     display: none;
   }
+
+  /* 整个板块 */
+.UpPlate{
+  width: 100%;
+  height: 100vh;
+  background-color: #F3F3F3;
+  position: relative;
+}
+/* 顶部按钮 */
+.upButton{
+  width: 100%;
+  height: 150rpx;
+  margin: auto;
+  z-index: 9000;
+  position: relative;
+}
+.upButtonimg{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.upButtontimg{
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+}
+.ceshi{
+  width: 100rpx;
+  height: 100rpx;
+  background-color: aqua;
+}
+/* 列表样式 */
+.custom-radio {
+  background-image: url('http://m.qpic.cn/psc?/V50XfePb3gVIDg1PkdEZ34ccJF1VpmFc/ruAMsa53pVQWN7FLK88i5r.udSkCBbpz6.v4ez4Nolq.QyKvRPYtmhTu7r7vTDAjfQIlU66kgT85HlBstGf1d7k5RGEJH8jd781vh.dLVgc!/b&bo=OASEBAAAAAADB54!&rf=viewer_4');
+}
+
+.custom-radio.t-radio-checked {
+  background-image: url('http://m.qpic.cn/psc?/V50XfePb3gVIDg1PkdEZ34ccJF1VpmFc/ruAMsa53pVQWN7FLK88i5r.udSkCBbpz6.v4ez4NolqYlAQmxWvornAyknetPKLWy3PaE1fjyZujNrjaYIcwlgAG.wMYQ4I2fYlT*IMcF*k!/b&bo=OAQ4BAAAAAADByI!&rf=viewer_4');
+}
+/* 这个是测试的 */
+.container {
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+.radio-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #d1d1d1;
+}
+
+.radio-item text {
+  margin-left: 10px;
+}
+.contentBox{
+  width: 550rpx;
+  height: 150rpx;
+  padding: 20rpx 0 20rpx 60rpx;
+}
+.contentupBox{
+  width: 100%;
+  height: 70rpx;
+  font-size: 40rpx;
+  margin-bottom: 10rpx;
+}
+.contentDBox{
+  width: 500rpx;
+  height: 90rpx;
+  font-size: 28rpx;
+  color: rgb(187, 187, 187);
+}
+.icon-container{
+  width: 88rpx;
+  height: 88rpx;
+}
+.icon{
+  width: 100%;
+  height: 100%;
+}

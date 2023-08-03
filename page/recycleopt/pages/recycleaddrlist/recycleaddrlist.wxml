@@ -1,52 +1,125 @@
-<!--page/user/recycleaddrlist/recycleaddrlist.wxml-->
-<scroll-view
-  scroll-y style="width: 100%; height:480px;"
-  refresher-enabled="{{true}}"
-  refresher-threshold="{{100}}"
-  refresher-default-style="white"
-  refresher-background="lightgreen"
-  refresher-triggered="{{triggered}}"
-  bindrefresherpulling="onPulling"
-  bindrefresherrefresh="onRefresh"
-  bindrefresherrestore="onRestore"
-  bindrefresherabort="onAbort"
->
-<image style="margin-top: 10%; width: 100%; display:{{hasRecycleAddr?'none':''}}" src="../../../../resource/norecycleaddr.png" mode="aspectFill" ></image>
-<t-radio-group bind:change="onChange" defaultValue="radio1" placement="right">
-  <t-swipe-cell id="{{index}}" wx:if="{{condition==0}}" wx:for="{{recycleArray}}" wx:key='title' right="{{right}}" bind:click="onClicked" >
-<t-cell id="{{index}}" title="{{item.title}}" note="{{item.note}}" description="{{item.detail}}" bordered="{{true}}" bindtap="onActionClick"/>
-</t-swipe-cell>
+<!-- <scroll-view scroll-y style="width: 100%; height:480px;" refresher-enabled="{{true}}" refresher-threshold="{{100}}" refresher-default-style="white" refresher-background="lightgreen" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort">
+  <image style="margin-top: 10%; width: 100%; display:{{hasRecycleAddr?'none':''}}" src="../../../../resource/norecycleaddr.png" mode="aspectFill"></image>
+  <t-radio-group bind:change="onChange" defaultValue="radio1" placement="right">
 
-<t-swipe-cell wx:if="{{condition==1}}" right="{{right}}" bind:click="onActionClick">
-  <t-cell title="左滑-带图标文本双操作" note="辅助信息" description="一段很长很长的内容文字" bordered="{{true}}" />
-</t-swipe-cell>
-<t-swipe-cell wx:if="{{condition==1}}" right="{{right}}" bind:click="onActionClick">
-  <t-radio value="radio2" title="左滑-带图标文本双操作" label="单选" description="一段很长很长的内容文字" bordered="{{true}}"  bindtap="onActionClick"/>
-</t-swipe-cell>
-<t-swipe-cell wx:if="{{condition==1}}" right="{{rightIcon}}">
-  <t-cell title="左滑-仅带图标双操作" note="辅助信息" description="一段很长很长的内容文字" bordered="{{true}}" />
-</t-swipe-cell>
 
-<t-swipe-cell wx:if="{{condition==1}}">
-  <t-cell
-    bordered="{{true}}"
-    title="左滑大列表-仅带图标双操作"
-    description="一段很长很长的内容文字"
-    note="辅助信息"
-    image="https://tdesign.gtimg.com/miniprogram/images/default.svg"
-  />
-  <view slot="right" class="btn-wrapper">
-    <view class="btn edit-btn column" bind:tap="onEdit">
-      <t-icon class="padding-bottom" name="edit" size="32rpx"></t-icon>
-      编辑
-    </view>
-    <view class="btn delete-btn column" bind:tap="onDelete">
-      <t-icon class="padding-bottom" name="delete" size="32rpx"></t-icon>
-      删除
-    </view>
-  </view>
-</t-swipe-cell>
-</t-radio-group>
+    <t-swipe-cell id="{{index}}" wx:if="{{condition==0}}" wx:for="{{recycleArray}}" wx:key='title' right="{{right}}" bind:click="onClicked">
+      <t-cell id="{{index}}" title="{{item.title}}" note="{{item.note}}" description="{{item.detail}}" bordered="{{true}}" bindtap="onActionClick" />
+    </t-swipe-cell>
+
+    <t-swipe-cell wx:if="{{condition==1}}" right="{{right}}" bind:click="onActionClick">
+      <t-cell title="左滑-带图标文本双操作" note="辅助信息" description="一段很长很长的内容文字" bordered="{{true}}" />
+    </t-swipe-cell>
+    <t-swipe-cell wx:if="{{condition==1}}" right="{{right}}" bind:click="onActionClick">
+      <t-radio value="radio2" title="左滑-带图标文本双操作" label="单选" description="一段很长很长的内容文字" bordered="{{true}}" bindtap="onActionClick" />
+    </t-swipe-cell>
+    <t-swipe-cell wx:if="{{condition==1}}" right="{{rightIcon}}">
+      <t-cell title="左滑-仅带图标双操作" note="辅助信息" description="一段很长很长的内容文字" bordered="{{true}}" />
+    </t-swipe-cell>
+
+    <t-swipe-cell wx:if="{{condition==1}}">
+      <t-cell bordered="{{true}}" title="左滑大列表-仅带图标双操作" description="一段很长很长的内容文字" note="辅助信息" image="https://tdesign.gtimg.com/miniprogram/images/default.svg" />
+      <view slot="right" class="btn-wrapper">
+        <view class="btn edit-btn column" bind:tap="onEdit">
+          <t-icon class="padding-bottom" name="edit" size="32rpx"></t-icon>
+          编辑
+        </view>
+        <view class="btn delete-btn column" bind:tap="onDelete">
+          <t-icon class="padding-bottom" name="delete" size="32rpx"></t-icon>
+          删除
+        </view>
+      </view>
+    </t-swipe-cell>
+  </t-radio-group>
 </scroll-view>
 <button style="width: 90%; position: absolute; bottom: 100rpx; left: 20rpx; right: 20rpx;" disabled="disabled" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="newRecycleAddress"> {{buttonTitleNewRecycleAddr}}
-</button>
+</button> -->
+<!-- 下拉刷新 -->
+<scroll-view scroll-y class="UpPlate" refresher-enabled="{{true}}" refresher-threshold="{{100}}" refresher-default-style="white" refresher-background="lightgreen" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort">
+  <!-- 按钮 -->
+  <view class="upButton" bindtap="newRecycleAddress">
+    <image class="upButtonimg" src="../mage/Rectangle.png" mode="" />
+    <image class="upButtontimg" src="../mage/Vector.png" mode="" />
+  </view>
+  <image style="margin-top: 10%; width: 100%; display:{{hasRecycleAddr?'none':''}}" src="../../../../resource/norecycleaddr.png" mode="aspectFill"></image>
+
+  <!-- 
+  <t-swipe-cell id="{{index}}" wx:if="{{condition==0}}" wx:for="{{recycleArray}}"  wx:key='title' right="{{right}}" bind:click="onClicked">
+    <t-cell id="{{index}}" title="{{item.title}}" note="{{item.note}}" description="{{item.detail}}" bordered="{{true}}" bindtap="onActionClick" class="Slider" style="border-bottom: 1rpx solid rgb(216, 216, 216); padding-right: 200rpx;  position: relative;" >
+      <view class="ceshi"></view>
+      <view  slot="right"  class="btn-wrapper" style="width: 300rpx;">
+        <view class="btn edit-btn column" bind:tap="onEdit">
+          <t-icon class="padding-bottom" name="edit" size="32rpx"></t-icon>
+          编辑
+        </view>
+        <view class="btn delete-btn column" bind:tap="onDelete">
+          <t-icon class="padding-bottom" name="delete" size="32rpx"></t-icon>
+          删除
+        </view>
+      </view>
+    </t-cell>
+  </t-swipe-cell> -->
+
+  <!-- <view wx:for="{{recycleArray}}" wx:key="index">
+    <view style="position: relative;" id="{{index}}" wx:if="{{condition == 0}}">
+      <t-swipe-cell right="{{right}}" bind:touchstart="onTouchStart" bind:touchmove="onTouchMove" bind:touchend="onTouchEnd">
+        <t-cell id="{{index}}" title="{{item.title}}" note="{{item.note}}" description="{{item.detail}}" bordered="{{true}}" bindtap="handleRadioClick" class="Slider" style="border-bottom: 1rpx solid rgb(216, 216, 216); padding: 20rpx 200rpx 20rpx 100rpx; position: relative;">
+          <view slot="right" class="btn-wrapper">
+            <view class="btn edit-btn column" bind:tap="onEdit">
+              <t-icon class="padding-bottom" name="edit" size="32rpx"></t-icon>
+              编辑
+            </view>
+            <view class="btn delete-btn column" bind:tap="onDelete">
+              <t-icon class="padding-bottom" name="delete" size="32rpx"></t-icon>
+              删除
+            </view>
+          </view>
+        </t-cell>
+      </t-swipe-cell>
+    </view>
+  </view> -->
+
+  <!-- 这个是测试的 -->
+  <!-- <view class="container">
+    <view class="radio-group">
+      <block wx:for="{{options}}" wx:key="index">
+        <t-swipe-cell right="{{right}}" bind:touchstart="onTouchStart" bind:touchmove="onTouchMove" bind:touchend="onTouchEnd">
+          <view class="radio-item">
+            <view class="contentBox">ajsnfjnasknfdlasn</view>
+            <radio-group bindchange="handleRadioChange">
+              <radio value="{{item.value}}" checked="{{item.checked}}"></radio>
+            </radio-group>
+          </view>
+        </t-swipe-cell>
+      </block>
+    </view>
+  </view> -->
+  <view class="container">
+    <view class="radio-group">
+      <block wx:for="{{recycleArray}}" wx:key="index" id="{{index}}">
+        <t-swipe-cell right="{{right}}" bind:touchstart="onTouchStart" bind:touchmove="onTouchMove" bind:touchend="onTouchEnd">
+          <view class="radio-item">
+            <view class="contentBox">
+              <view class="contentupBox">{{item.title}}</view>
+              <view class="contentDBox">{{item.detail}}</view>
+            </view>
+            <view class="icon-container" bindtap="handleRadioChange" data-index="{{index}}">
+              <image class="icon" src="{{item.checked ? '../mage/Rectangles.png' : '../mage/rectanglet.png'}}"></image>
+            </view>
+          </view>
+          <view slot="right" class="btn-wrapper">
+            <view class="btn edit-btn column" bind:tap="onEdit">
+              <t-icon class="padding-bottom" name="edit" size="32rpx"></t-icon>
+              编辑
+            </view>
+            <view class="btn delete-btn column" bind:tap="onDelete">
+              <t-icon class="padding-bottom" name="delete" size="32rpx"></t-icon>
+              删除
+            </view>
+          </view>
+        </t-swipe-cell>
+      </block>
+    </view>
+  </view>
+
+</scroll-view>
