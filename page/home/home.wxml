@@ -40,6 +40,9 @@
     <view class="sayHelloLText">Hi !</view>
     <view class="sayHelloLText" style="margin-left: 30rpx;">{{name}}</view>
   </view> -->
+  <view class="shangmbubox">
+    <view class="dohangind">一袋生活</view>
+  </view>
   <!-- 米袋链接 -->
   <swiper class="swiper" circular="{{true}}" autoplay="{{true}}" interval="{{3000}}">
     <block wx:for="{{imgSrcs}}" wx:key="{{index}}">
@@ -63,7 +66,7 @@
     </view>
   </view>
   <view class="ddimage">
-  <image style="width: 100%; height: 100%; " src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230726164126.jpg?sign=46eed6e1b1259a8700954798c4b6663d&t=1691071980" mode=""/>
+    <image style="width: 100%; height: 100%; " src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230726164126.jpg?sign=46eed6e1b1259a8700954798c4b6663d&t=1691071980" mode="" />
   </view>
 </view>
 

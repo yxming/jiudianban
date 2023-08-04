@@ -3,6 +3,7 @@
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#F0F0F3",
     "backgroundColorTop": "#6394c0",
+    "navigationStyle":"custom",
     "usingComponents": {
         "t-swiper": "tdesign-miniprogram/swiper/swiper",
         "t-image": "tdesign-miniprogram/image/image",
