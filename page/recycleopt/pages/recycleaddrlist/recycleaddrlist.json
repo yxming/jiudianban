@@ -1,6 +1,8 @@
 {
     "navigationBarTitleText": "管理地址",
     "component": true,
+    "navigationBarBackgroundColor": "#F0F0F3",
+    "backgroundColorTop": "#F0F0F3",
     "usingComponents": {
         "t-swipe-cell": "tdesign-miniprogram/swipe-cell/swipe-cell",
         "t-cell": "tdesign-miniprogram/cell/cell",
