@@ -1,7 +1,7 @@
 export default [
   {
     icon: 'home',
-    text: '首页',
+    // text: '首页',
     url: 'page/home/home',
   },
   // {
@@ -9,6 +9,11 @@ export default [
   //   text: '服务',
   //   url: 'page/market/market',
   // },
+  {
+    icon: 'star',
+    // text: '订单',
+    url: 'page/recycleopt/pages/recycleorders/recycleorders',
+  },
   // {
   //   icon: 'discount',
   //   text: '折扣',
@@ -26,7 +31,7 @@ export default [
   // },
   {
     icon: 'person',
-    text: '我的',
+    // text: '我的',
     url: 'page/mine/mine',
   }
 ];

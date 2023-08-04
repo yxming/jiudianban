@@ -20,27 +20,18 @@
         }
     },
     "tabBar": {
-        "custom": true,
-        "color": "#666666",
-        "selectedColor": "#FF5F15",
+        "custom": false,
         "backgroundColor": "#ffffff",
-        "borderStyle": "black",
         "list": [
             {
                 "pagePath": "page/home/home",
-                "text": "首页"
-            },
-            {
-                "pagePath": "page/market/market",
-                "text": "集市"
-            },
-            {
-                "pagePath": "page/discount/discount",
-                "text": "折扣"
+                "iconPath": "image/homem.png",
+                "selectedIconPath": "image/homel.png"
             },
             {
                 "pagePath": "page/mine/mine",
-                "text": "我的"
+                "iconPath": "image/lianxim.png",
+                "selectedIconPath": "image/lianxil.png"
             }
         ]
     },
