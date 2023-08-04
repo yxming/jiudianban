@@ -1,5 +1,7 @@
 {
     "navigationBarTitleText": "下单",
+    "navigationBarBackgroundColor": "#F0F0F3",
+    "backgroundColorTop": "#F0F0F3",
     "usingComponents": {
         "t-input": "tdesign-miniprogram/input/input",
         "t-button": "tdesign-miniprogram/button/button"
