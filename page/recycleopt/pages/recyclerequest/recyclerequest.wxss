@@ -103,7 +103,7 @@
   padding: 30rpx;
   padding-left: 60rpx;
   color: #A4A4A4;
-  font-style: 28rpx;
+  font-style: 14rpx;
 }
 /* 底部同意按钮 */
 .Doradio{
@@ -115,21 +115,28 @@
   transform: translateX(-50%);
   color: #A4A4A4;
 }
-.radio-container {
-  display: flex;
-  align-items: center;
-}
-
-.radio-label {
+.option {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.radio-image {
+.icon {
   width: 20px;
   height: 20px;
-  margin-right: 5px;
+  margin-right: 10rpx;
+}
+
+.label {
+  font-size: 16px;
+}
+
+.option.selected .icon {
+  filter: invert(50%);
+}
+
+.option.selected .label {
+  color: green;
 }
 
 /* 底部按钮 */
@@ -148,4 +155,20 @@
   left: 50%;
   transform: translateX(-50%);
   font-weight: bold;
+}
+.Dbuttons{
+  width: 492rpx;
+  height: 108rpx;
+  border-radius: 50rpx;
+  color: #fff;
+  font-size: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  background-color: rgb(119, 119, 119);
 }

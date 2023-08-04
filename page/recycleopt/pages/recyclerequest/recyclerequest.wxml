@@ -10,8 +10,8 @@
     <view class="limage">
       <image style="width: 100%; height: 100%;" src="../mage/shangbianid.png" mode="" />
     </view>
-    <t-input class="inputBlock" borderless="false" style="padding-left: 100rpx; padding-right: 200rpx;" label="" placeholder="请输入联系人" status="success" model:tips="{{detail}}" model:value="{{title}}"  bind:click="selectedAddr" />
-    <view class="pictureRight" bindtap="selectedAddr" >
+    <t-input class="inputBlock" borderless="false" style="padding-left: 100rpx; padding-right: 200rpx;" label="" placeholder="请输入联系人" status="success" model:tips="{{detail}}" model:value="{{title}}" bind:click="selectedAddr" />
+    <view class="pictureRight" bindtap="selectedAddr">
       <image style="width: 100%; height: 100%;" src="../mage/Frame.png" mode="" />
     </view>
   </view>
@@ -24,12 +24,8 @@
     </t-input>
   </view>
   <view class="notice">
-    <view>回收单价：</view>
-    <view style="padding-left: 30rpx;">0.6元/公斤</view>
-    <view>上门时间：</view>
-    <view style="padding-left: 30rpx;">统一上门时间为15:30-20:00</view>
-    <view>回收清单：</view>
-    <view style="padding-left: 30rpx;">塑料瓶，易拉罐，书籍，报纸，纸盒，金属等</view>
+    <view>统一回收价为 <text style="color: #00754A;">0.6元/公斤</text></view>
+    <view>为了配合小区垃圾分类，杜绝拾荒者翻倒垃圾桶搞乱垃圾站分类工作，从源头切断可回收物品进入垃圾桶。“一袋生活”开展跑腿式上门“一袋式”回收，回收后可重新领取新的回收袋，可回收物品为塑料瓶、易拉罐、报纸书籍、纸壳、金属等。</view>
   </view>
 </view>
 
@@ -38,13 +34,9 @@ type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
 disabled="{{disabled}}" bindtap="onCommit"> 提交
 </button> -->
 <view class="Doradio">
-  <view class="radio-container" style="z-index: 9999;">
-    <radio-group name="radioGroup" bindchange="changeImage">
-      <label class="radio-label">
-        <image class="radio-image" src="{{imagePath}}"></image>
-        我已知悉
-      </label>
-    </radio-group>
+  <view class="option" bindtap="toggleIcon">
+    <image class="icon" src="{{iconUrl}}"></image>
+    <view class="label">{{optionLabel}}</view>
   </view>
 </view>
-<view class="Dbutton" bindtap="onCommit">立刻下单！</view>
+<view class="{{jinzhiling===0?'Dbutton':'Dbuttons'}}" bindtap="{{jinzhiling===0?'':'onCommit'}}">立刻下单！</view>

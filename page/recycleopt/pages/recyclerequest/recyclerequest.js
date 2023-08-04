@@ -1,5 +1,5 @@
 // page/user/recyclerequest/recyclerequest.js
-const util = require('../../../../util/util.js')
+const util = require('../../../../utils/utils.js')
 const app = getApp()
 Page({
 
@@ -50,18 +50,28 @@ Page({
     enableSatellite: false,
     enableTraffic: false,
     // 这个是单选判断
-    isChecked: false,
-    imagePath: '../mage/rectanglet.png'
+    iconType: 'circle',
+    optionLabel: '我已知悉上门回收规则',
+    jinzhiling:0
     },
     // 单选点击事件
-    changeImage: function(event) {
-       console.log("11111");
-      var isChecked = event.detail.value;
-      var imagePath = isChecked ? '../mage/Rectangles.png' : '../mage/rectanglet.png';
+    toggleIcon: function () {
+      const { iconUrl } = this.data;
+      const newIconUrl = iconUrl === '../mage/rectanglet.png' ? '../mage/Rectangles.png' : '../mage/rectanglet.png';
+      const newOptionLabel = iconUrl === '../mage/rectanglet.png' ? '我已知悉上门回收规则' : '我已知悉上门回收规则';
       this.setData({
-        isChecked: isChecked,
-        imagePath: imagePath
+        iconUrl: newIconUrl,
+        optionLabel: newOptionLabel
       });
+      if(this.data.jinzhiling===0){
+        this.setData({
+          jinzhiling:1
+        });
+      }else{
+        this.setData({
+          jinzhiling:0
+        });
+      }
     },
 
 
@@ -70,6 +80,7 @@ Page({
      */
     onLoad(options) {
       this.setDefaultRecycleAddr(app.globalData.openid)
+      this.toggleIcon()
     },
 
     /**
