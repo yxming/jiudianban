@@ -2,11 +2,13 @@
 .custom-tabs {
   margin-bottom: 32rpx;
 }
-.informationBlock{
+
+.informationBlock {
   width: 100%;
   height: 100vh;
   background-color: #F0F0F3;
 }
+
 .text-box {
   width: 100%;
   height: auto;
@@ -19,6 +21,7 @@
   color: #353535;
   line-height: 2em;
 }
+
 .text-effective {
   margin-bottom: 5px;
   display: flex;
@@ -29,15 +32,16 @@
   color: #A4A4A4;
   margin-bottom: 90rpx;
 }
+
 /* 滑动的块样式 */
-.sliderBox{
-  width:  calc(100%-120rpx);
+.sliderBox {
+  width: calc(100%-120rpx);
   height: 60rpx;
   position: relative;
   background-color: #F0F0F3;
   border-right: 1rpx solid #fff;
   border-bottom: 1rpx solid #fff;
-  border-radius:45rpx;
+  border-radius: 45rpx;
   margin: 0 30rpx 40rpx 30rpx;
   padding: 20rpx 30rpx 0 30rpx;
   box-shadow: inset 9rpx 9rpx 5rpx 5rpx rgba(192, 190, 190, 0.2);
@@ -46,8 +50,9 @@
   align-items: center;
   /* overflow: hidden; */
 }
+
 /* 盒子里的内部字 */
-.sliderdtextBox{
+.sliderdtextBox {
   width: 40%;
   height: 50rpx;
   text-align: center;
@@ -63,6 +68,7 @@
 .sliderdtextBox.active {
   /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); */
 }
+
 /* 滑动块 */
 .sliderIndicator {
   position: absolute;
@@ -76,41 +82,48 @@
   transition: left 0.3s;
   position: relative;
 }
-.upgaizi{
-  width: 146rpx;
-  height: 64rpx;
-  background-color: #F0F0F3;
-  border: 1rpx solid #fff;
+
+.upgaizi {
+  width: 200rpx;
+  height: 110rpx;
   position: absolute;
-  top: -45rpx;
-  left: -590rpx;
-  border-radius: 30rpx;
-  box-shadow: inset 0rpx 0rpx 10rpx 10rpx rgba(182, 180, 180, 0.2);
-  padding-top: 20rpx;
-  text-align: center;
+  top: -58rpx;
+  left: -600rpx;
+  position: relative;
 }
+
 /* 里面的滑动块 */
-.lowerBox{
+.lowerBox {
   width: calc(100%-80rpx);
-  height: 400rpx;
+  height: auto;
   padding: 40rpx;
+  padding-bottom: 0rpx;
+  background-color: #F3F3F3;
 }
+
 .containers {
   width: 100%;
   height: 100%;
 }
+
 /* 底部的按钮块 */
-.lower-pop-up-layer{
-  width: calc(100%-60rpx);
-  height: 240rpx;
-  margin-top: 20rpx;
+.lower-pop-up-layer {
+  width: 100%;
+  height: 290rpx;
+  /* margin-top: 20rpx; */
   padding-top: 30rpx;
+  background-color: #F3F3F3;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
-.internalbutton{
+
+.internalbutton {
   width: 500rpx;
   height: 120rpx;
   margin: auto;
 }
+
 .button-example {
   width: 100%;
   margin: 0 32rpx;
@@ -118,17 +131,25 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 32rpx;
 }
+
 .all {
-    padding: 0 10px;
+  width: 100%;
+  padding: 0 10px;
+  padding-left: 80rpx;
+  font-size: 24rpx;
+  background-color: #F3F3F3;
 }
+
 .date {
-    display: inline-block;
-    width: 70%;
-    margin-top: 10px;
+  display: inline-block;
+  width: 70%;
+  /* margin-top: 10rpx; */
 }
+
 .button-example:not(:last-child) {
   margin-bottom: 32rpx;
 }
+
 .button-cash {
   display: flex;
   justify-content: space-around;
@@ -144,14 +165,16 @@
   background: #fff;
   border-top-left-radius: 30rpx;
   border-top-right-radius: 30rpx;
-  padding: 50rpx 30rpx 70rpx 30rpx; 
+  padding: 50rpx 30rpx 70rpx 30rpx;
 }
-.ejectBlock{
+
+.ejectBlock {
   width: 460rpx;
   height: 300rpx;
   margin: auto;
 }
-.input{
+
+.input {
   width: 352rpx;
   height: 100rpx;
   margin: auto;
@@ -160,8 +183,9 @@
   padding-bottom: 20rpx;
   border-bottom: 1rpx solid rgb(187, 187, 186);
 }
+
 /* 按钮 */
-.haobox{
+.haobox {
   width: 115rpx;
   height: auto;
   margin: auto;
@@ -169,10 +193,10 @@
   color: #A4A4A4;
   margin-top: 30rpx;
 }
-.DdBox{
+
+.DdBox {
   width: 300rpx;
   height: 130rpx;
   margin: auto;
   margin-top: 40rpx;
 }
-

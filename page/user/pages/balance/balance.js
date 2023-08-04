@@ -39,7 +39,9 @@ Page({
         { value: 'bottom', text: '底部弹出' }
       ],
       // 
-      inputValue: ''
+      inputValue: '',
+      textx:"请输入取米数量",
+      value:0
     },
 
     /**
@@ -80,29 +82,39 @@ Page({
     },
     // 底部弹框
     // 取钱
-    handlePopups(e) {
-      const { item } = e.currentTarget.dataset;
-
-      this.setData(
-        {
-          cur: item,
-        },
-        () => {
-          this.setData({ visible: true });
-        },
-      );
-    },
     handlePopup(e) {
       const { item } = e.currentTarget.dataset;
-
-      this.setData(
-        {
-          cur: item,
-        },
-        () => {
-          this.setData({ visible: true });
-        },
-      );
+        const value = e.currentTarget.dataset.value;
+if(value=='1'){
+  this.setData({
+    textx:"请输入取米数量"
+  }
+  )
+  this.setData(
+    {
+      cur: item,
+      value:''
+    },
+    () => {
+      this.setData({ visible: true });
+    },
+  );
+}else{
+  this.setData({
+    textx:"请输入存米数量"
+  }
+  )
+  this.setData(
+    {
+      cur: item,
+      value:''
+    },
+    () => {
+      this.setData({ visible: true });
+    },
+  );
+}
+      
     },
     onVisibleChange(e) {
       this.setData({
