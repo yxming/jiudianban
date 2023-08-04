@@ -44,11 +44,11 @@
                   </view>
                   <!-- style="display:{{role==2||role==0?'':'none'}}" -->
                   <view class="order-detail-item" style="display:{{role==2||role==0?'none':''}}">
-                    <view class="order-detail-text fw" >客户:</view>
+                    <view class="order-detail-text fw">客户:</view>
                     <view class="order-list-text order-detail-item order-detail-text">{{item.saler}}</view>
                   </view>
                   <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
-                    <view class="order-detail-text fw" >地址:</view>
+                    <view class="order-detail-text fw">地址:</view>
                     <view class="order-list-text order-detail-item order-detail-text">{{item.communityname}}</view>
                   </view>
                   <view class="order-detail-item" style="display:{{role==2||role==0?'none':''}}">
@@ -76,13 +76,12 @@
                     <view class="order-detail-text ">{{item.status?'已完成':'未完成'}}</view>
                   </view> -->
                   </view>
-                    <!-- 付款按钮 -->
-                    <view class="anniu" bindtap="onPayClicked" style="display:{{role==2||role==0?'none':''}}">付款!</view>
+                  <!-- 付款按钮 -->
+                  <view class="anniu" bindtap="onPayClicked" style="display:{{role==2||role==0?'none':''}}">付款!</view>
                   <!-- <view class="button">
                 <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':role==2||role==0?'':'hidden'}}" bindtap="handlePopup">付款</button>
               </view> -->
                 </view>
-              
               </view>
             </view>
           </view>
@@ -112,11 +111,11 @@
         <view class="order-detail-text fw">定单号: </view>
         <view class="order-detail-text">{{item.orderid}}</view>
       </view>
-      <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'':'none'}}" >
+      <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'':'none'}}">
         <view class="order-detail-text fw">客户:</view>
         <view class="order-list-text order-detail-item order-detail-text xianzeng">{{item.saler}}</view>
       </view>
-      <view class="order-detail-item xianzeng"  style="display:{{role==2||role==0?'':'none'}}">
+      <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'':'none'}}">
         <view class="order-detail-text fw">手机号:</view>
         <view class="order-list-text order-detail-item order-detail-text xianzeng">{{item.phonenum}}</view>
       </view>
