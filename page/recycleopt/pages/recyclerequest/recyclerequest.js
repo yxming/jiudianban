@@ -52,27 +52,18 @@ Page({
     enableTraffic: false,
     // 这个是单选判断
     iconType: 'circle',
+    iconUrl:'../mage/Rectanglet.png',
     optionLabel: '我已知悉上门回收规则',
-    jinzhiling:0
+    iKnew:false,
     },
     // 单选点击事件
     toggleIcon: function () {
-      const { iconUrl } = this.data;
-      const newIconUrl = iconUrl === '../mage/rectanglet.png' ? '../mage/Rectangles.png' : '../mage/rectanglet.png';
-      const newOptionLabel = iconUrl === '../mage/rectanglet.png' ? '我已知悉上门回收规则' : '我已知悉上门回收规则';
+      const { iKnew } = this.data;
+      const iconUrl = iKnew ? '../mage/Rectanglet.png' : '../mage/Rectangles.png';
       this.setData({
-        iconUrl: newIconUrl,
-        optionLabel: newOptionLabel
+        iKnew:!iKnew,
+        iconUrl
       });
-      if(this.data.jinzhiling===0){
-        this.setData({
-          jinzhiling:1
-        });
-      }else{
-        this.setData({
-          jinzhiling:0
-        });
-      }
     },
 
 
@@ -81,7 +72,7 @@ Page({
      */
     onLoad(options) {
       this.setDefaultRecycleAddr(app.globalData.openid)
-      this.toggleIcon()
+      //this.toggleIcon()
     },
 
     /**

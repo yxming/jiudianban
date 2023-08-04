@@ -39,4 +39,4 @@ disabled="{{disabled}}" bindtap="onCommit"> 提交
     <view class="label">{{optionLabel}}</view>
   </view>
 </view>
-<view class="{{jinzhiling===0?'Dbutton':'Dbuttons'}}" bindtap="{{jinzhiling===0?'':'onCommit'}}">立刻下单！</view>
+<view class="{{iKnew?'Dbutton':'Dbuttons'}}" bindtap="{{iKnew?'onCommit':''}}">立刻下单！</view>
