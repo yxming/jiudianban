@@ -10,7 +10,7 @@
             "list": [
                 {
                     "name": "",
-                    "pathName": "page/recycleopt/pages/recyclerequest/recyclerequest",
+                    "pathName": "page/recycleopt/pages/recycleorders/recycleorders",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
