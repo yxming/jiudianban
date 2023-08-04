@@ -2,10 +2,16 @@
 .custom-tabs {
   margin-bottom: 32rpx;
 }
+.informationBlock{
+  width: 100%;
+  height: 100vh;
+  background-color: #F0F0F3;
+}
 .text-box {
-  padding: 20px 0;
+  width: 100%;
+  height: auto;
+  padding: 120rpx 0 50rpx 0;
   display: flex;
-  background-color: #f7f7f7;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -16,12 +22,94 @@
 .text-effective {
   margin-bottom: 5px;
   display: flex;
-  background-color: #f7f7f7;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-size: 15px;
-  color: #353535;
+  color: #A4A4A4;
+  margin-bottom: 90rpx;
+}
+/* 滑动的块样式 */
+.sliderBox{
+  width:  calc(100%-120rpx);
+  height: 60rpx;
+  position: relative;
+  background-color: #F0F0F3;
+  border-right: 1rpx solid #fff;
+  border-bottom: 1rpx solid #fff;
+  border-radius:45rpx;
+  margin: 0 30rpx 40rpx 30rpx;
+  padding: 20rpx 30rpx 0 30rpx;
+  box-shadow: inset 9rpx 9rpx 5rpx 5rpx rgba(192, 190, 190, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* overflow: hidden; */
+}
+/* 盒子里的内部字 */
+.sliderdtextBox{
+  width: 40%;
+  height: 50rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #9A9A9A;
+  margin-left: 5rpx;
+  flex: 1;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+.sliderdtextBox:hover,
+.sliderdtextBox.active {
+  /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); */
+}
+/* 滑动块 */
+.sliderIndicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /* width: calc(100% / 3);
+  height: 5px; */
+  width: 5rpx;
+  height: 5rpx;
+  background-color: #F0F0F3;
+  transition: left 0.3s;
+  position: relative;
+}
+.upgaizi{
+  width: 146rpx;
+  height: 64rpx;
+  background-color: #F0F0F3;
+  border: 1rpx solid #fff;
+  position: absolute;
+  top: -45rpx;
+  left: -590rpx;
+  border-radius: 30rpx;
+  box-shadow: inset 0rpx 0rpx 10rpx 10rpx rgba(182, 180, 180, 0.2);
+  padding-top: 20rpx;
+  text-align: center;
+}
+/* 里面的滑动块 */
+.lowerBox{
+  width: calc(100%-80rpx);
+  height: 400rpx;
+  padding: 40rpx;
+}
+.containers {
+  width: 100%;
+  height: 100%;
+}
+/* 底部的按钮块 */
+.lower-pop-up-layer{
+  width: calc(100%-60rpx);
+  height: 240rpx;
+  margin-top: 20rpx;
+  padding-top: 30rpx;
+}
+.internalbutton{
+  width: 500rpx;
+  height: 120rpx;
+  margin: auto;
 }
 .button-example {
   width: 100%;
@@ -47,67 +135,44 @@
   background-color: #fff;
   margin: 20px 0;
 }
-.btn {
-  /* width: 55px;
-    border:0.5px solid rgba(226, 133, 206, 0.842); */
-  /* background-color: rgb(172, 218, 208); */
+
+
+/* 底部的弹出层 */
+.block {
+  width: 100% calc(100%-60rpx);
+  height: auto;
+  background: #fff;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  padding: 50rpx 30rpx 70rpx 30rpx; 
+}
+.ejectBlock{
+  width: 460rpx;
+  height: 300rpx;
+  margin: auto;
+}
+.input{
+  width: 352rpx;
+  height: 100rpx;
+  margin: auto;
+  font-size: 48rpx;
+  text-align: center;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid rgb(187, 187, 186);
+}
+/* 按钮 */
+.haobox{
+  width: 115rpx;
+  height: auto;
+  margin: auto;
+  font-size: 28rpx;
+  color: #A4A4A4;
+  margin-top: 30rpx;
+}
+.DdBox{
+  width: 300rpx;
+  height: 130rpx;
+  margin: auto;
+  margin-top: 40rpx;
 }
 
-.table {
-  justify-content: space-around;
-  border-bottom: 0.5px solid rgba(226, 133, 206, 0.842);
-}
-.item {
-  font-style: normal;
-  font-family: serif;
-}
-.chong {
-  color: #ff3f3f;
-  border: 2px solid #ff3f3f;
-  height: 35px;
-  width: 80px;
-  text-align: center;
-  line-height: 35px;
-  border-radius: 5px;
-}
-.ti {
-  color: #1672fe;
-  border: 2px solid #1672fe;
-  height: 35px;
-  width: 80px;
-  text-align: center;
-  line-height: 35px;
-  border-radius: 5px;
-}
-.shi {
-  color: #0f0f0f;
-  border: 2px solid #0f0f0f;
-  height: 35px;
-  width: 80px;
-  text-align: center;
-  line-height: 35px;
-  border-radius: 5px;
-}
-
-.tabs {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 40px;
-  border: 1px solid #b8d4ff;
-  border-radius: 15px;
-}
-.tab {
-  background-color: #ffffff;
-  height: 40px;
-  width: 100px;
-  border-radius: 20px;
-  text-align: center;
-  line-height: 40px;
-  color: rgb(7, 7, 7);
-}
-.active {
-  border-bottom: 3px solid #0b6bfe;
-  height: 40px;
-  line-height: 40px;
-}

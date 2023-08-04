@@ -1,22 +1,69 @@
 <!--page/user/balance/balance.wxml-->
-
-<view class="text-box">
-    <text style="font-size:5ch;">{{balance}}粒</text>
-</view>
-<view class="text-effective">
+<!-- 部分重构 -->
+<view class="informationBlock">
+  <!-- 上面显示余额 -->
+  <view class="text-box">
+    <text style="font-size:160rpx;">{{balance}}</text>
+  </view>
+  <view class="text-effective">
     <text>可提：{{cash}}粒</text>
+  </view>
+  <!-- 滑块效果 -->
+  <view class="sliderBox">
+    <view class="sliderdtextBox" data-index="0" bindtap="onClickSlider">全部</view>
+    <view class="sliderdtextBox" data-index="1" bindtap="onClickSlider">收入</view>
+    <view class="sliderdtextBox" data-index="2" bindtap="onClickSlider">支出</view>
+    <view class="sliderIndicator" style="left: {{indicatorLeft}};">
+      <view class="upgaizi" style="color: #00754A;">{{nametexts}}</view>
+    </view>
+  </view>
+  <view class="lowerBox">
+    <scroll-view class="containers" scroll-y>
+      <!-- 这里面是内容 -->
+      <view class="list">
+        <block wx:for="{{cashrecord}}" wx:key="date" wx:for-item="item">
+          <view class="all" wx:if="{{activeType === 'all' || item.type === activeType}}">
+            <!-- 根据条件展示数据 -->
+            <text class="date">{{item.date}}</text>{{item.type=='expense'? '支出:':'收入:'}}
+            <text style="color:{{item.type=='expense'? 'red':'chartreuse'}}">{{item.type=='expense'? '':'+'}}{{item.cash}}</text>
+          </view>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="lower-pop-up-layer">
+    <view class="internalbutton" bindtap="handlePopup">
+      <image style="width: 100%; height: 100%;" src="../image/Groupqmu.png" mode="" />
+    </view>
+    <view class="internalbutton" style="width: 550rpx;  height: 180rpx;" bindtap="handlePopups">
+      <image style="width: 100%; height: 100%;" src="../image/Groupcunmi.png" mode="" />
+    </view>
+  </view>
 </view>
+<!-- 弹出层 -->
+<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+  <view class="block">
+    <view class="ejectBlock">
+      <input class="input" bindinput="handleInput" placeholder="请输入取米数量"></input>
+      <view class="haobox">1粒=1元</view>
+      <view class="DdBox" bindtap="callPayAction" >
+        <image style="width: 100%; height: 100%;" src="../image/xiadan.png" mode="" />
+      </view>
+    </view>
+  </view>
+</t-popup>
+
 
 <!-- <view class="button-cash" style="margin-top: 20rpx; margin-bottom: 20rpx; ">
   <button class="btn" >充值</button>
   <button class="btn" >提现</button>
   <button class="btn" >使用</button>
 </view> -->
-<view class="button-cash">
-<view class="chong" bindtap="addRiceAction">存米</view>
-<view class="ti" bindtap="getCashOut">取米</view>
+<!-- <view class="button-cash">
+  <view class="chong" bindtap="addRiceAction">存米</view>
+  <view class="ti" bindtap="getCashOut">取米</view> -->
 <!--<view class="shi" bindtap="toUseCash">使用</view>-->
-</view>
+<!-- </view> -->
 
 <!-- <view class="title"  style="display: flex;justify-content: space-around;background-color: rgb(103, 177, 199);">
   <view class="item" >
@@ -37,27 +84,23 @@
   </view>
 </view>
 </scroll-view> -->
-<view class="tabs">
+<!-- <view class="tabs">
   <view class="tab" class="{{activeType==='all'? 'active': ''}}" bindtap="handleTabChange" data-type="all">全部</view>
   <view class="tab" class="{{activeType==='income'? 'active': ''}}" bindtap="handleTabChange" data-type="income">收入</view>
   <view class="tab" class="{{activeType==='expense'? 'active': ''}}" bindtap="handleTabChange" data-type="expense">支出</view>
-</view>
-<view class="list">
+</view> -->
+<!-- 这个是底部的列表循环 -->
+<!-- <view class="list">
   <block wx:for="{{cashrecord}}" wx:key="date" wx:for-item="item">
-    <view class="all" wx:if="{{activeType === 'all' || item.type === activeType}}">
-      <!-- 根据条件展示数据 -->
-      <text class="date">时间：{{item.date}}</text>金额：
+    <view class="all" wx:if="{{activeType === 'all' || item.type === activeType}}"> -->
+<!-- 根据条件展示数据 -->
+<!-- <text class="date">时间：{{item.date}}</text>金额：
       <text style="color:{{item.type=='expense'? 'red':'blue'}}">{{item.type=='expense'? '':'+'}}{{item.cash}}</text>
     </view>
   </block>
-</view>
-<mp-halfScreenDialog 
-          bindbuttontap="callPayAction"
-          show="{{addRice}}"
-          maskClosable="{{false}}" 
-          title="存米" 
-          buttons="{{buttons}}"
-        >
-        <t-input slot="desc" label="存米数量:" placeholder="请填入整数" model:value="{{rices}}"></t-input>
-        </mp-halfScreenDialog>
-
+</view> -->
+<!-- 这个是下部弹窗 -->
+<!-- bindbuttontap="callPayAction"这个是点击函数 -->
+<!-- <mp-halfScreenDialog   closabled="{{false}}"  bindbuttontap="callPayAction" show="{{addRice}}"   buttons="{{buttons}}"  > -->
+<!-- <t-input slot="desc" label="存米数量:" placeholder="请填入整数" model:value="{{rices}}"></t-input> -->
+<!-- </mp-halfScreenDialog> -->

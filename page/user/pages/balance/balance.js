@@ -1,5 +1,5 @@
 // page/user/balance/balance.js
-const util = require('../../../../util/util.js')
+const util = require('../../../../utils/utils.js')
 const app = getApp()
 Page({
 
@@ -8,7 +8,7 @@ Page({
      */
     data: {
       rices:100,
-      addRice:false,
+      addRice:true,
       balance:app.globalData.balance,
       cash:app.globalData.cash,
       inputValue: '', //用于显示输入语句
@@ -23,12 +23,23 @@ Page({
       activeType: 'all', // 默认展示全部数据
       buttons: [
         {
-          type: 'default',
+          type: 'primary',
           className: '',
-          text: '确定',
-          value: 0
+          text: '好！',
+          value: 0,
         }
-      ]
+      ],
+      // 滑块
+      indicatorLeft: '0%',
+      // 滑块内容
+      nametexts:'全部',
+      // 底部弹框
+      cur: {},
+      position: [
+        { value: 'bottom', text: '底部弹出' }
+      ],
+      // 
+      inputValue: ''
     },
 
     /**
@@ -42,7 +53,76 @@ Page({
           cash:app.globalData.cash
         })
     },
+    // 滑块的代码
+    onClickSlider: function(event) {
+      var index = event.currentTarget.dataset.index;
+      var left = index * 33.33 + '%';
+      console.log(index);
+      if(index==0){
+        this.setData({
+          indicatorLeft: left,
+          nametexts:'全部',
+          activeType:'all'
+        });
+      }else if(index==1){
+        this.setData({
+          indicatorLeft: left,
+          nametexts:'收入',
+          activeType:'income'
+        });
+      }else{
+        this.setData({
+          indicatorLeft: left,
+          nametexts:'支出',
+          activeType:'expense'
+        });
+      }
+    },
+    // 底部弹框
+    // 取钱
+    handlePopups(e) {
+      const { item } = e.currentTarget.dataset;
 
+      this.setData(
+        {
+          cur: item,
+        },
+        () => {
+          this.setData({ visible: true });
+        },
+      );
+    },
+    handlePopup(e) {
+      const { item } = e.currentTarget.dataset;
+
+      this.setData(
+        {
+          cur: item,
+        },
+        () => {
+          this.setData({ visible: true });
+        },
+      );
+    },
+    onVisibleChange(e) {
+      this.setData({
+        visible: e.detail.visible,
+      });
+    },
+    // 输入框内容
+    handleInput: function (e) {
+      this.setData({
+        inputValue: e.detail.value
+      });
+    },
+    submit: function () {
+      const inputValue = this.data.inputValue;
+      // 在这里可以对输入的内容进行处理或提交操作
+      console.log('输入的内容是：', inputValue);
+    },
+
+
+    
     loadBalance(wechatid){
       const db = app.globalData.db
         db.collection('user_info')
@@ -111,6 +191,7 @@ Page({
     addRiceAction(obj){
       console.log('addRiceAction',obj)
       this.setData({
+        // 这个改了
         addRice:true
       })
     },

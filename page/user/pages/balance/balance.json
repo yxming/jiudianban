@@ -1,11 +1,13 @@
 {
-    "navigationBarTitleText": "米仓",
+    "navigationBarTitleText": "米袋",
     "component": true,
+    "navigationBarBackgroundColor": "#F0F0F3",
+    "backgroundColorTop": "#F0F0F3",
     "usingComponents": {
         "t-input": "tdesign-miniprogram/input/input",
         "t-button": "tdesign-miniprogram/button/button",
         "t-tabs": "tdesign-miniprogram/tabs/tabs",
         "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
-        "mp-halfScreenDialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog"
+        "mp-halfScreenDialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog" , "t-popup": "tdesign-miniprogram/popup/popup"
     }
 }
