@@ -1,4 +1,3 @@
-const database = require('./utils/database')
 App({
   globalData: {
     company:'一代生活',
@@ -12,6 +11,11 @@ App({
     role:1,
     balance:0,
     cash:0,
+    recyclerate:0,
+    managerrecyclerate:0,
+    servicerate:0,
+    managerservicerate:0,
+    recyclerservicerate:0,
     db:null,
     _command:null,
     userinfo:{},
@@ -41,6 +45,11 @@ App({
         self.globalData.company = item.company
         self.globalData.fasttabinfo = item.fastTab
         self.globalData.tabbarinfo = item.tabinfo
+        self.globalData.recyclerate = item.recyclerate
+        self.globalData.managerrecyclerate = item.managerrecyclerate
+        self.globalData.servicerate = item.servicerate
+        self.globalData.managerservicerate = item.managerservicerate
+        self.globalData.recyclerservicerate = item.recyclerservicerate
       },
       fail:function(err){
         console.log('settings:',err)
@@ -52,7 +61,6 @@ App({
     this.initDataBase()
     this.getDefaultSettings()
     this.checkSession()
-    database.initDataBase()
   },
 
   queryLoginStatus:function(wechatid){
