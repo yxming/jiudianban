@@ -2,12 +2,10 @@ page {
   background-color: #F0F0F3; /* 设置背景颜色#f0f0f0; */
 }
 .backgroundSection{
-  width: calc(100%-60rpx);
-  height: calc(100vh-5rpx);
-  position: relative;
-  padding:5rpx 30rpx 0 30rpx;
+  width: 100%;
+  height: 100%;
 }
-.sayHello{
+/* .sayHello{
   width: 100%;
   height: 28rpx;
   color: #00754A;
@@ -18,13 +16,65 @@ page {
 .sayHelloLText{
   width: auto;
   height: 100%;
-}
-/* 个人资料 */
+} */
+/* 米袋 */
 .personalInformation{
   width: 100%;
-  height: 256rpx;
-  background-color: aqua;
+  height: 140rpx;
+  position: relative;
+}
+/* 轮播 */
+.swiper {
+  width: calc(100% - 60rpx);
+  height: 292rpx; /* 设置轮播图的高度 */
+  margin:  0 30rpx;
+  margin-top: 30rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+
+.swiper-image {
+  width: 100%;
+  height: 100%;
+}
+
+.block {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block-image {
+  width: 100%;
+  height: auto;
+}
+.custom-swiper-dots{
+  width: 100%;
+  height: 100%;
+}
+.rotationChart{
+  width: 100%;
+  height: 530rpx;
+  margin: auto;
+  border-radius: 30rpx;
   display: flex;
 }
-.personalInformationBox{
+.rotationChartLbox{
+  width: 50%;
+  height: 100%;
+  border-radius: 30rpx;
+}
+.rotationChartNbox{
+  width: 100%;
+  height: 400rpx;
+  margin-top: 20rpx;
+}
+/* 底部导航 */
+.ddimage{
+  width: calc(100%-60rpx);
+  height: 781px;
+  padding: 30rpx;
+  border-right: 30rpx;
 }

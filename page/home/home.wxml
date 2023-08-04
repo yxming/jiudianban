@@ -10,12 +10,12 @@
       </view> -->
 
 <!-- <view class="col" bindtap="gotoBalance"> -->
-<!-- <t-image src="{{imgSrcs[4]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
-<!-- <t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/balance.png?sign=9bd3d582019d9cfc99bec2a470aaa8be&t=1689823797" size="40" />
-        <view class="text" style="text-align: center;">米袋</view>
-      </view> -->
+<!-- <t-image src="{{imgSrcs[4]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" />
+<t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/balance.png?sign=9bd3d582019d9cfc99bec2a470aaa8be&t=1689823797" size="40" />
+<view class="text" style="text-align: center;">米袋</view>
+</view>
 
-<!-- <view class="col" bindtap="gotoCategory"> -->
+<view class="col" bindtap="gotoCategory"> -->
 <!-- <t-image src="{{imgSrcs[1]}}" width="48" height="48" shape="circle" aria-label="一个放置在墙角的黄色行李箱" /> -->
 <!-- <t-icon name="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/category2.png?sign=93bb38b0c1e9d4cfc70bd8166afdfe6e&t=1690377366" size="40" />
         <view class="text">目录</view>
@@ -34,18 +34,40 @@
       <t-swiper custom-indicator-class="custom-swiper-dots" wx:if="{{imgSrcs.length > 0}}" current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}" navigation="{{navigation}}" imageProps="{{swiperImageProps}}" list="{{imgSrcs}}" bind:click="navToActivityDetail" />
     </view> -->
 <!-- 重构 -->
-
 <view class="backgroundSection">
-<!-- 打招呼信息 -->
-  <view class="sayHello">
+  <!-- 打招呼信息 -->
+  <!-- <view class="sayHello">
     <view class="sayHelloLText">Hi !</view>
     <view class="sayHelloLText" style="margin-left: 30rpx;">{{name}}</view>
+  </view> -->
+  <!-- 米袋链接 -->
+  <swiper class="swiper" circular="{{true}}" autoplay="{{true}}" interval="{{3000}}">
+    <block wx:for="{{imgSrcs}}" wx:key="{{index}}">
+      <swiper-item>
+        <image class="swiper-image" src="{{item}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="rotationChart">
+    <view class="rotationChartLbox" bindtap="gotoRecycle">
+      <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/shangmen.png?sign=018ba75fff5fa231c784bac9349ba1ca&t=1691029847" mode="" />
+    </view>
+    <view class="rotationChartLbox">
+      <view class="rotationChartNbox">
+        <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/dajian.png?sign=3818321bc5cab00945d8bd8e98cf239f&t=1691029862" mode="" />
+      </view>
+      <view bindtap="gotoBalance" class="personalInformation">
+        <image style="width: 100%; height: 100%;  position: relative;top: -35rpx;left: 0;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/ricebag.png?sign=051b0887cc83fb13bef95c8dc08e715f&t=1691071419" mode="" />
+      </view>
+    </view>
   </view>
-  <!-- 个人资料 -->
-  <view class="personalInformation">
-  <view class="personalInformationBox"></view>
+  <view class="ddimage">
+  <image style="width: 100%; height: 100%; " src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230726164126.jpg?sign=46eed6e1b1259a8700954798c4b6663d&t=1691071980" mode=""/>
   </view>
 </view>
+
+
 
 
 
