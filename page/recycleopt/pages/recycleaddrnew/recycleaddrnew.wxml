@@ -1,5 +1,5 @@
 <!--page/user/recycleaddrnew/recycleaddrnew.wxml-->
-<view style="width: 100%; height: 100vh; position: relative;">
+<view style="width: 100%; height: 100vh; position: relative;background-color: #F3F3F3;">
   <!-- <t-radio-group defaultValue="radio0" placement="right" bindchange="radioChange"> -->
   <image style="width: 100%; display:{{hasCommunity?'none':''}}" src="../../../../resource/noservice.png" mode="aspectFit"></image>
   <!-- 
@@ -27,19 +27,19 @@
     <view class="imageBox">
       <image style="width: 100%;height: 100%;" src="../mage/Group.png" mode="" />
     </view>
-    <t-input style="width: calc(100%-120rpx);height: calc(100%-60rpx);  " borderless="false" placeholder="请输入联系人" model:value="{{caller}}"></t-input>
+    <t-input style="width: calc(100%-120rpx);height: calc(100%-60rpx);background-color: #F3F3F3;  " borderless="false" placeholder="请输入联系人" model:value="{{caller}}"></t-input>
   </view>
   <view class="inputContactsBox">
     <view class="imageBox">
       <image style="width: 100%;height: 100%;" src="../mage/Groupt.png" mode="" />
     </view>
-    <t-input borderless="false" placeholder="请输入门牌号" model:value="{{flat}}" status="error" />
+    <t-input borderless="false" style="background-color: #F3F3F3;" placeholder="请输入门牌号" model:value="{{flat}}" status="error" />
   </view>
   <view class="inputContactsBox">
     <view class="imageBox">
       <image style="width: 100%;height: 100%;" src="../mage/Groups.png" mode="" />
     </view>
-    <t-input borderless="false" placeholder="输入手机号码" model:value="{{phoneNumber}}" type="number" tips="{{phoneError ? '手机号输入不正确' : ''}}" bindchange="onPhoneInput">
+    <t-input borderless="false" style="background-color: #F3F3F3;" placeholder="输入手机号码" model:value="{{phoneNumber}}" type="number" tips="{{phoneError ? '手机号输入不正确' : ''}}" bindchange="onPhoneInput">
       <view slot="suffix" style="display: flex; align-items: center">
         <view class="suffix--line"></view>
       </view>
@@ -51,5 +51,7 @@
 
 </button> -->
   <!-- <view class="bottomButton" bindtap="saveRecycleAddress">保存！</view> -->
-  <view class="bottomButton" bindtap="dianjid">保存！</view>
+  <view class="bottomButton" bindtap="dianjid">
+    <image style="width: 100%;height: 100%;" src="../mage/baicundian.png" mode=""/>
+  </view>
 </view>

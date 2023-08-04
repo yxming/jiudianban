@@ -117,11 +117,7 @@
 /* 底部按钮 */
 .bottomButton {
   width: 492rpx;
-  height: 108rpx;
-  background-color: #19A852;
-  border-radius: 50rpx;
-  color: #fff;
-  font-size: 40rpx;
+  height: 165rpx;
   display: flex;
   justify-content: center;
   align-items: center;
