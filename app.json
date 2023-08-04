@@ -6,7 +6,8 @@
         "page/neighborhood/neighborhood",
         "page/mine/mine",
         "index/index",
-        "index/test"
+        "index/test",
+        "page/recycleorders/recycleorders"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -27,6 +28,11 @@
                 "pagePath": "page/home/home",
                 "iconPath": "image/homem.png",
                 "selectedIconPath": "image/homel.png"
+            },
+            {
+                "pagePath": "page/recycleorders/recycleorders",
+                "iconPath": "image/dingdanm.png",
+                "selectedIconPath": "image/dingdanl.png"
             },
             {
                 "pagePath": "page/mine/mine",
