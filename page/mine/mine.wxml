@@ -1,11 +1,17 @@
 <!--page/user/mine/mine.wxml-->
 <view class="profile">
+  <view class="shangmbubox">
+    <view class="dohangind">个人中心</view>
+  </view>
   <image class="profileback" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/Myid.png?sign=e94059f4136def61c4155911bfdf2b55&t=1691031887" mode="scaleToFill" />
+  <!-- 这里跳转 -->
   <view class="myImage">
     <image style="width: 100%; height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/toimg.png?sign=c94a279a06e252e404051244243a6eca&t=1691032240" mode="" />
-    <view class="myimage" style="display: {{userInfo.avatarUrl==''?'none':''}};">
-      <image src="{{userInfo.avatarUrl}}" mode="" />
-    </view>
+    <navigator hover-class="none" class="link" url="/page/user/pages/profile/index">
+      <view class="myimage" style="display: {{userInfo.avatarUrl==''?'none':''}};">
+        <image src="{{userInfo.avatarUrl}}" mode="" />
+      </view>
+    </navigator>
   </view>
   <view class="nametext">
     <view class="sayHello" style="text-align: right; padding-right: 10rpx;">Hello！</view>
@@ -17,10 +23,16 @@
   </view>
   <!-- 底部按钮 -->
   <view class="riceBagBorder" style="display: {{userInfo.avatarUrl==''?'none':''}};">
-    <view class="riceBagDBorder"  bind:tap="onClickCell" data-value="point">
+    <view class="riceBagDBorder" bind:tap="onClickCell" data-value="point">
       <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/shadowsd.png?sign=c50455be8d0dd00807d3588b2277d228&t=1691033908" mode="" />
       <view class="riceBagDBordertext">
         我的米袋
+      </view>
+    </view>
+    <view class="riceBagDBorder" bind:tap="onClickCell" data-value="">
+      <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/shadowsd.png?sign=c50455be8d0dd00807d3588b2277d228&t=1691033908" mode="" />
+      <view class="riceBagDBordertext">
+        地址管理
       </view>
     </view>
     <view class="riceBagDBorder" bind:tap="onClickCell" data-value="">
@@ -67,4 +79,4 @@
       </t-cell-group>
     </view>
   </view> -->
-</view> 
+</view>

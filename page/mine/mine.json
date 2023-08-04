@@ -3,6 +3,7 @@
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#F0F0F3",
     "backgroundColorTop": "#F0F0F3",
+    "navigationStyle":"custom",
     "usingComponents": {
         "t-icon": "tdesign-miniprogram/icon/icon",
         "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
