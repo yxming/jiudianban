@@ -1,5 +1,6 @@
 // page/user/recyclerequest/recyclerequest.js
-const util = require('../../../../utils/utils.js')
+const util = require('../../../../utils/comm')
+
 const app = getApp()
 Page({
 

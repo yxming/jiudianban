@@ -1,5 +1,5 @@
 // pages/newRecycleNode/newRecycleNode.js
-const util = require('../../../../util/util.js')
+const util = require('../../../../utils/comm')
 const preset = require('../../../../resource/presets.js')
 const app = getApp()
 Page({
