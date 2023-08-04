@@ -86,7 +86,8 @@ Page({
               //   icon: 'service',
               // },
             ],
-          ]
+          ],
+          name:'请登录！'
     },
     onLoad(){
       if(app.globalData.hasLogin){
@@ -140,27 +141,34 @@ Page({
     },
 
     onClickCell({ currentTarget }) {
-        const { type } = currentTarget.dataset;
-        console.log('type:',type)
-        switch (type) {
+        // const { type } = currentTarget.dataset;
+        var value = currentTarget.dataset.value;
+        console.log(value);
+        // console.log('type:',type)
+        switch (value) {
+          // 管理地址
           case 'address': {
             wx.navigateTo({ url: '../recycleopt/pages/recycleaddrlist/recycleaddrlist' });
             break;
           }
+          // 发布
           case 'coupon': {
             wx.navigateTo({
               url: '../user/pages/coupon/index',
             })
             break
           }
+          // 订单列表
           case 'recycleorders': {
             wx.navigateTo({ url: '../recycleopt/pages/recycleorders/recycleorders' });
             break;
           }
+          // 客服
           case 'service': {
             wx.navigateTo({ url: '../others/pages/customer/service'})
             break;
           }
+          // 这个不能用
           case 'help-center': {
             Toast({
               context: this,
@@ -171,14 +179,17 @@ Page({
             });
             break;
           }
+          // 米仓
           case 'point': {
             wx.navigateTo({ url: '../user/pages/balance/balance' });
             break;
           }
+          // 发布
           case 'coupon': {
             wx.navigateTo({ url: '/pages/coupon/coupon-list/index' });
             break;
           }
+          // 回收站点管理
           case 'nodelist': {
             wx.navigateTo({ url: '../manage/pages/recyclenodelist/recyclenodelist' });
             break;
