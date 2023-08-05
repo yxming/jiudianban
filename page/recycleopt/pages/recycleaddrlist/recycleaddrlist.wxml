@@ -98,7 +98,7 @@
       <block wx:for="{{recycleArray}}" wx:key="index" id="{{index}}">
         <t-swipe-cell right="{{right}}" bind:touchstart="onTouchStart" bind:touchmove="onTouchMove" bind:touchend="onTouchEnd">
           <view class="radio-item">
-            <view class="contentBox">
+            <view class="contentBox"  bindtap="handleRadioChange" data-index="{{index}}">
               <view class="contentupBox">{{item.title}}</view>
               <view class="contentDBox">{{item.detail}}</view>
             </view>

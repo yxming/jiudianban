@@ -58,7 +58,8 @@ Page({
 handleRadioChange(e) {
   const { index } = e.currentTarget.dataset;
   const { recycleArray } = this.data;
-
+  var ceshi = this.data.recycleArray[index]
+  console.log(ceshi);
   recycleArray.forEach((item, i) => {
     item.checked = i === index;
   });
