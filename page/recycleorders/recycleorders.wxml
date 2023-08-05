@@ -7,7 +7,7 @@
     <!-- <block wx:for-items="{{orderlist}}" wx:key="{{item.orderid}}"> -->
     <view wx:if="{{item.status === 0}}" style="background-color: #F3F3F3" class="order-list-item">
       <!-- 点击 -->
-      <view id="{{item.orderid}}" class="order-list-item-hd {{item.open ? 'order-list-item-hd-show' : ''}}" bindtap="kindToggle">
+      <view id="{{item.orderid}}" class="order-list-item-hd {{item.open ? 'order-list-item-hd-show' : ''}}" bindtap="switchtwe">
         <view class="backgroundhd">
           <image style="width: 100%; height: 100%;" src="../../image/Rectangled.png" mode="" />
         </view>
@@ -19,7 +19,7 @@
             <view style="font-size: 30rpx;" class="order-list-text">{{item.date}}</view>
           </view>
           <view class="order-detail-item">
-            <view style=" color: #00754A;font-size: 28rpx; " class="order-list-text order-detail-item order-detail-text ">{{item.communityname}}</view>
+            <view style=" color: #00754A;font-size: 28rpx; " class="order-list-text order-detail-item order-detail-text ">{{item.communityname}}{{item.flat}}</view>
             <!-- <view class="order-list-text order-detail-item order-detail-text">{{item.flat}}</view> -->
           </view>
         </view>
@@ -46,15 +46,15 @@
                     <view class="order-detail-text">{{item.orderid}}</view>
                   </view>
                   <!-- style="display:{{role==2||role==0?'':'none'}}" -->
-                  <view class="order-detail-item" style="display:{{role==2||role==0?'none':''}}">
+                  <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
                     <view class="order-detail-text fw">客户:</view>
-                    <view class="order-list-text order-detail-item order-detail-text" style="overflow: hidden;">{{item.wechatbuy}}</view>
+                    <view class="order-list-text order-detail-item order-detail-text" style="overflow: hidden;">{{item.saler}}</view>
                   </view>
                   <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
                     <view class="order-detail-text fw">地址:</view>
                     <view class="order-list-text order-detail-item order-detail-text">{{item.communityname}}</view>
                   </view>
-                  <view class="order-detail-item" style="display:{{role==2||role==0?'none':''}}">
+                  <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
                     <view class="order-detail-text fw">电话:</view>
                     <view class="order-list-text order-detail-item order-detail-text">{{item.phonenum}}</view>
                   </view>
@@ -66,7 +66,7 @@
                     <view class="order-detail-text fw">电话:</view>
                     <view class="order-list-text order-detail-item order-detail-text">{{item.phonenum}}</view>
                   </view> -->
-                  <view class="flex-button" style="display:{{role==2||role==0?'':'none'}}">
+                  <view class="flex-button" style="display:{{role==2||role==0?'none':''}}">
                     <view class="bottomInputButton">
                       <input class="bottomInputButtonipt" id="{{item.index}}" placeholder="{{item.status? item.cost: '金额'}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
                     </view>
@@ -93,7 +93,7 @@
     </view>
   </block>
   <!-- 已完成 -->
-  <view class="" wx:for-items="{{orderlist}}" wx:key="{{item.orderid}}">
+  <view class="" wx:for-items="{{orderlists}}" wx:key="{{item.orderlists}}">
     <view wx:if="{{item.status === 1}}" class="completed" bindtap="kindToggle" id="{{item.orderid}}">
       <view class="timeAddress">
         <view class="timeAddrestime">
@@ -134,6 +134,7 @@
     <!-- </block> -->
   </view>
 </view>
+<!-- 支付弹窗 -->
 <t-popup style="border-radius: 25px;" visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
   <view class="block">
     <view class="block-title">

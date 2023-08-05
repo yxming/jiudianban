@@ -10,8 +10,9 @@ page {
 
 .informationBlock {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #F0F0F3;
+  position: relative;
 }
 
 .text-box {
@@ -108,7 +109,7 @@ page {
 
 .containers {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 /* 底部的按钮块 */
@@ -140,8 +141,8 @@ page {
 .all {
   width: 100%;
   padding: 0 10px;
-  padding-left: 80rpx;
-  font-size: 24rpx;
+  padding-left: 60rpx;
+  font-size: 30rpx;
   background-color: #F3F3F3;
 }
 

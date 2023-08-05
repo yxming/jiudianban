@@ -21,7 +21,7 @@
     </view>
   </view>
   <view class="lowerBox">
-    <scroll-view class="containers" scroll-y>
+    <scroll-view class="containers" scroll-y style="height: {{scrollHeight}}px;">
       <!-- 这里面是内容 -->
       <view class="list">
         <block wx:for="{{cashrecord}}" wx:key="date" wx:for-item="item">

@@ -1,8 +1,20 @@
 <view class="backgroundBox">
-  <!-- 上面的导航图 -->
-  <view class="upimg">
-    <image class="uimg" src="../img/updimg.png" mode="" />
+  <view class="shangmbubox">
+    <view class="dohangind">大件代扔</view>
   </view>
+  <!-- 上面的导航图 -->
+<view class="upperNavigation ">
+<view class="lliucheng">
+
+</view>
+<view class="lliucheng" style="width: 100rpx;"></view>
+<view class="lliucheng"></view>
+</view>
+
+
+
+
+
   <!-- 滑动块部分 -->
   <view class="slideBox">
     <view class="slidesBox">
@@ -14,7 +26,7 @@
         <!-- 这里是里面的滑动块，可选 -->
       </view>
       <view class="rslidsbox">
-        <image style="width: 100%; height: 100%;" src="../img/updimg.png" mode="" />
+        <image style="width: 100%; height: 100%;" src="../image/updimg.png" mode="" />
       </view>
     </view>
   </view>
