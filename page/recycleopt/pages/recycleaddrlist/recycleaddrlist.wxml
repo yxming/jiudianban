@@ -38,7 +38,7 @@
 <scroll-view scroll-y class="UpPlate" refresher-enabled="{{true}}" refresher-threshold="{{100}}" refresher-default-style="white" refresher-background="lightgreen" refresher-triggered="{{triggered}}" bindrefresherpulling="onPulling" bindrefresherrefresh="onRefresh" bindrefresherrestore="onRestore" bindrefresherabort="onAbort">
   <!-- 按钮 -->
   <view class="upButton" bindtap="newRecycleAddress">
-    <image class="upButtonimg" src="../mage/Rectangle.png" mode="" />
+    <image class="upButtonimg" src="../image/Rectangle.png" mode="" />
   </view>
   <image style="margin-top: 10%; width: 100%; display:{{hasRecycleAddr?'none':''}}" src="../../../../resource/norecycleaddr.png" mode="aspectFill"></image>
 
@@ -103,7 +103,7 @@
               <view class="contentDBox">{{item.detail}}</view>
             </view>
             <view class="icon-container" bindtap="handleRadioChange" data-index="{{index}}">
-              <image class="icon" src="{{item.checked ? '../mage/Rectangles.png' : '../mage/rectanglet.png'}}"></image>
+              <image class="icon" src="{{item.checked ? '../image/Rectangles.png' : '../image/rectanglet.png'}}"></image>
             </view>
           </view>
           <view slot="right" class="btn-wrapper">

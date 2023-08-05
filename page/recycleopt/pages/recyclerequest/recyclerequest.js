@@ -62,7 +62,8 @@ Page({
       const iconUrl = iKnew ? '../image/Rectanglet.png' : '../image/Rectangles.png';
       this.setData({
         iKnew:!iKnew,
-        iconUrl
+        iconUrl,
+        jinzhiling:0
       });
     },
 
