@@ -63,7 +63,6 @@ Page({
       this.setData({
         iKnew:!iKnew,
         iconUrl,
-        jinzhiling:0
       });
     },
 
@@ -167,6 +166,7 @@ Page({
         caller:1,
         flat:1,
         phonenum:1,
+        selected:1,
         latitude:1,
         longitude:1,
         communitycode:1,
@@ -177,7 +177,17 @@ Page({
         success: function(res) {
           if(res.data.length>0){
             //_this.data.recycleArray = res.data
-            var item=res.data[res.data.length-1]  
+            var selectedIndex = -1
+            res.data.some((item,i)=>{
+              selectedIndex = item.selected?i:-1
+              if(selectedIndex>=0){
+                return true
+              }
+              return false
+            })
+            
+            selectedIndex = selectedIndex<0?0:selectedIndex
+            var item=res.data[selectedIndex]  
             var title=item.caller+'----'+item.phonenum
             var detail = item.communityaddress+item.communityname+item.flat   
             var array=[{latitude:item.latitude,longitude:item.longitude,name:'UU'}]
@@ -338,8 +348,6 @@ Page({
       var _this = this
       var timestamp = new Date().getTime()
       var orderid = this.data.communitycode+timestamp
-      console.log('+++++++++++++++++++++++')
-      console.log('orderid:',this.data.communitycode,timestamp)
       db.collection('recycle_orders').add({
       // data 字段表示需新增的 JSON 数据
       data: {
