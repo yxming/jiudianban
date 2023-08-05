@@ -78,12 +78,14 @@ handleRadioChange(e) {
       var _this = this
       this.getRecycleAddr(app.globalData.openid)
       const eventChannel= this.getOpenerEventChannel()
-      eventChannel.on('acceptDataFromOpenerPage', function (data) {
-        // console.log('where from:',data.data.opener)
-        _this.setData({
-          opener:data.data.opener
+      if(eventChannel){
+        eventChannel.on('acceptDataFromOpenerPage', function (data) {
+          // console.log('where from:',data.data.opener)
+          _this.setData({
+            opener:data.data.opener
+          })
         })
-      })
+      }
     },
     handleRadioClick(event) {
       const index = event.currentTarget.dataset.index;
