@@ -19,7 +19,7 @@
             <view style="font-size: 30rpx;" class="order-list-text">{{item.date}}</view>
           </view>
           <view class="order-detail-item">
-            <view style=" color: #00754A;font-size: 28rpx; " class="order-list-text order-detail-item order-detail-text">{{item.communityname}}</view>
+            <view style=" color: #00754A;font-size: 28rpx; " class="order-list-text order-detail-item order-detail-text ">{{item.communityname}}</view>
             <!-- <view class="order-list-text order-detail-item order-detail-text">{{item.flat}}</view> -->
           </view>
         </view>
@@ -48,7 +48,7 @@
                   <!-- style="display:{{role==2||role==0?'':'none'}}" -->
                   <view class="order-detail-item" style="display:{{role==2||role==0?'none':''}}">
                     <view class="order-detail-text fw">客户:</view>
-                    <view class="order-list-text order-detail-item order-detail-text">{{item.wechatbuy}}</view>
+                    <view class="order-list-text order-detail-item order-detail-text" style="overflow: hidden;">{{item.wechatbuy}}</view>
                   </view>
                   <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
                     <view class="order-detail-text fw">地址:</view>

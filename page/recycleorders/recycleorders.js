@@ -1,5 +1,5 @@
 // page/recycleopt/pages/recycleorders/recycleorders.js
-const util = require('../../utils/utils.js')
+const util = require('../../utils/comm.js')
 const app = getApp()
 Page({
 
