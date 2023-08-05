@@ -16,9 +16,9 @@ Page({
       searchinput: '', //用户输入的查询语
       cashrecord:[],
       dataList: [
-          { title: '2023-07-01', amount: '+100', type: 'income' },
-          { title: '2023-07-02', amount: '-200', type: 'expense' },
-          { title: '2023-07-03', amount: '+300', type: 'income' },
+          { date: '2023-07-01', cash: '100', type: 'income' },
+          { date: '2023-07-02', cash: '200', type: 'expense' },
+
           // 其他数据项...
         ],
       activeType: 'all', // 默认展示全部数据
@@ -42,7 +42,9 @@ Page({
       // 
       inputValue: '',
       textx:"请输入取米数量",
-      values:0
+      values:0,
+      // 滑动块高度
+      scrollHeight: 0
     },
     /**
      * 生命周期函数--监听页面加载
@@ -50,9 +52,13 @@ Page({
     onLoad(options) {
         this.loadBalance(app.globalData.openid)
         this.loadRecords(app.globalData.openid)
+        const systemInfo = wx.getSystemInfoSync();
+        const windowHeight = systemInfo.windowHeight;
+        const scrollHeight = windowHeight - 300; // 根据需要减去的高度
         this.setData({
           balance:app.globalData.balance,
-          cash:app.globalData.cash
+          cash:app.globalData.cash,
+          scrollHeight: scrollHeight
         })
     },
     // 滑块的代码
