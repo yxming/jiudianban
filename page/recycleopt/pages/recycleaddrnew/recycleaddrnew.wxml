@@ -10,13 +10,13 @@
     <view class="radio-group">
       <block style="width: 100rpx;height: 400rpx;background-color:blue; " wx:for="{{communityArray}}" wx:key="index" id="{{index}}">
         <view class="radio-item">
-          <image class="radioItemimage" src="../mage/Rectang.png" mode="" />
+          <image class="radioItemimage" src="../image/Rectang.png" mode="" />
           <view class="contentBox">
             <view class="contentupBox">{{item.name}}</view>
             <view class="contentDBox">{{item.addr}}</view>
           </view>
           <view class="icon-container" bindtap="handleRadioChange" data-index="{{index}}">
-            <image class="icon" src="{{index === selected ? '../mage/Rectangles.png' : '../mage/rectanglet.png'}}"></image>
+            <image class="icon" src="{{index === selected ? '../image/Rectangles.png' : '../image/rectanglet.png'}}"></image>
           </view>
         </view>
       </block>
@@ -25,19 +25,19 @@
 
   <view class="inputContactsBox">
     <view class="imageBox">
-      <image style="width: 100%;height: 100%;" src="../mage/Group.png" mode="" />
+      <image style="width: 100%;height: 100%;" src="../image/Group.png" mode="" />
     </view>
     <t-input style="width: calc(100%-120rpx);height: calc(100%-60rpx);background-color: #F3F3F3;  " borderless="false" placeholder="请输入联系人" model:value="{{caller}}"></t-input>
   </view>
   <view class="inputContactsBox">
     <view class="imageBox">
-      <image style="width: 100%;height: 100%;" src="../mage/Groupt.png" mode="" />
+      <image style="width: 100%;height: 100%;" src="../image/Groupt.png" mode="" />
     </view>
     <t-input borderless="false" style="background-color: #F3F3F3;" placeholder="请输入门牌号" model:value="{{flat}}" status="error" />
   </view>
   <view class="inputContactsBox">
     <view class="imageBox">
-      <image style="width: 100%;height: 100%;" src="../mage/Groups.png" mode="" />
+      <image style="width: 100%;height: 100%;" src="../image/Groups.png" mode="" />
     </view>
     <t-input borderless="false" style="background-color: #F3F3F3;" placeholder="输入手机号码" model:value="{{phoneNumber}}" type="number" tips="{{phoneError ? '手机号输入不正确' : ''}}" bindchange="onPhoneInput">
       <view slot="suffix" style="display: flex; align-items: center">

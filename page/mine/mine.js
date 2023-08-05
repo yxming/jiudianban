@@ -103,6 +103,7 @@ Page({
             if(res.data[0].userinfo){
               this.setData({
                 userInfo: res.data[0].userinfo,
+                hasLogin:true
             })
             }
           }
@@ -110,7 +111,7 @@ Page({
       }
     },
     onShow() {
-      this.getTabBar().init()
+      //this.getTabBar().init()
       var role=app.globalData.role
       this.setData({
         role
@@ -129,6 +130,7 @@ Page({
           success: (res) => {
               this.setData({
                   userInfo: res.userInfo,
+                  hasLogin:true
               })
               app.saveUserInfo(app.globalData.openid,res.userInfo)
               app.globalData.hasLogin = true
