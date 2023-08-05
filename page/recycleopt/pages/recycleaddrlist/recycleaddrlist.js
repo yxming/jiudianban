@@ -21,6 +21,7 @@ Page({
         codeArray:[],
         recycleArray: [],
         // 选中的id
+        selectedLast:-1,
         selectedIndex: -1,
         right: [
             {
@@ -58,13 +59,14 @@ Page({
 handleRadioChange(e) {
   const { index } = e.currentTarget.dataset;
   const { recycleArray } = this.data;
-  var ceshi = this.data.recycleArray[index]
-  console.log(ceshi);
+
+  var selectedIndex = index
   recycleArray.forEach((item, i) => {
-    item.checked = i === index;
+    item.selected = i === index;
   });
   this.setData({
-    recycleArray: recycleArray
+    selectedIndex,
+    recycleArray
   });
 },
 
@@ -81,7 +83,6 @@ handleRadioChange(e) {
         _this.setData({
           opener:data.data.opener
         })
-        console.log('111111');
       })
     },
     handleRadioClick(event) {
@@ -120,7 +121,19 @@ handleRadioChange(e) {
      * 生命周期函数--监听页面卸载
      */
     onUnload() {
-
+      var currentIndex = this.data.selectedIndex
+      var lastIndex = this.data.selectedLast
+      if(currentIndex!=lastIndex){
+        if(currentIndex>=0){
+          const selectedItem=this.data.recycleArray[currentIndex]
+          this.updateRecycleAddress(selectedItem.id, true)
+        }
+  
+        if(lastIndex>=0){
+          const disSelectedItem=this.data.recycleArray[lastIndex]
+          this.updateRecycleAddress(disSelectedItem.id, false)
+        }
+      }
     },
 
     /**
@@ -144,8 +157,10 @@ handleRadioChange(e) {
 
     },
     onActionClick( detail ) {
+      console.log('detail:',detail)
         const eventChannel= this.getOpenerEventChannel()
         var index = detail.currentTarget.id;
+        this.recycleArray
         var item = this.data.recycleArray[index];
         var liebiao = item.data
         switch(this.data.opener){
@@ -232,6 +247,25 @@ handleRadioChange(e) {
     
       onAbort(e) {
       },
+
+      updateRecycleAddress(recordid,selected){
+        console.log('update id:',recordid)
+        const db = app.globalData.db
+        db.collection('recycleaddr_list').where({
+          _id:recordid
+        }).update({
+          data:{
+            selected:selected
+          },
+          success:(res)=>{
+            console.log(res)
+          },
+          fail:(err)=>{
+            console.log(err)
+          }
+        })
+      },
+
       getRecycleAddr(wechatid){
         var _this = this
         wx.cloud.init({
@@ -243,10 +277,11 @@ handleRadioChange(e) {
           wechatid:wechatid
         })
         coll.field({
-          _id:0,
+          _id:1,
           caller:1,
           flat:1,
           phonenum:1,
+          selected:1,
           latitude:1,
           longitude:1,
           communitycode:1,
@@ -258,20 +293,28 @@ handleRadioChange(e) {
             if(res.data.length>0){
               //_this.data.recycleArray = res.data
               var arr=[]
-              res.data.forEach(element=>{
+              res.data.forEach((element,i)=>{
+                if( element.selected){
+                  _this.data.selectedLast = i
+                  _this.data.selectedIndex = i
+                }
                 var title=element.caller+'----'+element.phonenum
                 var detail = element.communityaddress+element.communityname+element.flat
-                arr.push({'title':title,
-                'detail':detail,
-                'latitude':element.latitude,
-                'longitude':element.longitude,
-                'communitycode':element.communitycode,
-                'communityname':element.communityname,
-                'flat':element.flat,
-                'caller':element.caller,
-                'phonenum':element.phonenum
+                arr.push({
+                  'id':element._id,
+                  'title':title,
+                  'detail':detail,
+                  'latitude':element.latitude,
+                  'longitude':element.longitude,
+                  'communitycode':element.communitycode,
+                  'communityname':element.communityname,
+                  'flat':element.flat,
+                  'caller':element.caller,
+                  'phonenum':element.phonenum,
+                  'selected':element.selected
+                })
               })
-              })
+              console.log('init selectedLast:', _this.data.selectedLast,'selectedIndex:', _this.data.selectedIndex)
               _this.setData({
                 recycleArray:arr,
                 hasRecycleAddr:true
