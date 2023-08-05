@@ -49,7 +49,10 @@
     <view class="ejectBlock">
       <input class="input" bindinput="handleInput" placeholder="{{textx}}"></input>
       <view class="haobox">1粒=1元</view>
-      <view class="DdBox" bindtap="callPayAction">
+      <view class="DdBox" wx:if="{{values===1}}">
+        <image style="width: 100%; height: 100%;" src="../image/xiadan.png" mode="" />
+      </view>
+      <view class="DdBox" wx:else bindtap="callPayAction">
         <image style="width: 100%; height: 100%;" src="../image/xiadan.png" mode="" />
       </view>
     </view>

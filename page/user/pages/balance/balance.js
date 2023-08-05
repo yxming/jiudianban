@@ -42,9 +42,8 @@ Page({
       // 
       inputValue: '',
       textx:"请输入取米数量",
-      value:0
+      values:0
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
@@ -85,16 +84,16 @@ Page({
     // 取钱
     handlePopup(e) {
       const { item } = e.currentTarget.dataset;
-        const value = e.currentTarget.dataset.value;
-if(value=='1'){
+        const values = e.currentTarget.dataset.value;
+if(values=='1'){
   this.setData({
-    textx:"请输入取米数量"
+    textx:"请输入取米数量",
+    values:1
   }
   )
   this.setData(
     {
       cur: item,
-      value:''
     },
     () => {
       this.setData({ visible: true });
@@ -102,13 +101,13 @@ if(value=='1'){
   );
 }else{
   this.setData({
-    textx:"请输入存米数量"
+    textx:"请输入存米数量",
+    values:0
   }
   )
   this.setData(
     {
       cur: item,
-      value:''
     },
     () => {
       this.setData({ visible: true });
@@ -218,6 +217,7 @@ if(value=='1'){
     },
 
     callWeChatPay(payArgs){
+      console.log(payArgs);
       wx.requestPayment({
         timeStamp: payArgs.payment.timeStamp,
         nonceStr: payArgs.payment.nonceStr,
