@@ -22,17 +22,21 @@ page {
 /* 顶部导航 */
 .shangmbubox{
   width: 100%;
-  height: 90rpx;
-  padding-top: 90rpx;
-  z-index: 9000;
+  height: 150rpx;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 .dohangind{
-  width: 300rpx;
+  width: auto;
   height: auto;
-  margin: auto;
   text-align: center;
   font-size: 40rpx;
   font-weight: 600;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .profileback{
   width: 100%;
