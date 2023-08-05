@@ -69,7 +69,9 @@ Page({
       }
     },
     onShow(){
-      this.getTabBar().init()
+      if(this.getTabBar()){
+        this.getTabBar().init()
+      }
     },
 
     toggleImage(event) {
