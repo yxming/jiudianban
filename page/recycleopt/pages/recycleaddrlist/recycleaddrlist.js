@@ -129,6 +129,8 @@ handleRadioChange(e) {
         if(currentIndex>=0){
           const selectedItem=this.data.recycleArray[currentIndex]
           this.updateRecycleAddress(selectedItem.id, true)
+          console.log('selectedIndex:',this.data.selectedIndex)
+          this.sendAddressInfoToBack()
         }
   
         if(lastIndex>=0){
@@ -248,6 +250,24 @@ handleRadioChange(e) {
       },
     
       onAbort(e) {
+      },
+
+      sendAddressInfoToBack(){
+        const index  = this.data.selectedIndex
+        var item = this.data.recycleArray[index];
+        console.log('sendAddressInfoToBack:',index,item)
+        const eventChannel= this.getOpenerEventChannel()
+        switch(this.data.opener){
+          case 1: 
+              eventChannel.emit('acceptDataFromOpenedPage', { data: item })
+              // wx.navigateBack({
+              //   delta: 1
+              // })
+              break;
+          case 2: 
+              break;
+          default :
+        }
       },
 
       updateRecycleAddress(recordid,selected){
