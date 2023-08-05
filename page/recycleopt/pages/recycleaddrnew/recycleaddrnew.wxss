@@ -1,4 +1,9 @@
 /* page/user/recycleaddrnew/recycleaddrnew.wxss */
+.index-bd{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
 .t-radio-padding {
   padding: 24rpx 32rpx !important;
 }
@@ -125,4 +130,5 @@
   bottom: 60rpx;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 999999;
 }

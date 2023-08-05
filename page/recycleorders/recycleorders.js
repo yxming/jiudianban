@@ -11,6 +11,7 @@ Page({
     },
     data: {
       orderlist:[],
+      orderlists:[],
       theme: 'light',
       role:app.globalData.role,
       isShow: true,
@@ -134,7 +135,8 @@ Page({
               })
               console.log('orderlist:',list)
               _this.setData({
-                orderlist:list
+                orderlist:list,
+                orderlists:list
               })
             }
           }
@@ -171,19 +173,18 @@ Page({
 
     kindToggle(e) {
       console.log(e);
-        const id = e.currentTarget.id
-        const orderlist = this.data.orderlist
+        // const id = e.currentTarget.id
+        // const orderlists = this.data.orderlists
 
-        for (let i = 0, len = orderlist.length; i < len; ++i) {
-          if (orderlist[i].orderid === id) {
-            orderlist[i].open = !orderlist[i].open
-            console.log(orderlist[i].open);
-          } else {
-            orderlist[i].open = false
-          }
-        }
+        // for (let i = 0, len = orderlists.length; i < len; ++i) {
+        //   if (orderlists[i].orderlists === id) {
+        //     orderlists[i].open = !orderlists[i].open
+        //   } else {
+        //     orderlists[i].open = false
+        //   }
+        // }
         this.setData({
-          orderlist
+          orderlists
         })
     },
     onUpdateOrder(item){
