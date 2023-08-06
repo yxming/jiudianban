@@ -122,12 +122,12 @@
             </view>
           </view>
           <view slot="right" class="btn-wrapper">
-            <view class="btn edit-btn column" bind:tap="onEdit">
+            <!--<view class="btn edit-btn column" bind:tap="onEdit">
               <t-icon class="padding-bottom" name="edit" size="32rpx"></t-icon>
               编辑
-            </view>
-            <view class="btn delete-btn column" bind:tap="onDelete">
-              <t-icon class="padding-bottom" name="delete" size="32rpx"></t-icon>
+            </view>-->
+            <view class="btn delete-btn column" data-index="{{index}}" bind:tap="onDelete">
+              <t-icon class="padding-bottom" name="delete" size="48rpx"></t-icon>
               删除
             </view>
           </view>
