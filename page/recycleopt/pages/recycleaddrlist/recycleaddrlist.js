@@ -24,14 +24,14 @@ Page({
         selectedLast:-1,
         selectedIndex: -1,
         right: [
-            {
-              text: '编辑',
-              icon: {
-                name: 'edit',
-                size: 16,
-              },
-              className: 'btn edit-btn',
-            },
+            // {
+            //   text: '编辑',
+            //   icon: {
+            //     name: 'edit',
+            //     size: 16,
+            //   },
+            //   className: 'btn edit-btn',
+            // },
             {
               text: '删除',
               icon: {
@@ -125,6 +125,7 @@ handleRadioChange(e) {
     onUnload() {
       var currentIndex = this.data.selectedIndex
       var lastIndex = this.data.selectedLast
+      console.log('selectedIndex:',currentIndex,'lastIndex:',lastIndex)
       if(currentIndex!=lastIndex){
         if(currentIndex>=0){
           const selectedItem=this.data.recycleArray[currentIndex]
@@ -135,7 +136,9 @@ handleRadioChange(e) {
   
         if(lastIndex>=0){
           const disSelectedItem=this.data.recycleArray[lastIndex]
-          this.updateRecycleAddress(disSelectedItem.id, false)
+          if(disSelectedItem){
+            this.updateRecycleAddress(disSelectedItem.id, false)
+          }
         }
       }
     },
@@ -196,8 +199,22 @@ handleRadioChange(e) {
       }
     },
 
-    onDelete() {
-        wx.showToast({ title: '你点击了删除2222', icon: 'none' });
+    onDelete(e) {
+      var  _this = this
+      const deleteIndex=e.currentTarget.dataset.index
+      const deleteId = this.data.recycleArray[deleteIndex].id
+
+      console.log(deleteIndex)   
+      const db = app.globalData.db
+      db.collection('recycleaddr_list').where({
+        _id:deleteId
+      }).remove({
+        success:(res)=>{
+          const {removed} = res.stats
+          removed>0?_this.updateRecycleAddrAfterDelete(deleteIndex):console.log('db remove fail for id:',deleteId)
+        },
+        fail:(err)=>{console.log(err)}
+      })
     },
     onEdit() {
         console.log('onEdit:');
@@ -235,180 +252,205 @@ handleRadioChange(e) {
     onPulling(e) {
       },
     
-      onRefresh() {
-        if (this._freshing) return
-        this._freshing = true
-        setTimeout(() => {
-          this.setData({
-            triggered: false,
-          })
-          this._freshing = false
-        }, 3000)
-      },
-    
-      onRestore(e) {
-      },
-    
-      onAbort(e) {
-      },
+    onRefresh() {
+      if (this._freshing) return
+      this._freshing = true
+      setTimeout(() => {
+        this.setData({
+          triggered: false,
+        })
+        this._freshing = false
+      }, 3000)
+    },
+  
+    onRestore(e) {
+    },
+  
+    onAbort(e) {
+    },
 
-      sendAddressInfoToBack(){
-        const index  = this.data.selectedIndex
-        var item = this.data.recycleArray[index];
-        console.log('sendAddressInfoToBack:',index,item)
-        const eventChannel= this.getOpenerEventChannel()
-        switch(this.data.opener){
-          case 1: 
-              eventChannel.emit('acceptDataFromOpenedPage', { data: item })
-              // wx.navigateBack({
-              //   delta: 1
-              // })
-              break;
-          case 2: 
-              break;
-          default :
+    updateRecycleAddrAfterDelete(deleteIndex){
+
+      var selectedLast = this.data.selectedLast
+      if(selectedLast!=deleteIndex){
+        selectedLast = selectedLast>deleteIndex?--selectedLast:selectedLast
+      }else{
+        selectedLast = -1
+      }
+      var selectedPast = this.data.selectedIndex
+      var selectedIndex = selectedPast>deleteIndex?--selectedPast:selectedPast
+ 
+      this.data.recycleArray[selectedPast].selected=false
+      this.data.recycleArray.splice(deleteIndex,1)
+      const recycleArray = this.data.recycleArray
+      if(selectedIndex==recycleArray.length){
+        --selectedIndex
+      }
+      recycleArray[selectedIndex].selected=true
+      this.setData({
+            recycleArray,
+            selectedLast,
+            selectedIndex
+      })
+    },
+
+    sendAddressInfoToBack(){
+      const index  = this.data.selectedIndex
+      var item = this.data.recycleArray[index];
+      console.log('sendAddressInfoToBack:',index,item)
+      const eventChannel= this.getOpenerEventChannel()
+      switch(this.data.opener){
+        case 1: 
+            eventChannel.emit('acceptDataFromOpenedPage', { data: item })
+            // wx.navigateBack({
+            //   delta: 1
+            // })
+            break;
+        case 2: 
+            break;
+        default :
+      }
+    },
+
+    updateRecycleAddress(recordid,selected){
+      console.log('update id:',recordid)
+      const db = app.globalData.db
+      db.collection('recycleaddr_list').where({
+        _id:recordid
+      }).update({
+        data:{
+          selected:selected
+        },
+        success:(res)=>{
+          console.log(res)
+        },
+        fail:(err)=>{
+          console.log(err)
         }
-      },
+      })
+    },
 
-      updateRecycleAddress(recordid,selected){
-        console.log('update id:',recordid)
-        const db = app.globalData.db
-        db.collection('recycleaddr_list').where({
-          _id:recordid
-        }).update({
-          data:{
-            selected:selected
-          },
-          success:(res)=>{
-            console.log(res)
-          },
-          fail:(err)=>{
-            console.log(err)
-          }
-        })
-      },
-
-      getRecycleAddr(wechatid){
-        var _this = this
-        wx.cloud.init({
-          env: 'cloud1-7go51v8te374de35',
-        })
-        const db = wx.cloud.database()
-        const _ = db.command
-        var coll=db.collection('recycleaddr_list').where({
-          wechatid:wechatid
-        })
-        coll.field({
-          _id:1,
-          caller:1,
-          flat:1,
-          phonenum:1,
-          selected:1,
-          latitude:1,
-          longitude:1,
-          communitycode:1,
-          communityname:1,
-          communityaddress:1
-        })
-        .get({
-          success: function(res) {
-            if(res.data.length>0){
-              //_this.data.recycleArray = res.data
-              var arr=[]
-              res.data.forEach((element,i)=>{
-                if( element.selected){
-                  _this.data.selectedLast = i
-                  _this.data.selectedIndex = i
-                }
-                var title=element.caller+'----'+element.phonenum
-                var detail = element.communityaddress+element.communityname+element.flat
-                arr.push({
-                  'id':element._id,
-                  'title':title,
-                  'detail':detail,
-                  'latitude':element.latitude,
-                  'longitude':element.longitude,
-                  'communitycode':element.communitycode,
-                  'communityname':element.communityname,
-                  'flat':element.flat,
-                  'caller':element.caller,
-                  'phonenum':element.phonenum,
-                  'selected':element.selected
-                })
+    getRecycleAddr(wechatid){
+      var _this = this
+      wx.cloud.init({
+        env: 'cloud1-7go51v8te374de35',
+      })
+      const db = wx.cloud.database()
+      const _ = db.command
+      var coll=db.collection('recycleaddr_list').where({
+        wechatid:wechatid
+      })
+      coll.field({
+        _id:1,
+        caller:1,
+        flat:1,
+        phonenum:1,
+        selected:1,
+        latitude:1,
+        longitude:1,
+        communitycode:1,
+        communityname:1,
+        communityaddress:1
+      })
+      .get({
+        success: function(res) {
+          if(res.data.length>0){
+            //_this.data.recycleArray = res.data
+            var arr=[]
+            res.data.forEach((element,i)=>{
+              if( element.selected){
+                _this.data.selectedLast = i
+                _this.data.selectedIndex = i
+              }
+              var title=element.caller+'----'+element.phonenum
+              var detail = element.communityaddress+element.communityname+element.flat
+              arr.push({
+                'id':element._id,
+                'title':title,
+                'detail':detail,
+                'latitude':element.latitude,
+                'longitude':element.longitude,
+                'communitycode':element.communitycode,
+                'communityname':element.communityname,
+                'flat':element.flat,
+                'caller':element.caller,
+                'phonenum':element.phonenum,
+                'selected':element.selected
               })
-              console.log('init selectedLast:', _this.data.selectedLast,'selectedIndex:', _this.data.selectedIndex)
-              _this.setData({
-                recycleArray:arr,
-                hasRecycleAddr:true
-              })
-            }else{
-              _this.setData({
-                hasRecycleAddr:false
-              })
-            }
-          },
-          fail: function(err){
+            })
+            console.log('init selectedLast:', _this.data.selectedLast,'selectedIndex:', _this.data.selectedIndex)
+            _this.setData({
+              recycleArray:arr,
+              hasRecycleAddr:true
+            })
+          }else{
             _this.setData({
               hasRecycleAddr:false
             })
           }
-        })
+        },
+        fail: function(err){
+          _this.setData({
+            hasRecycleAddr:false
+          })
+        }
+      })
 
-        // const db = wx.cloud.database()
-        // const _ = db.command
-        //var $ = db.command.aggregate
-        // db.collection('recycleaddr_list').aggregate()
-        //   .lookup({
-        //     from: "community_info",
-        //     localField: "communitycode",
-        //     foreignField: "communitycode",
-        //     as: "communityList"
-        //   })
-          // .replaceRoot({
-          //   newRoot: $.mergeObjects([ $.arrayElemAt(['$communityList', 0]), '$$ROOT' ])
-          // })
-          // .project({
-          //   communityList: 0
-          // })
-          // .end()
-          // .then(res => console.log(res))
-          // .catch(err => console.error(err))
-      },
+      // const db = wx.cloud.database()
+      // const _ = db.command
+      //var $ = db.command.aggregate
+      // db.collection('recycleaddr_list').aggregate()
+      //   .lookup({
+      //     from: "community_info",
+      //     localField: "communitycode",
+      //     foreignField: "communitycode",
+      //     as: "communityList"
+      //   })
+        // .replaceRoot({
+        //   newRoot: $.mergeObjects([ $.arrayElemAt(['$communityList', 0]), '$$ROOT' ])
+        // })
+        // .project({
+        //   communityList: 0
+        // })
+        // .end()
+        // .then(res => console.log(res))
+        // .catch(err => console.error(err))
+    },
 
-      getCommunityInfo(db,_){
-        //
-        var _this = this
-        db.collection('community_info').where({
-          communitycode: _.in(this.data.codeArray)
-        })
-        .field({
-          _id:0,
-          communitycode:1,
-          communityname:1,
-          communityaddress:1
-        })
-        .get({
-          success: function(res) {
-            var addrDic
-            res.data.forEach(element => {
-              var code = element.communitycode
-            })
-          },
-          fail:function(err){
-          }
-        })
-      },
-      funcd(){
-        wx.cloud.callFunction({
-          // 云函数名称
-          name: 'asyncCall',//'getRecycleItemAddr',
-          // 传给云函数的参数
-          data: {
-            wechatid:app.globalData.openid
-          },
-          success: function(res) {
-          },
-          fail: console.error
-        })
-      }
+    getCommunityInfo(db,_){
+      //
+      var _this = this
+      db.collection('community_info').where({
+        communitycode: _.in(this.data.codeArray)
+      })
+      .field({
+        _id:0,
+        communitycode:1,
+        communityname:1,
+        communityaddress:1
+      })
+      .get({
+        success: function(res) {
+          var addrDic
+          res.data.forEach(element => {
+            var code = element.communitycode
+          })
+        },
+        fail:function(err){
+        }
+      })
+    },
+    funcd(){
+      wx.cloud.callFunction({
+        // 云函数名称
+        name: 'asyncCall',//'getRecycleItemAddr',
+        // 传给云函数的参数
+        data: {
+          wechatid:app.globalData.openid
+        },
+        success: function(res) {
+        },
+        fail: console.error
+      })
+    }
 })
