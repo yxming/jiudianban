@@ -83,7 +83,8 @@ App({
         }else{
           self.globalData.hasLogin = false
         }
-        console.log('login status:',self.globalData.hasLogin?'logined':'unlogin')
+        console.log('login status:',self.globalData.hasLogin?'logined':'unlogin'),
+        console.log( self.globalData.role);
       }
     })
   },
