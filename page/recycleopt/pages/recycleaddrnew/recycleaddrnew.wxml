@@ -1,5 +1,5 @@
 <!--page/user/recycleaddrnew/recycleaddrnew.wxml-->
-<view style="width: 100%; height: 100vh; position: relative; top: 0; left: 0; background-color: #F3F3F3;">
+<view style="width: 100%; min-height: 100vh; position: relative; top: 0; left: 0; background-color: #F0F0F3;">
   <!-- <t-radio-group defaultValue="radio0" placement="right" bindchange="radioChange"> -->
   <!-- 这里图片改过记得调回来 -->
   <image style="width: 100%; display:{{hasCommunity?'none':''}}" src="../../../../resource/noservice.png" mode="aspectFit"></image>

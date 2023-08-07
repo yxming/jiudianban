@@ -2,14 +2,12 @@
 
 page {
   background-color: #F0F0F3;
-  padding: 0;
-  margin: 0;
 }
 
 .index-bd {
   width: 100%;
   height: 100%;
-  position: relative;
+  background-color: #F0F0F3;
 }
 
 .t-radio-padding {
@@ -110,7 +108,7 @@ page {
   width: 550rpx;
   height: 150rpx;
   padding: 35rpx 0 20rpx 60rpx;
-  z-index: 9000;
+  z-index: 6000;
 }
 
 .contentupBox {
@@ -146,7 +144,7 @@ page {
   position: sticky;
   bottom: 0;
   left: 0;
-  z-index: 1;
+  z-index: 9999;
 }
 
 .bottomButton {
@@ -154,7 +152,6 @@ page {
   height: 165rpx;
   display: flex;
   margin: auto;
-  z-index: 999999;
 }
 
 .xiaimage {

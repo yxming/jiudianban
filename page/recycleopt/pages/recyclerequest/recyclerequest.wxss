@@ -53,6 +53,7 @@ page {
   left: 15rpx;
   border-radius: 15rpx;
   padding-left: 50rpx;
+  --td-input-bg-color: #F0F0F3s;
 }
 .limage{
   width: 60rpx;
@@ -100,6 +101,7 @@ page {
   top: 10rpx;
   left: 15rpx;
   border-radius: 15rpx;
+  --td-input-bg-color: #F0F0F3s;
 }
 .notice{
   width: calc(100%-60rpx);
@@ -147,7 +149,6 @@ page {
 .Dbutton {
   width: 492rpx;
   height: 108rpx;
-  border-radius: 50rpx;
   color: #fff;
   font-size: 40rpx;
   display: flex;
@@ -156,11 +157,14 @@ page {
   margin: auto;
   font-weight: bold;
   background-color: #19A852;
+  border:2px solid #FFFFFF;
+  border-radius:100rpx;
+	box-shadow: -5px -5px 12.5px #FFFFFF;
+	box-shadow: 5px 5px 12.5px #C5C5C5
 }
 .Dbuttons{
   width: 492rpx;
   height: 108rpx;
-  border-radius: 50rpx;
   color: #fff;
   font-size: 40rpx;
   display: flex;
@@ -168,6 +172,10 @@ page {
   align-items: center;
   margin: auto;
   font-weight: bold;
+  border:2px solid #FFFFFF;
+  border-radius:100rpx;
+	box-shadow: -5px -5px 12.5px #FFFFFF;
+	box-shadow: 5px 5px 12.5px #C5C5C5;
   background-color: rgb(119, 119, 119);
 }
 .dibubox{
