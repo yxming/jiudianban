@@ -36,26 +36,26 @@
               <view class="belowContent">
                 <view class="biankuang">
                   <view class="biankuangbox"></view>
-                  <cover-image class="image" src="../../image/Rectanglee.png" style="width: 90%; height: 100%; position: absolute; top: -50rpx; left: 30rpx;">
+                  <cover-image class="image" src="../../image/xintetxbox.png" style="width: 90%; height: 100%; position: absolute; top: -50rpx; left: 30rpx;">
                     <!-- 图片的上半部分被盖住 -->
                   </cover-image>
                   <!-- 图片的下半部分内容 -->
                   <view class="biankongbox">
-                    <view class="order-detail-item">
-                      <view class="order-detail-text fw">定单号: </view>
+                    <view class="order-detail-item zititext">
+                      <view class="order-detail-text fw" style="margin-left: 20rpx;">订单号：</view>
                       <view class="order-detail-text">{{item.orderid}}</view>
                     </view>
                     <!-- style="display:{{role==2||role==0?'':'none'}}" -->
-                    <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
-                      <view class="order-detail-text fw">客户:</view>
+                    <view class="order-detail-item zititext" style="display:{{role==2||role==0?'':'none'}}">
+                      <view class="order-detail-text fw" style="margin-left: 20rpx;">发布人：</view>
                       <view class="order-list-text order-detail-item order-detail-text" style="overflow: hidden;">{{item.saler}}</view>
                     </view>
                     <!-- <view class="order-detail-item" >
                       <view class="order-detail-text fw">地址:</view>
                       <view class="order-list-text order-detail-item order-detail-text">{{item.communityname}}</view>
                     </view> -->
-                    <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
-                      <view class="order-detail-text fw">电话:</view>
+                    <view class="order-detail-item zititext" style="display:{{role==2||role==0?'':'none'}}">
+                      <view class="order-detail-text fw" style="margin-left: 20rpx;">手机号：</view>
                       <view class="order-list-text order-detail-item order-detail-text">{{item.phonenum}}</view>
                     </view>
                     <!-- <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
@@ -66,7 +66,7 @@
                     <view class="order-detail-text fw">电话:</view>
                     <view class="order-list-text order-detail-item order-detail-text">{{item.phonenum}}</view>
                   </view> -->
-                    <view class="flex-button" >
+                    <view class="flex-button">
                       <view class="bottomInputButton">
                         <input class="bottomInputButtonipt" id="{{item.index}}" placeholder="{{item.status? item.cost: '金额'}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
                       </view>
@@ -110,23 +110,23 @@
       </view>
       <view class=" initialBox {{item.open ? 'boxAfterChange' : ''}}">
         <view class="order-detail-item xianzeng">
-          <view class="order-detail-text fw">定单号: </view>
+          <view class="order-detail-text fw">订单号： </view>
           <view class="order-detail-text">{{item.orderid}}</view>
         </view>
         <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'':'none'}}">
-          <view class="order-detail-text fw">客户:</view>
+          <view class="order-detail-text fw">发布人：</view>
           <view class="order-list-text order-detail-item order-detail-text xianzeng">{{item.saler}}</view>
         </view>
         <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'':'none'}}">
-          <view class="order-detail-text fw">手机号:</view>
+          <view class="order-detail-text fw">手机号：</view>
           <view class="order-list-text order-detail-item order-detail-text xianzeng">{{item.phonenum}}</view>
         </view>
         <view class="order-detail-item xianzeng">
-          <view class="order-detail-text fw">金额:</view>
+          <view class="order-detail-text fw">金额：</view>
           <view class="order-list-text order-detail-item order-detail-text xianzeng"><text class="neitext">{{item.amount}}</text></view>
         </view>
         <view class="order-detail-item xianzeng">
-          <view class="order-detail-text fw">重量:</view>
+          <view class="order-detail-text fw">重量：</view>
           <view class="order-list-text order-detail-item order-detail-text xianzeng"><text class="neitext">{{item.cost}}</text></view>
         </view>
       </view>
