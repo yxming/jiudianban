@@ -16,7 +16,7 @@
     <view class="sliderIndicator" style="left: {{indicatorLeft}};">
       <view class="upgaizi" style="color: #00754A;">
         <image style="width: 100%;height: 100%;" src="../image/resse.png" mode="" />
-        <view class="neibutext" >{{nametexts}}</view>
+        <view class="neibutext">{{nametexts}}</view>
       </view>
     </view>
   </view>
@@ -24,11 +24,12 @@
     <scroll-view class="containers" scroll-y style="height: {{scrollHeight}}px;">
       <!-- 这里面是内容 -->
       <view class="list">
+        <!-- <block wx:for="{{dataList}}" wx:key="date" wx:for-item="item"> -->
         <block wx:for="{{cashrecord}}" wx:key="date" wx:for-item="item">
           <view class="all" wx:if="{{activeType === 'all' || item.type === activeType}}">
             <!-- 根据条件展示数据 -->
             <text class="date">{{item.date}}</text>{{item.type=='expense'? '支出:':'收入:'}}
-            <text style="color:{{item.type=='expense'? 'red':'chartreuse'}}">{{item.type=='expense'? '':'+'}}{{item.cash}}</text>
+            <text style="color:{{item.type=='expense'? '#A80404':'#19A852'}}">{{item.type=='expense'? '':'+'}}{{item.cash}}</text>
           </view>
         </block>
       </view>
@@ -38,17 +39,29 @@
     <view class="internalbutton" bindtap="handlePopup" data-value='1'>
       <image style="width: 100%; height: 100%;" src="../image/Groupqmu.png" mode="" />
     </view>
-    <view class="internalbutton" style="width: 540rpx; height: 150rpx;" bindtap="handlePopup" data-value='0'>
+    <view class="internalbutton" style="width: 560rpx; height: 180rpx;" bindtap="handlePopup" data-value='0'>
       <image style="width: 100%; height: 100%;" src="../image/Groupcunmi.png" mode="" />
     </view>
   </view>
 </view>
 <!-- 弹出层 -->
-<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
-  <view class="block">
+
+<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom" >
+  <view class="blocks">
     <view class="ejectBlock">
+      <view class="zhifuimage" wx:if="{{values===1}}" >
+        <image style="width: 100%; height: 100%;" src="../image/zhifubao.png" mode="" />
+      </view>
+      <view class="haobox" wx:if="{{values===1}}" >请使用支付宝</view>
+      <view class="haobox" wx:if="{{values===1}}" style="margin-bottom: 30rpx;">微信支付功能正在开发中</view>
       <input class="input" bindinput="handleInput" placeholder="{{textx}}"></input>
-      <view class="haobox">1粒=1元</view>
+      <view class="haobox" style="margin-top: 30rpx;" wx:if="{{values===1}}">1粒=1元</view>
+      <view class="haobox" wx:if="{{values===1}}" style="margin-bottom: 30rpx;">预计在3个工作日内到账</view>
+      <input class="inputs" style="display: {{naemd}};" bindinput="handleInput" placeholder="请输入支付宝账号"></input>
+      <input class="inputs" style="display: {{naemd}};" bindinput="handleInput" placeholder="请输入姓名"></input>
+      <input class="inputs" style="display: {{naemd}};" bindinput="handleInput" placeholder="请输入手机号"></input>
+
+      <view class="haobox" wx:if="{{values===0}}">1粒=1元</view>
       <view class="DdBox" wx:if="{{values===1}}">
         <image style="width: 100%; height: 100%;" src="../image/xiadan.png" mode="" />
       </view>

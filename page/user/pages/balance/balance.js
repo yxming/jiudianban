@@ -18,7 +18,7 @@ Page({
       dataList: [
           { date: '2023-07-01', cash: '100000', type: 'income' },
           { date: '2023-07-02', cash: '200', type: 'expense' },
-
+         
           // 其他数据项...
         ],
       activeType: 'all', // 默认展示全部数据
@@ -44,7 +44,10 @@ Page({
       textx:"请输入取米数量",
       values:0,
       // 滑动块高度
-      scrollHeight: 0
+      scrollHeight: 0,
+      showPopup: false,
+      // 取米输入框
+      naemd:''
     },
     /**
      * 生命周期函数--监听页面加载
@@ -86,6 +89,7 @@ Page({
         });
       }
     },
+    
     // 底部弹框
     // 取钱
     handlePopup(e) {
@@ -94,7 +98,8 @@ Page({
 if(values=='1'){
   this.setData({
     textx:"请输入取米数量",
-    values:1
+    values:1,
+    naemd:''
   }
   )
   this.setData(
@@ -108,7 +113,8 @@ if(values=='1'){
 }else{
   this.setData({
     textx:"请输入存米数量",
-    values:0
+    values:0,
+    naemd:'none'
   }
   )
   this.setData(
