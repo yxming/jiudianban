@@ -1,66 +1,72 @@
 <!--page/user/mine/mine.wxml-->
 <view class="container">
-    <view class="profile">
-      <view class="shangmbubox">
-        <view class="dohangind">个人中心</view>
+  <view class="profile">
+    <view class="shangmbubox">
+      <view class="dohangind">个人中心</view>
+    </view>
+    <!-- 这里跳转 -->
+    <view class="myImage">
+      <image style="width: 100%; height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/toimg.png?sign=c94a279a06e252e404051244243a6eca&t=1691032240" mode="" />
+      <navigator hover-class="none" class="link" url="/page/user/pages/profile/index">
+        <view class="myimage" style="display: {{userInfo.avatarUrl==''?'none':''}};">
+          <image style="width: 100%; height: 100%;" src="{{userInfo.avatarUrl}}" mode="" />
+        </view>
+      </navigator>
+    </view>
+    <view class="nametext">
+      <view class="sayHello" style="text-align: right; padding-right: 10rpx;">Hello！</view>
+      <!-- <view class="sayHello" style=" padding-left: 10rpx;">{{name}}</view> -->
+      <view class="sayHello" style="padding-left: 10rpx;">
+        <view wx:if="{{userInfo.nickName}}">{{userInfo.nickName}} !</view>
+        <view wx:else>请登录 ！</view>
       </view>
-      <!-- 这里跳转 -->
-      <view class="myImage">
-        <image style="width: 100%; height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/toimg.png?sign=c94a279a06e252e404051244243a6eca&t=1691032240" mode="" />
-        <navigator hover-class="none" class="link" url="/page/user/pages/profile/index">
-          <view class="myimage" style="display: {{userInfo.avatarUrl==''?'none':''}};">
-            <image style="width: 100%; height: 100%;" src="{{userInfo.avatarUrl}}" mode="" />
-          </view>
-        </navigator>
-      </view>
-      <view class="nametext">
-        <view class="sayHello" style="text-align: right; padding-right: 10rpx;">Hello！</view>
-        <!-- <view class="sayHello" style=" padding-left: 10rpx;">{{name}}</view> -->
-        <view class="sayHello" style="padding-left: 10rpx;">
-          <view wx:if="{{userInfo.nickName}}">{{userInfo.nickName}} !</view>
-          <view wx:else>请登录 ！</view>
+    </view>
+    <!-- 底部按钮 -->
+    <view class="riceBagBorder">
+      <view class="riceBagDBorder" wx:for="{{menuData}}" wx:key="index" bind:tap="jumptopage" data-index="{{index}}">
+        <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/shadowsd.png?sign=c50455be8d0dd00807d3588b2277d228&t=1691033908" mode="" />
+        <view class="riceBagDBordertext">
+          {{item.title}}
         </view>
       </view>
-      <!-- 底部按钮 -->
-      <view class="riceBagBorder" style="display: {{userInfo.avatarUrl==''?'none':''}};">
-        <view class="riceBagDBorder" wx:for="{{menuData}}" wx:key="index" bind:tap="jumptopage" data-index="{{index}}" wx:if="{{role>0&&item.winner==1}}">
-          <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/shadowsd.png?sign=c50455be8d0dd00807d3588b2277d228&t=1691033908" mode="" />
-          <view class="riceBagDBordertext">
-            {{item.title}}
-          </view>
-        </view>
-        <view class="riceBagDBorder" style="display: {{role===0?'':'none'}};" bind:tap="onClickCells">
-          <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/shadowsd.png?sign=c50455be8d0dd00807d3588b2277d228&t=1691033908" mode="" />
-          <view class="riceBagDBordertext">
-            站点列表
-          </view>
+      <view class="riceBagDBorder" style="display: {{role===0?'':'none'}};" bind:tap="onClickCells">
+        <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/shadowsd.png?sign=c50455be8d0dd00807d3588b2277d228&t=1691033908" mode="" />
+        <view class="riceBagDBordertext">
+          站点列表
         </view>
       </view>
+    </view>
+    <!-- 密码模态框 -->
+    <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
+    <view class="blockbox"></view>
+      <view class="block">
+        <input class="input-box" bindblur="onBlur" placeholder="{{ shurutext }}" />
+        <text class="error-text">{{ oldPasswordError }}</text>
+      </view>
+      <view class="block">
+        <input class="input-box" bindinput="onNewPasswordInput" data-index="0" placeholder="请输入新密码" />
+        <input class="input-box" bindinput="onNewPasswordInput" data-index="1" placeholder="请再次输入新密码" />
+        <text class="error-text">{{ newPasswordError }}</text>
+      </view>
+      <button bindtap="onSubmit" style="color: white; background: rgb(51, 253, 0);">提交</button>
+    </t-popup>
 
-      <!-- 密码模态框 -->
-      <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
-        <view class="block">
-          <input class="input-box" bindinput="onInput" placeholder="请输入新密码" />
-          <button bindtap="onSubmit" style="color: white; background: rgb(51, 253, 0);">提交</button>
-        </view>
-      </t-popup>
 
 
 
 
-
-      <!-- <view class="profile-base"> -->
-      <!-- 这个图就是头像 -->
-      <!-- <image class="avatar" src="{{userInfo.avatarUrl}}"></image> -->
-      <!-- 这个可以控制是否登录 -->
-      <!-- <text bind:tap="handleGetUserProfile" class="nickname">{{userInfo.nickName || '请登录'}}</text>
+    <!-- <view class="profile-base"> -->
+    <!-- 这个图就是头像 -->
+    <!-- <image class="avatar" src="{{userInfo.avatarUrl}}"></image> -->
+    <!-- 这个可以控制是否登录 -->
+    <!-- <text bind:tap="handleGetUserProfile" class="nickname">{{userInfo.nickName || '请登录'}}</text>
     <navigator hover-class="none" class="link" url="/page/user/pages/profile/index">
       请完善信息 -->
-      <!-- <t-icon name="chevron-right" size="48rpx" slot="note" /> -->
-      <!-- </navigator> -->
-      <!-- </view> -->
-      <!-- <image style="margin-top: 30%; height: 100%; display:{{hasLogin?'':'none'}}" src="../../resource/unlogin.png" mode="widthFix"></image> -->
-      <!-- <view class="content-wrapper">
+    <!-- <t-icon name="chevron-right" size="48rpx" slot="note" /> -->
+    <!-- </navigator> -->
+    <!-- </view> -->
+    <!-- <image style="margin-top: 30%; height: 100%; display:{{hasLogin?'':'none'}}" src="../../resource/unlogin.png" mode="widthFix"></image> -->
+    <!-- <view class="content-wrapper">
     <view wx:for="{{menuData}}" wx:key="item" class="cell-box">
       <t-cell-group wx:if="{{role===0}}">
         <t-cell wx:for="{{item}}" wx:for-item="xitem" wx:for-index="xindex" wx:key="xindex" title="{{xitem.title}}" arrow="{{!xitem.icon}}" note="{{xitem.tit}}" data-type="{{xitem.type}}" bordered="{{true}}" bind:click="onClickCell" t-class="t-cell-padding" t-class-note="order-group-note" t-class-left="order-group__left">
@@ -75,5 +81,5 @@
       </t-cell-group>
     </view>
   </view> -->
-    </view>
+  </view>
 </view>

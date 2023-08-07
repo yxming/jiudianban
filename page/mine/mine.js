@@ -20,6 +20,7 @@ Page({
         versionNo: '',
         // 这个是支付密码
         payment :'',
+        shurutext:'请输入旧密码',
         menuData : [
             // [
               {
@@ -27,37 +28,29 @@ Page({
                   tit: '',
                   url: '../user/pages/balance/balance',
                   type: '',
-                  winner:'1'
+                  winner:'0'
                 },
                 {
                   title: '地址管理',
                   tit: '',
                   url: '../recycleopt/pages/recycleaddrlist/recycleaddrlist',
                   type: '',
-                  winner:'1'
+                  winner:'0'
                 },
                 {
                   title: '支付密码',
                   tit: '',
                   url: '',
                   type: '',
-                  winner:'1'
+                  winner:'0'
                 },
                 {
                   title: '客服热线',
                   tit: '',
                   url: '../others/pages/customer/service',
                   type: '',
-                  winner:'1'
+                  winner:'0'
                 },
-                   {
-                title: '站点列表',
-                tit: '',
-                url: '',
-                type: 'nodelist',
-                icon: 'logo-codepen',
-                winner:'0'
-              },
               // {
               //   title: '地址管理',
               //   tit: '',
@@ -138,7 +131,51 @@ Page({
             { value: 'right', text: '右侧弹出' },
           ],
           // 这个是输入内容
-          inputValue: ''
+          // 这个是新密码
+          // inputValue: '',
+          password:'',
+          oldPassword: '',
+    newPasswords: ['', ''],
+    oldPasswordError: '',
+    newPasswordError: ''
+    },
+    onBlur(event) {
+      const inputValue = event.detail.value;
+      // 在这里进行旧密码验证逻辑
+      if (inputValue !== this.data.password) {
+        this.setData({ oldPasswordError: '旧密码错误' });
+      } else {
+        this.setData({ oldPasswordError: '' });
+      }
+    },
+    // 新密码验证
+    onNewPasswordInput(event) {
+      const index = event.currentTarget.dataset.index;
+      const inputValue = event.detail.value;
+      const newPasswords = this.data.newPasswords;
+  
+      newPasswords[index] = inputValue;
+      this.setData({ newPasswords });
+  
+      if (newPasswords[0] === newPasswords[1]) {
+        this.setData({ newPasswordError: '' });
+        console.log('两次输入的新密码一致');
+      } else {
+        this.setData({ newPasswordError: '两次输入的新密码不一致' });
+        console.log('两次输入的新密码不一致');
+      }
+    },
+    // 这里获取密码后提交
+    onSubmit() {
+      // 在这里进行提交逻辑
+      const oldPasswordError = this.data.oldPasswordError;
+      const newPasswordError = this.data.newPasswordError;
+  
+      if (!oldPasswordError && !newPasswordError) {
+        console.log('提交成功');
+      } else {
+        console.log('提交失败');
+      }
     },
     onLoad(){
       if(app.globalData.hasLogin){
@@ -151,10 +188,12 @@ Page({
         .get({
           success: (res)=>{
             console.log('user_info:',res.data)
+            console.log(res.data[0].paypwd);
             if(res.data[0].userinfo){
               this.setData({
                 userInfo: res.data[0].userinfo,
-                hasLogin:true
+                hasLogin:true,
+                password:res.data[0].paypwd
             })
             }
           }

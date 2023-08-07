@@ -108,8 +108,9 @@ page {
 .block {
   position: relative;
   width: 240px;
-  height: 100px;
+  height: auto;
   border-radius: 16rpx;
+  margin: 30rpx;
 }
 .input-box{
   width: 100%;
