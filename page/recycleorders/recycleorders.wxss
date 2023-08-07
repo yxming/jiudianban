@@ -497,18 +497,7 @@ page {
 
 .anniu {
   width: 294rpx;
-  height: 98 rpx;
-  color: #fff;
-  font-size: 48rpx;
-  text-align: center;
-  padding-top: 10rpx;
-  border-radius: 50rpx;
+  height: 140rpx;
   margin: 0 auto;
-  margin-top: 60rpx;
   margin-bottom: 90rpx;
-  border: 2rpx solid #FFFFFF;
-  background-color: #19A852;
-  border-radius: 100rpx;
-  box-shadow: -5px -5px 12.5px #FFFFFF;
-  box-shadow: 5px 5px 12.5px #C5C5C5
 }
