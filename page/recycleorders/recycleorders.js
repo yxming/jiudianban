@@ -13,7 +13,7 @@ Page({
       orderlist:[],
       orderlists:[],
       theme: 'light',
-      role:app.globalData.role,
+      role:'',
       isShow: true,
       visible: false,
       textPassword: '',
@@ -136,7 +136,9 @@ Page({
               console.log('orderlist:',list)
               _this.setData({
                 orderlist:list,
-                orderlists:list
+                orderlists:list,
+                role:'',
+                role:app.globalData.role,
               })
             }
           }
@@ -173,16 +175,16 @@ Page({
 
     kindToggle(e) {
       console.log(e);
-        // const id = e.currentTarget.id
-        // const orderlists = this.data.orderlists
+        const id = e.currentTarget.id
+        const orderlists = this.data.orderlists
 
-        // for (let i = 0, len = orderlists.length; i < len; ++i) {
-        //   if (orderlists[i].orderlists === id) {
-        //     orderlists[i].open = !orderlists[i].open
-        //   } else {
-        //     orderlists[i].open = false
-        //   }
-        // }
+        for (let i = 0, len = orderlists.length; i < len; ++i) {
+          if (orderlists[i].orderlists === id) {
+            orderlists[i].open = !orderlists[i].open
+          } else {
+            orderlists[i].open = false
+          }
+        }
         this.setData({
           orderlists
         })

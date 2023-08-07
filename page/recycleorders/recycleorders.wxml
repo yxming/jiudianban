@@ -4,86 +4,87 @@
     <view class="dohangind">订单列表</view>
   </view>
   <block class="order-list" wx:for-items="{{orderlist}}" wx:key="{{item.orderid}}">
-    <!-- <block wx:for-items="{{orderlist}}" wx:key="{{item.orderid}}"> -->
-    <view wx:if="{{item.status === 0}}" style="background-color: #F3F3F3" class="order-list-item">
-      <!-- 点击 -->
-      <view id="{{item.orderid}}" class="order-list-item-hd {{item.open ? 'order-list-item-hd-show' : ''}}" bindtap="switchtwe">
-        <view class="backgroundhd">
-          <image style="width: 100%; height: 100%;" src="../../image/Rectangled.png" mode="" />
-        </view>
-        <view class="backgroundhbox">
-          <image style="width: 100%; height: 100%;" src="{{item.open ? '../../image/inner.png' : '../../image/shadowsa.png '}}" mode="" />
-        </view>
-        <view class="contenttext" style="display: flex; flex-direction: column;">
-          <view class="order-detail-item">
-            <view style="font-size: 30rpx;" class="order-list-text">{{item.date}}</view>
+    <view wx:if="{{item.status === 0}}">
+      <view style="background-color: #F3F3F3" class="order-list-item">
+        <!-- 点击 -->
+        <view id="{{item.orderid}}" class="order-list-item-hd {{item.open ? 'order-list-item-hd-show' : ''}}" bindtap="switchtwe">
+          <view class="backgroundhd">
+            <image style="width: 100%; height: 100%;" src="../../image/Rectangled.png" mode="" />
           </view>
-          <view class="order-detail-item">
-            <view style=" color: #00754A;font-size: 28rpx; " class="order-list-text order-detail-item order-detail-text ">{{item.communityname}}{{item.flat}}</view>
-            <!-- <view class="order-list-text order-detail-item order-detail-text">{{item.flat}}</view> -->
+          <view class="backgroundhbox">
+            <image style="width: 100%; height: 100%;" src="{{item.open ? '../../image/inner.png' : '../../image/shadowsa.png '}}" mode="" />
           </view>
+          <view class="contenttext" style="display: flex; flex-direction: column;">
+            <view class="order-detail-item">
+              <view style="font-size: 30rpx;" class="order-list-text">{{item.date}}</view>
+            </view>
+            <view class="order-detail-item">
+              <view style=" color: #00754A;font-size: 28rpx; " class="order-list-text order-detail-item order-detail-text ">{{item.communityname}}{{item.flat}}</view>
+              <!-- <view class="order-list-text order-detail-item order-detail-text">{{item.flat}}</view> -->
+            </view>
+          </view>
+          <image wx:if="{{theme === 'dark'}}" class="kind-list-img" src="../../../../resources/kind/{{item.id}}_dark.png"></image>
+          <image wx:else class="kind-list-img" src="../../../../resources/kind/{{item.id}}.png"></image>
         </view>
-        <image wx:if="{{theme === 'dark'}}" class="kind-list-img" src="../../../../resources/kind/{{item.id}}_dark.png"></image>
-        <image wx:else class="kind-list-img" src="../../../../resources/kind/{{item.id}}.png"></image>
-      </view>
-      <view style="background-color: #F3F3F3;" class="order-detail-item-bd {{item.open ? 'order-detail-item-bd-show' : ''}}">
-        <view class="belowContent">
-          <!-- <view class="biankuangd">
+        <view style="background-color: #F3F3F3;" class="order-detail-item-bd {{item.open ? 'order-detail-item-bd-show' : ''}}">
+          <view class="belowContent">
+            <!-- <view class="biankuangd">
             <view class="biankuangbox">safasfd</view>
             <cover-image class="image" src="../image/Rectanglee.png"></cover-image>
           </view> -->
-          <view style="background-color: #F3F3F3;" class="order-detail-item-bd {{item.open ? 'order-detail-item-bd-show' : ''}}">
-            <view class="belowContent">
-              <view class="biankuang">
-                <view class="biankuangbox"></view>
-                <cover-image class="image" src="../../image/Rectanglee.png" style="width: 90%; height: 100%; position: absolute; top: -50rpx; left: 30rpx;">
-                  <!-- 图片的上半部分被盖住 -->
-                </cover-image>
-                <!-- 图片的下半部分内容 -->
-                <view class="biankongbox">
-                  <view class="order-detail-item">
-                    <view class="order-detail-text fw">定单号: </view>
-                    <view class="order-detail-text">{{item.orderid}}</view>
-                  </view>
-                  <!-- style="display:{{role==2||role==0?'':'none'}}" -->
-                  <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
-                    <view class="order-detail-text fw">客户:</view>
-                    <view class="order-list-text order-detail-item order-detail-text" style="overflow: hidden;">{{item.saler}}</view>
-                  </view>
-                  <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
-                    <view class="order-detail-text fw">地址:</view>
-                    <view class="order-list-text order-detail-item order-detail-text">{{item.communityname}}</view>
-                  </view>
-                  <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
-                    <view class="order-detail-text fw">电话:</view>
-                    <view class="order-list-text order-detail-item order-detail-text">{{item.phonenum}}</view>
-                  </view>
-                  <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
-                    <view class="order-detail-text fw">回收员:</view>
-                    <view class="order-list-text order-detail-item order-detail-text">{{item.wechatsale}}</view>
-                  </view>
-                  <!-- <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
+            <view style="background-color: #F3F3F3;" class="order-detail-item-bd {{item.open ? 'order-detail-item-bd-show' : ''}}">
+              <view class="belowContent">
+                <view class="biankuang">
+                  <view class="biankuangbox"></view>
+                  <cover-image class="image" src="../../image/Rectanglee.png" style="width: 90%; height: 100%; position: absolute; top: -50rpx; left: 30rpx;">
+                    <!-- 图片的上半部分被盖住 -->
+                  </cover-image>
+                  <!-- 图片的下半部分内容 -->
+                  <view class="biankongbox">
+                    <view class="order-detail-item">
+                      <view class="order-detail-text fw">定单号: </view>
+                      <view class="order-detail-text">{{item.orderid}}</view>
+                    </view>
+                    <!-- style="display:{{role==2||role==0?'':'none'}}" -->
+                    <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
+                      <view class="order-detail-text fw">客户:</view>
+                      <view class="order-list-text order-detail-item order-detail-text" style="overflow: hidden;">{{item.saler}}</view>
+                    </view>
+                    <!-- <view class="order-detail-item" >
+                      <view class="order-detail-text fw">地址:</view>
+                      <view class="order-list-text order-detail-item order-detail-text">{{item.communityname}}</view>
+                    </view> -->
+                    <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
+                      <view class="order-detail-text fw">电话:</view>
+                      <view class="order-list-text order-detail-item order-detail-text">{{item.phonenum}}</view>
+                    </view>
+                    <!-- <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
+                      <view class="order-detail-text fw">回收员:</view>
+                      <view class="order-list-text order-detail-item order-detail-text">{{item.wechatsale}}</view>
+                    </view> -->
+                    <!-- <view class="order-detail-item" style="display:{{role==2||role==0?'':'none'}}">
                     <view class="order-detail-text fw">电话:</view>
                     <view class="order-list-text order-detail-item order-detail-text">{{item.phonenum}}</view>
                   </view> -->
-                  <view class="flex-button" style="display:{{role==2||role==0?'none':''}}">
-                    <view class="bottomInputButton">
-                      <input class="bottomInputButtonipt" id="{{item.index}}" placeholder="{{item.status? item.cost: '金额'}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
-                    </view>
-                    <view style="width: 1rpx;height: 100%;background-color: rgb(201, 201, 201);"></view>
-                    <view class="bottomInputButton">
-                      <input class="bottomInputButtonipt" id="{{item.index}}" bindblur="onAmountChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" placeholder="0" placeholder="{{item.status? item.amount:'重量'}}" />
-                    </view>
-                    <!-- <view class="order-detail-item">
+                    <view class="flex-button" >
+                      <view class="bottomInputButton">
+                        <input class="bottomInputButtonipt" id="{{item.index}}" placeholder="{{item.status? item.cost: '金额'}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
+                      </view>
+                      <view style="width: 1rpx;height: 100%;background-color: rgb(201, 201, 201);"></view>
+                      <view class="bottomInputButton">
+                        <input class="bottomInputButtonipt" id="{{item.index}}" bindblur="onAmountChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" placeholder="0" placeholder="{{item.status? item.amount:'重量'}}" />
+                      </view>
+                      <!-- <view class="order-detail-item">
                     <view class="order-detail-text fw">状态:</view>
                     <view class="order-detail-text ">{{item.status?'已完成':'未完成'}}</view>
                   </view> -->
-                  </view>
-                  <!-- 付款按钮 -->
-                  <view class="anniu" id="{{item.index}}" bindtap="handlePopup" style="visibility:{{item.status?'hidden':role==2||role==0?'':'hidden'}}">付款!</view>
-                  <!-- <view class="button">
+                    </view>
+                    <!-- 付款按钮 -->
+                    <view class="anniu" id="{{item.index}}" bindtap="handlePopup" style="visibility:{{item.status?'hidden':role==2||role==0?'':'hidden'}}">付款!</view>
+                    <!-- <view class="button">
                     <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':role==2||role==0?'':'hidden'}}" bindtap="handlePopup">付款</button>
                   </view> -->
+                  </view>
                 </view>
               </view>
             </view>
@@ -91,56 +92,55 @@
         </view>
       </view>
     </view>
+    <view wx:else>
+      <view class="completeds" bindtap="switchtwe" id="{{item.orderid}}">
+        <view class="timeAddress">
+          <view class="timeAddrestime">
+            {{item.date}}
+          </view>
+          <view class="addresstime">
+            {{item.communityname}}
+          </view>
+        </view>
+        <view class="timeAddresL">
+          <view class="timeAddresLimag">
+            <image style="width: 100%; height: 100%;" src="{{item.open ? '../../image/inner.png' : '../../image/shadowsa.png '}}" mode="" />
+          </view>
+        </view>
+      </view>
+      <view class=" initialBox {{item.open ? 'boxAfterChange' : ''}}">
+        <view class="order-detail-item xianzeng">
+          <view class="order-detail-text fw">定单号: </view>
+          <view class="order-detail-text">{{item.orderid}}</view>
+        </view>
+        <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'none':''}}">
+          <view class="order-detail-text fw">客户:</view>
+          <view class="order-list-text order-detail-item order-detail-text xianzeng">{{item.saler}}</view>
+        </view>
+        <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'none':''}}">
+          <view class="order-detail-text fw">手机号:</view>
+          <view class="order-list-text order-detail-item order-detail-text xianzeng">{{item.phonenum}}</view>
+        </view>
+        <view class="order-detail-item xianzeng">
+          <view class="order-detail-text fw">金额:</view>
+          <view class="order-list-text order-detail-item order-detail-text xianzeng"><text class="neitext">{{item.amount}}</text></view>
+        </view>
+        <view class="order-detail-item xianzeng">
+          <view class="order-detail-text fw">重量:</view>
+          <view class="order-list-text order-detail-item order-detail-text xianzeng"><text class="neitext">{{item.cost}}</text></view>
+        </view>
+      </view>
+    </view>
   </block>
-  <!-- 已完成 -->
-  <view class="" wx:for-items="{{orderlists}}" wx:key="{{item.orderlists}}">
-    <view wx:if="{{item.status === 1}}" class="completed" bindtap="kindToggle" id="{{item.orderid}}">
-      <view class="timeAddress">
-        <view class="timeAddrestime">
-          {{item.date}}
-        </view>
-        <view class="addresstime">
-          {{item.communityname}}
-        </view>
-      </view>
-      <view class="timeAddresL">
-        <view class="timeAddresLimag">
-          <image style="width: 100%; height: 100%;" src="{{item.open ? '../../image/inner.png' : '../../image/shadowsa.png '}}" mode="" />
-        </view>
-      </view>
-    </view>
-    <view class=" initialBox {{item.open ? 'boxAfterChange' : ''}}">
-      <view class="order-detail-item xianzeng">
-        <view class="order-detail-text fw">定单号: </view>
-        <view class="order-detail-text">{{item.orderid}}</view>
-      </view>
-      <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'':'none'}}">
-        <view class="order-detail-text fw">客户:</view>
-        <view class="order-list-text order-detail-item order-detail-text xianzeng">{{item.saler}}</view>
-      </view>
-      <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'':'none'}}">
-        <view class="order-detail-text fw">手机号:</view>
-        <view class="order-list-text order-detail-item order-detail-text xianzeng">{{item.phonenum}}</view>
-      </view>
-      <view class="order-detail-item xianzeng">
-        <view class="order-detail-text fw">金额:</view>
-        <view class="order-list-text order-detail-item order-detail-text xianzeng"><text class="neitext">{{item.amount}}</text></view>
-      </view>
-      <view class="order-detail-item xianzeng">
-        <view class="order-detail-text fw">重量:</view>
-        <view class="order-list-text order-detail-item order-detail-text xianzeng"><text class="neitext">{{item.cost}}</text></view>
-      </view>
-    </view>
-    <!-- </block> -->
-  </view>
 </view>
+<!-- 已完成 -->
 <!-- 支付弹窗 -->
 <t-popup style="border-radius: 25px;" visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
   <view class="block">
     <view class="block-title">
       {{amount}} 粒
     </view>
-    <t-input  placeholder="请输入支付密码" align="center"  model:value="{{textPassword}}" clearable />
+    <t-input placeholder="请输入支付密码" align="center" model:value="{{textPassword}}" clearable />
     <!-- <button class="mini-queren" bindtap="submit">好！</button> -->
     <view class="mini-queren" bindtap="submit">好!</view>
   </view>

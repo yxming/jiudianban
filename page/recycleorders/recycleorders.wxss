@@ -259,7 +259,7 @@ page {
 }
 
 .timeAddress {
-  width: 60%;
+  width:  65%;
   height: 100%;
   margin-left: 50rpx;
 }
@@ -367,6 +367,15 @@ page {
 .bottomInputButton input {
   width: 100%;
   height: 100%;
+}
+.completeds{
+  width: calc(100%-30rpx);
+  height: 200rpx;
+  overflow: hidden;
+  display: flex;
+  padding-right: 30rpx;
+  /* background-color: chartreuse; */
+  border-bottom: 1rpx solid rgb(211, 211, 211);
 }
 
 /* button {

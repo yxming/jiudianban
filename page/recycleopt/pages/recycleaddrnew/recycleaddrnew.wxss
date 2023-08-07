@@ -1,9 +1,17 @@
 /* page/user/recycleaddrnew/recycleaddrnew.wxss */
-.index-bd{
+
+page {
+  background-color: #F0F0F3;
+  padding: 0;
+  margin: 0;
+}
+
+.index-bd {
   width: 100%;
   height: 100%;
   position: relative;
 }
+
 .t-radio-padding {
   padding: 24rpx 32rpx !important;
 }
@@ -28,7 +36,7 @@
 .suffix--line {
   width: 1px;
   height: 24px;
-  background-color: #f6f6f6;
+  background-color: #F0F0F3;
   margin-right: 16px;
 }
 
@@ -44,20 +52,23 @@
   margin-top: -6px;
   margin-bottom: -6px;
 }
-.inputContactsBox{
-  width: 100%; 
+
+.inputContactsBox {
+  width: 100%;
   height: 96rpx;
   margin-bottom: 30rpx;
   border-bottom: 1rpx solid rgb(192, 192, 192);
   padding-bottom: 30rpx;
   display: flex;
 }
-.imageBox{
+
+.imageBox {
   width: 50rpx;
   height: 50rpx;
   margin-top: 25rpx;
   margin-left: 90rpx;
 }
+
 /* 页面单选 */
 .container {
   width: 100%;
@@ -71,6 +82,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .radio-item {
   width: 100%;
   height: 200rpx;
@@ -79,7 +91,8 @@
   align-items: center;
   /* border-bottom: 1rpx solid #d1d1d1; */
 }
-.radioItemimage{
+
+.radioItemimage {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -92,43 +105,64 @@
   margin-left: 10px;
   z-index: 111;
 }
-.contentBox{
+
+.contentBox {
   width: 550rpx;
   height: 150rpx;
   padding: 35rpx 0 20rpx 60rpx;
   z-index: 9000;
 }
-.contentupBox{
+
+.contentupBox {
   width: 100%;
   height: 70rpx;
   font-size: 40rpx;
   margin-bottom: 10rpx;
 }
-.contentDBox{
+
+.contentDBox {
   width: 500rpx;
   height: 90rpx;
   font-size: 28rpx;
   color: rgb(187, 187, 187);
 }
-.icon-container{
+
+.icon-container {
   width: 88rpx;
   height: 88rpx;
   z-index: 9900;
 }
-.icon{
+
+.icon {
   width: 100%;
   height: 100%;
 }
+
 /* 底部按钮 */
+.bottomButtonxwbox {
+  width: 100%;
+  height: 200rpx;
+  background-color: #F0F0F3;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
 .bottomButton {
   width: 492rpx;
   height: 165rpx;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 60rpx;
-  left: 50%;
-  transform: translateX(-50%);
+  margin: auto;
   z-index: 999999;
+}
+
+.xiaimage {
+  width: 100%;
+  height: 100%;
+}
+
+.shurukuang {
+  width: 100%;
+  height: 30rpx;
 }
