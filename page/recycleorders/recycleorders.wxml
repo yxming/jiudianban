@@ -113,11 +113,11 @@
           <view class="order-detail-text fw">定单号: </view>
           <view class="order-detail-text">{{item.orderid}}</view>
         </view>
-        <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'none':''}}">
+        <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'':'none'}}">
           <view class="order-detail-text fw">客户:</view>
           <view class="order-list-text order-detail-item order-detail-text xianzeng">{{item.saler}}</view>
         </view>
-        <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'none':''}}">
+        <view class="order-detail-item xianzeng" style="display:{{role==2||role==0?'':'none'}}">
           <view class="order-detail-text fw">手机号:</view>
           <view class="order-list-text order-detail-item order-detail-text xianzeng">{{item.phonenum}}</view>
         </view>
