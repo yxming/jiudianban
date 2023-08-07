@@ -2,8 +2,10 @@
 
 
 page {
-  background-color: #F0F0F3; /* 设置背景颜色#f0f0f0; */
+  background-color: #F0F0F3;
+  /* 设置背景颜色#f0f0f0; */
 }
+
 .custom-tabs {
   margin-bottom: 32rpx;
 }
@@ -48,7 +50,7 @@ page {
   border-right: 1rpx solid #fff;
   border-bottom: 1rpx solid #fff;
   border-radius: 45rpx;
-  margin: 0 30rpx 40rpx 30rpx;
+  margin: 0 30rpx 20rpx 30rpx;
   padding: 20rpx 30rpx 0 30rpx;
   box-shadow: inset 9rpx 9rpx 5rpx 5rpx rgba(192, 190, 190, 0.2);
   display: flex;
@@ -84,25 +86,37 @@ page {
   height: 5px; */
   width: 5rpx;
   height: 5rpx;
-  background-color: #F0F0F3;
+  /* background-color: #F0F0F3; */
   transition: left 0.3s;
   position: relative;
 }
 
 .upgaizi {
   width: 200rpx;
-  height: 110rpx;
+  height: 120rpx;
   position: absolute;
   top: -58rpx;
   left: -600rpx;
   position: relative;
 }
 
+.neibutext {
+  width: 100%;
+  height: 50rpx ;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 24rpx;
+  /* background-color: chartreuse; */
+}
+
 /* 里面的滑动块 */
 .lowerBox {
   width: calc(100%-80rpx);
   height: auto;
-  padding: 40rpx;
+  padding:0 40rpx;
   padding-bottom: 0rpx;
   background-color: #F3F3F3;
 }
@@ -119,9 +133,10 @@ page {
   /* margin-top: 20rpx; */
   padding-top: 30rpx;
   background-color: #F3F3F3;
-  position: absolute;
+  position: sticky;
   bottom: 0;
   left: 0;
+  z-index: 1;
 }
 
 .internalbutton {
@@ -148,7 +163,7 @@ page {
 
 .date {
   display: inline-block;
-  width: 70%;
+  width: 60%;
   /* margin-top: 10rpx; */
 }
 

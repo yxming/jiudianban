@@ -16,7 +16,7 @@ Page({
       searchinput: '', //用户输入的查询语
       cashrecord:[],
       dataList: [
-          { date: '2023-07-01', cash: '100', type: 'income' },
+          { date: '2023-07-01', cash: '100000', type: 'income' },
           { date: '2023-07-02', cash: '200', type: 'expense' },
 
           // 其他数据项...
