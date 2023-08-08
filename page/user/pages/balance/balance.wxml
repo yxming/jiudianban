@@ -15,7 +15,7 @@
     <view class="sliderdtextBox" data-index="2" bindtap="onClickSlider">支出</view>
     <view class="sliderIndicator" style="left: {{indicatorLeft}};">
       <view class="upgaizi" style="color: #00754A;">
-        <image style="width: 100%;height: 100%;" src="../image/resse.png" mode="" />
+        <image style="width: 101%;height: 104%;" src="../image/resse.png" mode="" />
         <view class="neibutext">{{nametexts}}</view>
       </view>
     </view>
@@ -57,9 +57,9 @@
       <input class="input" bindinput="handleInput" placeholder="{{textx}}"></input>
       <view class="haobox" style="margin-top: 30rpx;" wx:if="{{values===1}}">1粒=1元</view>
       <view class="haobox" wx:if="{{values===1}}" style="margin-bottom: 30rpx;">预计在3个工作日内到账</view>
-      <input class="inputs" style="display: {{naemd}};" bindinput="handleInput" placeholder="请输入支付宝账号"></input>
-      <input class="inputs" style="display: {{naemd}};" bindinput="handleInput" placeholder="请输入姓名"></input>
-      <input class="inputs" style="display: {{naemd}};" bindinput="handleInput" placeholder="请输入手机号"></input>
+      <input class="inputs" style="display: {{naemd}};" bindinput="handleInputb" placeholder="请输入支付宝账号"></input>
+      <input class="inputs" style="display: {{naemd}};" bindinput="handleInputc" placeholder="请输入姓名"></input>
+      <input class="inputs" style="display: {{naemd}};" bindinput="handleInputd" placeholder="请输入手机号"></input>
 
       <view class="haobox" wx:if="{{values===0}}">1粒=1元</view>
       <view class="DdBox" wx:if="{{values===1}}">
