@@ -51,7 +51,7 @@
           </view>
           <text class="error-text">{{ oldPasswordError }}</text>
           <view class="blocktextimage">
-            <input class="input-box" bindinput="onNewPasswordInput" data-index="1" placeholder="请输入新密码" type="{{ showPassword[1] ? 'text' : 'password' }}" placeholder="{{ shurutext }}" />
+            <input class="input-box" bindinput="onNewPasswordInput" data-index="1" placeholder="请输入新密码" type="{{ showPassword[1] ? 'text' : 'password' }}" />
             <view class="rutimage" bindtap="togglePasswordVisibility" data-index="1">
               <image style="width: 100%; height: 100%;" src="{{ showPassword[1] ? '../../image/yincangmima.png' : '../../image/xianshimima.png' }} " mode="" />
             </view>
@@ -70,14 +70,11 @@
         <image style="width: 100%; height: 100%;" src="../../image/baocund.png" mode="" />
       </view>
     </t-popup>
+    <!-- 密码提示 -->
+    <t-toast id="t-toast" />
 
 
     <!-- <button bindtap="onSubmit" style="color: white; background: rgb(51, 253, 0);">提交</button> -->
-
-
-
-
-
     <!-- <view class="profile-base"> -->
     <!-- 这个图就是头像 -->
     <!-- <image class="avatar" src="{{userInfo.avatarUrl}}"></image> -->

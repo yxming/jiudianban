@@ -4,10 +4,12 @@
     "navigationBarBackgroundColor": "#F0F0F3",
     "backgroundColorTop": "#6394c0",
     "navigationStyle":"custom",
+    "component": true,
     "usingComponents": {
         "t-swiper": "tdesign-miniprogram/swiper/swiper",
         "t-image": "tdesign-miniprogram/image/image",
         "t-icon": "tdesign-miniprogram/icon/icon",
+        "t-toast": "tdesign-miniprogram/toast/toast",
         "t-button": "tdesign-miniprogram/button/button"
     }
 }

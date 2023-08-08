@@ -1,4 +1,5 @@
 // page/home/home.js
+
 const app = getApp()
 Page({
     data: {
@@ -163,6 +164,14 @@ Page({
     gotoService() {
         wx.navigateTo({
             url: '../others/pages/customer/service'
+        })
+    },
+    showSuccessToast() {
+        wx.showToast({
+          title: '该功能开发中', // 轻提示的文本内容
+          icon: 'success', // 轻提示的图标，可选值：'success', 'loading', 'none'
+          duration: 2000, // 轻提示的显示时间，单位为毫秒
+          mask: true // 是否显示透明蒙层，防止触摸穿透，默认为 false
         })
     },
 })
