@@ -132,53 +132,20 @@ Page({
           ],
           // 这个是输入内容
           // 这个是新密码
-          // inputValue: '',
-          password:'',
-          oldPassword: '',
-    newPasswords: ['', ''],
+    // 这个是控制密码显示隐藏的 
+    showPassword: [false, false, false],
     oldPasswordError: '',
     newPasswordError: '',
-    // 这个是控制密码显示隐藏的 
-    showPassword: false
+    confirmPasswordError: '',
+    oldPassword: '',
+    newPassword: '',
+    confirmPassword: ''
     },
-    onBlur(event) {
-      const inputValue = event.detail.value;
-      // 在这里进行旧密码验证逻辑
-      if (inputValue !== this.data.password) {
-        this.setData({ oldPasswordError: '旧密码错误' });
-      } else {
-        this.setData({ oldPasswordError: '' });
-      }
-    },
+    
     // 新密码验证
-    onNewPasswordInput(event) {
-      const index = event.currentTarget.dataset.index;
-      const inputValue = event.detail.value;
-      const newPasswords = this.data.newPasswords;
-  
-      newPasswords[index] = inputValue;
-      this.setData({ newPasswords });
-  
-      if (newPasswords[0] === newPasswords[1]) {
-        this.setData({ newPasswordError: '' });
-        console.log('两次输入的新密码一致');
-      } else {
-        this.setData({ newPasswordError: '两次输入的新密码不一致' });
-        console.log('两次输入的新密码不一致');
-      }
-    },
+   
     // 这里获取密码后提交
-    onSubmit() {
-      // 在这里进行提交逻辑
-      const oldPasswordError = this.data.oldPasswordError;
-      const newPasswordError = this.data.newPasswordError;
-  
-      if (!oldPasswordError && !newPasswordError) {
-        console.log('提交成功');
-      } else {
-        console.log('提交失败');
-      }
-    },
+   
     onLoad(){
       if(app.globalData.hasLogin){
         console.log('mine.openid:',app.globalData.openid)
@@ -343,22 +310,78 @@ Page({
       });
     },
     // 密码内容框
-    onInput: function(event) {
-      var value = event.detail.value;
+    togglePasswordVisibility: function(event) {
+      var index = event.currentTarget.dataset.index;
+      var showPassword = this.data.showPassword;
+      showPassword[index] = !showPassword[index];
+      console.log("11111111333311111111:",event);
       this.setData({
-        inputValue: value
+        showPassword: showPassword
       });
     },
   
-    onSubmit: function() {
-      var value = this.data.inputValue;
-      console.log("输入内容为：" + value);
-      // 在这里可以对输入内容进行处理或其他操作
+    onBlur: function(event) {
+      var inputValue = event.detail.value;
+      var index = event.currentTarget.dataset.index;
+      console.log();
+  
+        this.setData({
+          oldPassword: inputValue
+        });
     },
-    // 这个是控制密码显示隐藏的
-    togglePassword: function() {
-      this.setData({
-        showPassword: !this.data.showPassword
-      });
+  
+    onNewPasswordInput: function(event) {
+      var index = event.currentTarget.dataset.index;
+      var inputValue = event.detail.value;
+      console.log("11111111111:",index);
+      console.log("22222222222:",inputValue);
+  
+      if (index == 1) {
+        console.log("4444444444:");
+        this.setData({
+          newPassword: inputValue
+        });
+      }
+  
+      if (index == 2) {
+        this.setData({
+          confirmPassword: inputValue
+        });
+      }
+    },
+  
+    changePassword: function() {
+      var oldPassword = this.data.oldPassword;
+      var newPassword = this.data.newPassword;
+      var confirmPassword = this.data.confirmPassword;
+      // 验证旧密码
+      if (oldPassword !== this.data.password) {
+        this.setData({
+          oldPasswordError: '旧密码错误'
+        });
+        return;
+      } else {
+        this.setData({
+          oldPasswordError: ''
+        });
+      }
+  
+     
+  console.log(this.data.newPassword);
+      // 验证确认密码
+      if (confirmPassword !== newPassword) {
+        this.setData({
+          confirmPasswordError: '两次输入的密码不一致'
+        });
+        return;
+      } else {
+        this.setData({
+          confirmPasswordError: ''
+        });
+      }
+  
+      // 如果所有验证通过，执行修改密码的逻辑
+      // 你可以在这里使用 oldPassword, newPassword 和 confirmPassword 进行密码修改操作
+      // ...
     }
-})
+  });

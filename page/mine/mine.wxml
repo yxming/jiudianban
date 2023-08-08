@@ -43,18 +43,36 @@
           修改密码
         </view>
         <view class="block">
-          <input class="input-box" bindblur="onBlur" placeholder="{{ shurutext }}" />
+          <view class="blocktextimage">
+            <input class="input-box" bindblur="onBlur" data-index="0" type="{{ showPassword[0] ? 'text' : 'password' }}" placeholder="{{ shurutext }}" />
+            <view class="rutimage" bindtap="togglePasswordVisibility" data-index="0">
+              <image style="width: 100%; height: 100%;" src="{{ showPassword[0] ? '../../image/yincangmima.png' : '../../image/xianshimima.png' }} " mode="" />
+            </view>
+          </view>
           <text class="error-text">{{ oldPasswordError }}</text>
-          <input class="input-box" bindinput="onNewPasswordInput" data-index="0" placeholder="请输入新密码" />
-          <input class="input-box" bindinput="onNewPasswordInput" data-index="1" placeholder="请再次输入新密码" />
+          <view class="blocktextimage">
+            <input class="input-box" bindinput="onNewPasswordInput" data-index="1" placeholder="请输入新密码" type="{{ showPassword[1] ? 'text' : 'password' }}" placeholder="{{ shurutext }}" />
+            <view class="rutimage" bindtap="togglePasswordVisibility" data-index="1">
+              <image style="width: 100%; height: 100%;" src="{{ showPassword[1] ? '../../image/yincangmima.png' : '../../image/xianshimima.png' }} " mode="" />
+            </view>
+          </view>
           <text class="error-text">{{ newPasswordError }}</text>
-        </view>
-        <!-- <button bindtap="onSubmit" style="color: white; background: rgb(51, 253, 0);">提交</button> -->
-        <view class="fukuanbox">
-          <image style="width: 100%; height: 100%;" src="../../image/baocund.png" mode="" />
+          <view class="blocktextimage">
+            <input class="input-box" bindinput="onNewPasswordInput" type="{{ showPassword[2] ? 'text' : 'password' }}" data-index="2" placeholder="请再次输入新密码" />
+            <view class="rutimage" bindtap="togglePasswordVisibility" data-index="2">
+              <image style="width: 100%; height: 100%;" src="{{ showPassword[2] ? '../../image/yincangmima.png' : '../../image/xianshimima.png' }} " mode="" />
+            </view>
+          </view>
+          <text class="error-text">{{ confirmPasswordError }}</text>
         </view>
       </view>
+      <view class="fukuanbox" bindtap="changePassword">
+        <image style="width: 100%; height: 100%;" src="../../image/baocund.png" mode="" />
+      </view>
     </t-popup>
+
+
+    <!-- <button bindtap="onSubmit" style="color: white; background: rgb(51, 253, 0);">提交</button> -->
 
 
 

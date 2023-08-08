@@ -123,19 +123,25 @@ page {
   border-radius: 16rpx;
   margin: 30rpx 75rpx;
 }
-
-.blockbox {
+.blocktextimage{
   width: 100%;
   height: auto;
+  display: flex;
+}
+.rutimage{
+  width: 60rpx;
+  height: 55rpx;
+  overflow: hidden;
+  margin: auto;
 }
 
+
 .input-box {
-  width: 300rpx;
+  width: 80%;
   height: 80rpx;
   text-align: center;
   border-bottom: 1rpx solid #d6d6d6;
   /* margin: 30rpx auto; */
-  background-color: #00754A;
 }
 
 .xiugaitext {
