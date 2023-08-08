@@ -46,7 +46,7 @@
 </view>
 <!-- 弹出层 -->
 
-<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom" >
+<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom"  style="border-radius: 25px;">
   <view class="blocks">
     <view class="ejectBlock">
       <view class="zhifuimage" wx:if="{{values===1}}" >

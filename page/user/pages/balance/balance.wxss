@@ -92,11 +92,11 @@ page {
 }
 
 .upgaizi {
-  width: 200rpx;
+  width: 195rpx;
   height: 120rpx;
   position: absolute;
   top: -58rpx;
-  left: -600rpx;
+  left: -610rpx;
   position: relative;
 }
 

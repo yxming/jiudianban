@@ -137,7 +137,9 @@ Page({
           oldPassword: '',
     newPasswords: ['', ''],
     oldPasswordError: '',
-    newPasswordError: ''
+    newPasswordError: '',
+    // 这个是控制密码显示隐藏的 
+    showPassword: false
     },
     onBlur(event) {
       const inputValue = event.detail.value;
@@ -352,5 +354,11 @@ Page({
       var value = this.data.inputValue;
       console.log("输入内容为：" + value);
       // 在这里可以对输入内容进行处理或其他操作
+    },
+    // 这个是控制密码显示隐藏的
+    togglePassword: function() {
+      this.setData({
+        showPassword: !this.data.showPassword
+      });
     }
 })

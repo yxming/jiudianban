@@ -19,15 +19,17 @@ page {
   z-index: 900;
   /* position: relative; */
 }
+
 /* 顶部导航 */
-.shangmbubox{
+.shangmbubox {
   width: 100%;
   height: 150rpx;
   position: relative;
   top: 0;
   left: 0;
 }
-.dohangind{
+
+.dohangind {
   width: auto;
   height: auto;
   text-align: center;
@@ -38,12 +40,14 @@ page {
   left: 50%;
   transform: translateX(-50%);
 }
-.profileback{
+
+.profileback {
   width: 100%;
   height: 100vh;
   z-index: 1;
 }
-.myImage{
+
+.myImage {
   width: 354rpx;
   height: 354rpx;
   margin: auto;
@@ -52,7 +56,8 @@ page {
   overflow: hidden;
   position: relative;
 }
-.myimage{
+
+.myimage {
   width: 70%;
   height: 70%;
   display: flex;
@@ -65,33 +70,38 @@ page {
   border-radius: 50%;
   overflow: hidden;
 }
-.nametext{
+
+.nametext {
   width: 100%;
   height: 70rpx;
   z-index: 99;
   display: flex;
   margin-top: 150rpx;
 }
-.sayHello{
+
+.sayHello {
   width: 50%;
   height: 100%;
   color: #00754A;
   font-style: 70rpx;
 }
-.riceBagBorder{
+
+.riceBagBorder {
   width: 380rpx;
-  height:auto;
+  height: auto;
   z-index: 99;
   margin: auto;
   margin-top: 50rpx;
 }
-.riceBagDBorder{
+
+.riceBagDBorder {
   width: 100%;
   height: 110rpx;
   position: relative;
   z-index: 901;
 }
-.riceBagDBordertext{
+
+.riceBagDBordertext {
   width: 300rpx;
   height: 50rpx;
   z-index: 999;
@@ -99,25 +109,52 @@ page {
   top: 30rpx;
   left: 50%;
   transform: translateX(-50%);
-  text-align:center;
+  text-align: center;
   color: #00754A;
   font-size: 32rpx;
   z-index: 9900;
 }
+
 /* 密码模态框 */
 .block {
   position: relative;
   width: 240px;
   height: auto;
   border-radius: 16rpx;
-  margin: 30rpx;
-}
-.input-box{
-  width: 100%;
-  height: 80rpx;
-  text-align: center;
+  margin: 30rpx 75rpx;
 }
 
+.blockbox {
+  width: 100%;
+  height: auto;
+}
+
+.input-box {
+  width: 300rpx;
+  height: 80rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #d6d6d6;
+  /* margin: 30rpx auto; */
+  background-color: #00754A;
+}
+
+.xiugaitext {
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  margin-top: 50rpx;
+  font-size: 48rpx;
+  
+}
+
+/* 付款按钮盒子 */
+.fukuanbox {
+  width: 294rpx;
+  height: 130rpx;
+  /* background-color: aqua; */
+  margin: auto;
+  margin-top: 80rpx;
+}
 
 /* .profile-base {
   display: flex;

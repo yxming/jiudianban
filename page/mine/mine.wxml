@@ -37,18 +37,23 @@
       </view>
     </view>
     <!-- 密码模态框 -->
-    <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
-    <view class="blockbox"></view>
-      <view class="block">
-        <input class="input-box" bindblur="onBlur" placeholder="{{ shurutext }}" />
-        <text class="error-text">{{ oldPasswordError }}</text>
+    <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center" style="border-radius: 25px; height: auto;padding: 30rpx;">
+      <view class="blockbox">
+        <view class="xiugaitext">
+          修改密码
+        </view>
+        <view class="block">
+          <input class="input-box" bindblur="onBlur" placeholder="{{ shurutext }}" />
+          <text class="error-text">{{ oldPasswordError }}</text>
+          <input class="input-box" bindinput="onNewPasswordInput" data-index="0" placeholder="请输入新密码" />
+          <input class="input-box" bindinput="onNewPasswordInput" data-index="1" placeholder="请再次输入新密码" />
+          <text class="error-text">{{ newPasswordError }}</text>
+        </view>
+        <!-- <button bindtap="onSubmit" style="color: white; background: rgb(51, 253, 0);">提交</button> -->
+        <view class="fukuanbox">
+          <image style="width: 100%; height: 100%;" src="../../image/baocund.png" mode="" />
+        </view>
       </view>
-      <view class="block">
-        <input class="input-box" bindinput="onNewPasswordInput" data-index="0" placeholder="请输入新密码" />
-        <input class="input-box" bindinput="onNewPasswordInput" data-index="1" placeholder="请再次输入新密码" />
-        <text class="error-text">{{ newPasswordError }}</text>
-      </view>
-      <button bindtap="onSubmit" style="color: white; background: rgb(51, 253, 0);">提交</button>
     </t-popup>
 
 
