@@ -1,4 +1,5 @@
 // page/user/mine/mine.js
+import Toast from 'tdesign-miniprogram/toast/index';
 const app = getApp()
 Page({
   
@@ -141,11 +142,6 @@ Page({
     newPassword: '',
     confirmPassword: ''
     },
-    
-    // 新密码验证
-   
-    // 这里获取密码后提交
-   
     onLoad(){
       if(app.globalData.hasLogin){
         console.log('mine.openid:',app.globalData.openid)
@@ -333,11 +329,9 @@ Page({
     onNewPasswordInput: function(event) {
       var index = event.currentTarget.dataset.index;
       var inputValue = event.detail.value;
-      console.log("11111111111:",index);
-      console.log("22222222222:",inputValue);
   
       if (index == 1) {
-        console.log("4444444444:");
+        // console.log("4444444444:");
         this.setData({
           newPassword: inputValue
         });
@@ -365,9 +359,6 @@ Page({
           oldPasswordError: ''
         });
       }
-  
-     
-  console.log(this.data.newPassword);
       // 验证确认密码
       if (confirmPassword !== newPassword) {
         this.setData({
@@ -379,9 +370,19 @@ Page({
           confirmPasswordError: ''
         });
       }
-  
-      // 如果所有验证通过，执行修改密码的逻辑
-      // 你可以在这里使用 oldPassword, newPassword 和 confirmPassword 进行密码修改操作
-      // ...
-    }
+      // console.log("555555555555555555:",this.data.confirmPassword);
+      // confirmPassword 进行密码修改操作
+
+      this.showSuccessToast()
+
+    },
+    showSuccessToast() {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '该功能开发中',
+        theme: 'success',
+        direction: 'column',
+      });
+    },
   });

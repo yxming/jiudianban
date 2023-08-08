@@ -57,7 +57,7 @@
       <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/shangmen.png?sign=018ba75fff5fa231c784bac9349ba1ca&t=1691029847" mode="" />
     </view>
     <view class="rotationChartLbox">
-      <view class="rotationChartNbox">
+      <view class="rotationChartNbox" bindtap="showSuccessToast">
         <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/dajian.png?sign=3818321bc5cab00945d8bd8e98cf239f&t=1691029862" mode="" />
       </view>
       <view bindtap="gotoBalance" class="personalInformation">
