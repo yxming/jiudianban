@@ -49,12 +49,22 @@ Page({
     if(this.data.textPassword===app.globalData.paypwd){
       var index  = this.data.index
       var item = this.data.orderlist[index]
-      this.onUpdateOrder(item)
-      this.queryUserinfo(item.wechatbuy,Number(-item.cost))
-      this.queryUserinfo(item.wechatsale,Number(item.cost))
-       this.setData({
-        visible: false
-      })
+      if(item.cost>app.globalData.cash){
+        wx.showToast({
+          title: '余额不足！',
+          icon: 'error'
+        })
+        this.setData({
+          visible: false,
+        })
+      }else{
+        this.onUpdateOrder(item)
+        this.queryUserinfo(item.wechatbuy,Number(-item.cost))
+        this.queryUserinfo(item.wechatsale,Number(item.cost))
+        this.setData({
+          visible: false
+        })
+      }
     }else{
       this.setData({
         textPassword: ''
