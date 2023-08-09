@@ -185,7 +185,6 @@ page {
 
 .zititext {
   margin-top: 15rpx;
-  margin-left: 30rpx;
 }
 
 .order-detail-text {
@@ -495,6 +494,17 @@ page {
   position: relative;
   margin-left: 70rpx;
   z-index: 20;
+  padding: 0 30rpx 0 30rpx;
+  margin: auto;
+}
+/* 背景图片 */
+.biankuangd{
+  width: 90%;
+  height: 500rpx;
+  position: absolute;
+  top: -80rpx;
+  left: 5%;
+  z-index: 10;
 }
 
 .biankuangbox {
