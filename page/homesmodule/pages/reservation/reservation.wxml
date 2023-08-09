@@ -3,33 +3,75 @@
     <view class="dohangind">大件代扔</view>
   </view>
   <!-- 上面的导航图 -->
-<view class="upperNavigation ">
-<view class="lliucheng">
-
-</view>
-<view class="lliucheng" style="width: 100rpx;"></view>
-<view class="lliucheng"></view>
-</view>
-
-
-
-
-
-  <!-- 滑动块部分 -->
-  <view class="slideBox">
-    <view class="slidesBox">
-      <view class="slidestext">回收品类</view>
-      <view class="slideabox">收费清单</view>
-    </view>
-    <view class="slideBzbox">
-      <view class="slideBbox">
-        <!-- 这里是里面的滑动块，可选 -->
+  <view class="upperNavigation ">
+    <view class="lliucheng">
+      <view class="orderProcessing" style="margin-bottom: 20rpx;">
+        <image style="width: 100%; height: 100%;" src="../image/userplacesanorder.png" mode="" />
       </view>
-      <view class="rslidsbox">
-        <image style="width: 100%; height: 100%;" src="../image/updimg.png" mode="" />
+      <view class="orderProcessFing">
+        <image style="width: 100%; height: 100%;" src="../image/large.png" mode="" />
+      </view>
+    </view>
+    <view class="lliucheng" style="width: 100rpx;">
+      <view class="arrow" style="margin-top: 40%; margin-bottom: 80%;">
+        <image style="width: 100%; height: 100%;" src="../image/arrowR.png" mode="" />
+      </view>
+      <view class="arrow">
+        <image style="width: 100%; height: 100%;" src="../image/arrowL.png" mode="" />
+      </view>
+    </view>
+    <view class="lliucheng">
+      <view class="orderProcessFing" style=" margin-top:20rpx; margin-bottom: 30rpx;">
+        <image style="width: 100%; height: 100%;" src="../image/payment.png" mode="" />
+      </view>
+      <view class="downArrow">
+        <image style="width: 100%; height: 100%;" src="../image/downArrow.png" mode="" />
+      </view>
+      <view class="orderProcessFing">
+        <image style="width: 100%; height: 100%;" src="../image/teams.png" mode="" />
       </view>
     </view>
   </view>
-  <!-- 下面按钮 -->
-  <view class="danbox">预约家具代扔</view>
+  <!-- 滑动块 -->
+  <!-- 上半部分的模块 -->
+  <view class="uoContentBox">
+  <scroll-view scroll-x="{{true}}" scroll-left="{{scrollLeft}}" scroll-with-animation="{{true}}" style="white-space: nowrap; width: 100%;">
+    <view class="scroll-content">
+      <!-- 滚动内容 -->
+      <view style="display: inline-block;" wx:for="{{activity_list}}" wx:key="{{item.activity_id}}" wx:for-index="index">
+        <view class="{{item.active ? '' : 'acts'}}" bindtap="changeBlockStyle" data-index="{{index}}" style="{{blockStyles[index]}}">
+          <view class="activity_photo">
+            <image src="{{item.activity_photo}}" style="height: 100%;width:100%;"></image>
+          </view>
+          <view class="electricalEquipmentText">{{item.activity_name}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="underline" style="transform: translateX({{underlineLeft}}px);"></view> <!-- 添加横线，并设置动态位置 -->
 </view>
+  <!-- 收费清单 -->
+  <view class="freightListBox" bind:tap="handlePopup">
+    <image style="width: 100%; height: 100%;" src="../image/freightList.png" mode="" />
+  </view>
+  <view class="throwingText">
+    <view>代扔须知： </view>
+    <view> 1.大件回收需要回收人员上门拆卸搬运，需您支付搬运费用 </view>
+    <view>2.没有电梯的小区，每多一个楼层增加10元搬运费</view>
+    <view>3.预约成功后，请先缴纳搬运费用 </view>
+    <view> 4.缴纳成功后我们会在预约上门时间前电话联系您 </view>
+    <view>5.回收完成后，物品处理权归属于回收平台 </view>
+    <view>6.其他问题请咨询在线客服</view>
+  </view>
+  <!-- 下面的按钮 -->
+  <view class="danbox" bindtap="jumpLargeItems">
+    <image style="width: 100%; height: 100%;" src="../image/order immediately.png" mode="" />
+  </view>
+</view>
+<!-- 这里是弹出层 -->
+<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+  <view class="block">
+    <!-- 这里是内容层 -->
+    这里有内容的
+  </view>
+</t-popup>

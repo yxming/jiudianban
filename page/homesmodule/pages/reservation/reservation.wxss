@@ -30,82 +30,168 @@ page {
 }
 /* 上面用的流程图 */
 .upperNavigation{
-  width: 100%;
-  height: 212rpx;
-  margin-top: 30rpx;
+  width: calc(100%-60rpx);
+  height: auto;
+  margin: 30rpx;
   display:flex;
   justify-content:space-between;
 }
 .lliucheng{
   width: 268rpx;
   height: auto;
-  background-color: salmon;
+  position: relative;
 }
-
-
-
-/* 图片的 */
-.upimg{
+.orderProcessing{
   width: 100%;
-  height: 60rpx;
+  height: 120rpx;
 }
-.uimg{
-  width: 100%;
-  height: 100%;
+.orderProcessFing{
+  width: 240rpx;
+  height: 90rpx;
+  margin: auto;
 }
-/* 滑动块的 */
-.slideBox{
-width: calc(100%-20rpx);
-height: 230rpx;
-background-color: rgb(247, 247, 247);
-padding: 20rpx;
-border-radius: 30rpx;
-font-weight: normal;
+/* 分割符号 */
+.arrow{
+width: 20rpx;
+height: 30rpx;
+margin:auto;
+margin: 30rpx;
 }
-.slidesBox{
-  width: 100%;
-  height: 60rpx;
-  display: flex;
-  justify-content: space-between;
+.downArrow{
+  width: 30rpx;
+  height: 20rpx;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.slideabox{
-  width: 200rpx;
-  height: 50rpx;
-  background-color: cornflowerblue;
-  text-align: center;
-  color: #fff;
-}
-.slidestext{
-  width: 50%;
+/* 下拉框上部分盒子 */
+.uoContentBox {
+  width: calc(100%-60rpx);
   height: auto;
+  margin: 5rpx 30rpx;
+  overflow: hidden;
 }
-.slideBzbox{
+/* 下拉框滑动块样式 */
+.scroll-x {
   width: 100%;
-  height: 160rpx;
+  height: auto;
+  white-space: nowrap;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  
 }
-.slideBbox{
-  width: 500rpx;
-  height: 160rpx;
-  background-color: darkblue;
+.scroll-content {
+  display: inline-block;
+  width: 100%; /* 设置滚动内容的宽度超过 scroll-view 的宽度 */
+  position: relative; /* 设置相对定位，以便子元素绝对定位 */
 }
-.rslidsbox{
-  width: 200rpx;
-  height: 160rpx;
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #000; /* 横线颜色，可根据需要调整 */
 }
+
+.acts {
+  width: 150rpx;
+  height: 230rpx;
+  margin: 20rpx 13rpx;
+  padding-top: 20rpx;
+  border-radius: 30rpx;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.zanshi {
+  background-color: rgb(178, 247, 247);
+  opacity: 0.5;
+  color: rgb(55, 195, 238);
+  border: slateblue solid 1px;
+}
+
+/* 块的样式 */
+.activity_photo {
+  width: 150rpx;
+  height: 150rpx;
+  margin: auto;
+}
+/* 块下面的字符样式 */
+.electricalEquipmentText {
+  width: 100%;
+  height: auto;
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+.freightListBox{
+  width: 650rpx;
+  height: 140rpx;
+  margin: auto;
+}
+.throwingText{
+  width: calc(100%-120rpx);
+  height: auto;
+  color: rgb(158, 158, 158);
+  margin: 30rpx 60rpx;
+  font-size: 27rpx;
+  margin-top: 200rpx;
+}
+
+
+
 /* 下面按钮块 */
 .danbox{
-  width: 720rpx;
-  height: 90rpx;
-  background-color: darkcyan;
-  border-radius: 30rpx;
-  position: absolute;
-  left: 50%;
-  bottom: 40rpx;
-  transform: translateX(-50%);
-  text-align: center;
-  padding-top: 35rpx;
-  color: #fff;
-  font-weight: normal;
+  width: 492rpx;
+  height: 140rpx;
+  /* background-color: darkcyan; */
+margin: auto;
 }
+/* 弹出层样式 */
+.block {
+  width: 100vw;
+  height: 240px;
+  background: #fff;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+}
+
+.wrapper {
+  margin: 32rpx;
+  display: block;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 116rpx;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  font-size: 36rpx;
+}
+
+.btn {
+  font-size: 32rpx;
+  padding: 32rpx;
+}
+
+.btn--cancel {
+  color: rgba(0, 0, 0, .6);
+}
+
+.btn--confirm {
+  color: #0052d9;
+}
+
+
+
+
