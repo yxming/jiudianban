@@ -24,14 +24,14 @@ Page({
         selectedLast:-1,
         selectedIndex: -1,
         right: [
-            {
-              text: '编辑',
-              icon: {
-                name: 'edit',
-                size: 16,
-              },
-              className: 'btn edit-btn',
-            },
+            // {
+            //   text: '编辑',
+            //   icon: {
+            //     name: 'edit',
+            //     size: 16,
+            //   },
+            //   className: 'btn edit-btn',
+            // },
             {
               text: '删除',
               icon: {
@@ -78,12 +78,14 @@ handleRadioChange(e) {
       var _this = this
       this.getRecycleAddr(app.globalData.openid)
       const eventChannel= this.getOpenerEventChannel()
-      eventChannel.on('acceptDataFromOpenerPage', function (data) {
-        // console.log('where from:',data.data.opener)
-        _this.setData({
-          opener:data.data.opener
+      if(eventChannel){
+        eventChannel.on('acceptDataFromOpenerPage', function (data) {
+          // console.log('where from:',data.data.opener)
+          _this.setData({
+            opener:data.data.opener
+          })
         })
-      })
+      }
     },
     handleRadioClick(event) {
       const index = event.currentTarget.dataset.index;
@@ -123,15 +125,20 @@ handleRadioChange(e) {
     onUnload() {
       var currentIndex = this.data.selectedIndex
       var lastIndex = this.data.selectedLast
+      console.log('selectedIndex:',currentIndex,'lastIndex:',lastIndex)
       if(currentIndex!=lastIndex){
         if(currentIndex>=0){
           const selectedItem=this.data.recycleArray[currentIndex]
           this.updateRecycleAddress(selectedItem.id, true)
+          console.log('selectedIndex:',this.data.selectedIndex)
+          this.sendAddressInfoToBack()
         }
   
         if(lastIndex>=0){
           const disSelectedItem=this.data.recycleArray[lastIndex]
-          this.updateRecycleAddress(disSelectedItem.id, false)
+          if(disSelectedItem){
+            this.updateRecycleAddress(disSelectedItem.id, false)
+          }
         }
       }
     },
@@ -193,7 +200,21 @@ handleRadioChange(e) {
     },
 
     onDelete() {
-        wx.showToast({ title: '你点击了删除2222', icon: 'none' });
+      var  _this = this
+      const deleteIndex=e.currentTarget.dataset.index
+      const deleteId = this.data.recycleArray[deleteIndex].id
+
+      console.log(deleteIndex)   
+      const db = app.globalData.db
+      db.collection('recycleaddr_list').where({
+        _id:deleteId
+      }).remove({
+        success:(res)=>{
+          const {removed} = res.stats
+          removed>0?_this.updateRecycleAddrAfterDelete(deleteIndex):console.log('db remove fail for id:',deleteId)
+        },
+        fail:(err)=>{console.log(err)}
+      })
     },
     onEdit() {
         console.log('onEdit:');
@@ -246,6 +267,49 @@ handleRadioChange(e) {
       },
     
       onAbort(e) {
+      },
+
+      updateRecycleAddrAfterDelete(deleteIndex){
+
+        var selectedLast = this.data.selectedLast
+        if(selectedLast!=deleteIndex){
+          selectedLast = selectedLast>deleteIndex?--selectedLast:selectedLast
+        }else{
+          selectedLast = -1
+        }
+        var selectedPast = this.data.selectedIndex
+        var selectedIndex = selectedPast>deleteIndex?--selectedPast:selectedPast
+   
+        this.data.recycleArray[selectedPast].selected=false
+        this.data.recycleArray.splice(deleteIndex,1)
+        const recycleArray = this.data.recycleArray
+        if(selectedIndex==recycleArray.length){
+          --selectedIndex
+        }
+        recycleArray[selectedIndex].selected=true
+        this.setData({
+              recycleArray,
+              selectedLast,
+              selectedIndex
+        })
+      },
+  
+      sendAddressInfoToBack(){
+        const index  = this.data.selectedIndex
+        var item = this.data.recycleArray[index];
+        console.log('sendAddressInfoToBack:',index,item)
+        const eventChannel= this.getOpenerEventChannel()
+        switch(this.data.opener){
+          case 1: 
+              eventChannel.emit('acceptDataFromOpenedPage', { data: item })
+              // wx.navigateBack({
+              //   delta: 1
+              // })
+              break;
+          case 2: 
+              break;
+          default :
+        }
       },
 
       updateRecycleAddress(recordid,selected){
