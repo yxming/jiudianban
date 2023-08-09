@@ -35,12 +35,11 @@
             <view style="background-color: #F3F3F3;" class="order-detail-item-bd {{item.open ? 'order-detail-item-bd-show' : ''}}">
               <view class="belowContent">
                 <view class="biankuang">
-                  <view class="biankuangbox"></view>
-                  <cover-image class="image" src="../../image/xintetxbox.png" style="width: 90%; height: 100%; position: absolute; top: -50rpx; left: 30rpx;">
-                    <!-- 图片的上半部分被盖住 -->
-                  </cover-image>
                   <!-- 图片的下半部分内容 -->
                   <view class="biankongbox">
+                    <view class="biankuangbox">
+                      <image class="image" src="../../image/xintetxbox.png" style="width: 100%; height: 100%; "></image>
+                    </view>
                     <view class="order-detail-item zititext">
                       <view class="order-detail-text fw" style="margin-left: 20rpx;">订单号：</view>
                       <view class="order-detail-text">{{item.orderid}}</view>
@@ -84,7 +83,7 @@
                     <image style="width: 100%; height: 100%;" src="../../image/fukuand.png" mode=""/>
                     </view> -->
                     <view class="anniu" id="{{item.index}}" bindtap="handlePopup" style="overflow: {{item.status?'hidden':role==2||role==0?'':'hidden'}}">
-                    <image style="width: 100%; height: 100%;" src="../../image/fukuand.png" mode=""/>
+                      <image style="width: 100%; height: 100%;" src="../../image/fukuand.png" mode="" />
                     </view>
                     <!-- <view class="button">
                     <button id="{{item.index}}" amount="23" style="visibility:{{item.status?'hidden':role==2||role==0?'':'hidden'}}" bindtap="handlePopup">付款</button>

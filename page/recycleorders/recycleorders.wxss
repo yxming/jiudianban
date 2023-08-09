@@ -185,6 +185,7 @@ page {
 
 .zititext {
   margin-top: 15rpx;
+  margin-left: 30rpx;
 }
 
 .order-detail-text {
@@ -476,6 +477,7 @@ page {
   height: auto;
   padding: 10rpx;
   position: relative;
+  z-index: 900;
 }
 
 .image {
@@ -491,8 +493,17 @@ page {
   width: 550rpx;
   height: auto;
   position: relative;
-  z-index: 2;
   margin-left: 70rpx;
+  z-index: 20;
+}
+
+.biankuangbox {
+  width: 600rpx;
+  height: 450rpx;
+  position: absolute;
+  top: -50rpx;
+  left: 0rpx;
+  z-index: -1;
 }
 
 .anniu {
