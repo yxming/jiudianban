@@ -49,9 +49,9 @@ Page({
     if(this.data.textPassword===app.globalData.paypwd){
       var index  = this.data.index
       var item = this.data.orderlist[index]
-      if(item.cost>app.globalData.cash){
+      if(item.cost<=0 || item.cost>app.globalData.cash){
         wx.showToast({
-          title: '余额不足！',
+          title: item.cost<=0?'金额错误！':'余额不足！',
           icon: 'error'
         })
         this.setData({
