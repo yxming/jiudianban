@@ -66,12 +66,13 @@
                   </view> -->
                     <view class="flex-button">
                       <view class="bottomInputButton">
-                        <input class="bottomInputButtonipt" id="{{item.index}}" placeholder="{{item.status? item.cost: '金额'}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
+                        <input class="bottomInputButtonipt" id="{{item.index}}" bindblur="onAmountChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" placeholder="0" placeholder="{{item.status? item.amount:'金额'}}" />
                       </view>
                       <view style="width: 1rpx;height: 100%;background-color: rgb(201, 201, 201);"></view>
                       <view class="bottomInputButton">
-                        <input class="bottomInputButtonipt" id="{{item.index}}" bindblur="onAmountChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" placeholder="0" placeholder="{{item.status? item.amount:'重量'}}" />
+                        <input class="bottomInputButtonipt" id="{{item.index}}" placeholder="{{item.status? item.cost: '重量'}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
                       </view>
+                     
                       <!-- <view class="order-detail-item">
                     <view class="order-detail-text fw">状态:</view>
                     <view class="order-detail-text ">{{item.status?'已完成':'未完成'}}</view>
