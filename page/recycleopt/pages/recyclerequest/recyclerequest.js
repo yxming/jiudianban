@@ -52,14 +52,14 @@ Page({
     enableTraffic: false,
     // 这个是单选判断
     iconType: 'circle',
-    iconUrl:'../image/Rectanglet.png',
+    iconUrl:'../image/rectanglet.png',
     optionLabel: '我已知悉上门回收规则',
     iKnew:false,
     },
     // 单选点击事件
     toggleIcon: function () {
       const { iKnew } = this.data;
-      const iconUrl = iKnew ? '../image/Rectanglet.png' : '../image/Rectangles.png';
+      const iconUrl = iKnew ? '../image/rectanglet.png' : '../image/Rectangles.png';
       this.setData({
         iKnew:!iKnew,
         iconUrl
