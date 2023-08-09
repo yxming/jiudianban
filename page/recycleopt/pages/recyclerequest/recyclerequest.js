@@ -291,6 +291,10 @@ Page({
           title = '超出服务范围'
           icon = 'error'
           break;
+        case 4:
+          title = '此地址暂无服务'
+          icon = 'error'
+          break;
       }
 
       wx.showToast({
@@ -341,6 +345,14 @@ Page({
               _this.showToast(1)
             }
           })
+        },
+        fail:(err)=>{
+          _this.showToast(2)
+        },
+        complete:(info)=>{
+          if(info.data.length==0){
+            _this.showToast(4)
+          }
         }
       })
     },
