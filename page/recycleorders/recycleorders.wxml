@@ -29,7 +29,6 @@
         <view style="background-color: #F3F3F3;" class="order-detail-item-bd {{item.open ? 'order-detail-item-bd-show' : ''}}">
           <view class="belowContent">
             <view class="biankuangd">
-              <!-- <cover-image class="image" style="width: 100%;height: 100%;" src="../../image/Rectanglee.png"></cover-image> -->
               <image style="width: 100%;height: 100%;" src="../../image/Rectanglee.png" mode=""/>
             </view>
             <view style="background-color: #F3F3F3;" class="order-detail-item-bd {{item.open ? 'order-detail-item-bd-show' : ''}}">
