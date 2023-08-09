@@ -22,7 +22,7 @@ Page({
       // z
       bianhuan:0,
       firstItem:{},
-      amount:0
+      cost:0
     },
     // 搜索框
     onChange(e) {
@@ -33,11 +33,11 @@ Page({
       console.log(e.currentTarget.id);
       const firstItem = this.data.orderlist[e.currentTarget.id]; 
       console.log(firstItem);
-      const amount = firstItem.amount; // 获取'orderid'属性的值
+      const cost = firstItem.cost; // 获取'orderid'属性的值
     this.setData(
       {
         index: e.currentTarget.id,
-        amount:amount
+        cost:cost
       },
       () => {
         this.setData({ visible: true });
@@ -88,6 +88,20 @@ Page({
           this.setData({theme})
         })
       }
+
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady() {
+
+    },
+
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow() {
       var _this = this
         wx.cloud.init({
           env: 'cloud1-7go51v8te374de35',
@@ -143,20 +157,6 @@ Page({
             }
           }
         })
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
     },
     switchtwe(e) {
       const id = e.currentTarget.id

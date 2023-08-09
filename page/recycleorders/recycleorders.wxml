@@ -66,11 +66,11 @@
                   </view> -->
                     <view class="flex-button">
                       <view class="bottomInputButton">
-                        <input class="bottomInputButtonipt" id="{{item.index}}" bindblur="onAmountChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" placeholder="0" placeholder="{{item.status? item.amount:'金额'}}" />
+                        <input class="bottomInputButtonipt" id="{{item.index}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" placeholder="0" placeholder="{{item.status? item.cost:'金额'}}" />
                       </view>
                       <view style="width: 1rpx;height: 100%;background-color: rgb(201, 201, 201);"></view>
                       <view class="bottomInputButton">
-                        <input class="bottomInputButtonipt" id="{{item.index}}" placeholder="{{item.status? item.cost: '重量'}}" bindblur="onCostChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
+                        <input class="bottomInputButtonipt" id="{{item.index}}" placeholder="{{item.status? item.amount: '重量'}}" bindblur="onAmountChanged" type="digit" disabled="{{item.status?true:false}}" class="data-input" maxlength="8" />
                       </view>
                      
                       <!-- <view class="order-detail-item">
@@ -127,11 +127,11 @@
         </view>
         <view class="order-detail-item xianzeng">
           <view class="order-detail-text fw">金额：</view>
-          <view class="order-list-text order-detail-item order-detail-text xianzeng"><text class="neitext">{{item.amount}}</text></view>
+          <view class="order-list-text order-detail-item order-detail-text xianzeng"><text class="neitext">{{item.cost}}</text></view>
         </view>
         <view class="order-detail-item xianzeng">
           <view class="order-detail-text fw">重量：</view>
-          <view class="order-list-text order-detail-item order-detail-text xianzeng"><text class="neitext">{{item.cost}}</text></view>
+          <view class="order-list-text order-detail-item order-detail-text xianzeng"><text class="neitext">{{item.amount}}</text></view>
         </view>
       </view>
     </view>
@@ -142,7 +142,7 @@
 <t-popup style="border-radius: 25px;" visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
   <view class="block">
     <view class="block-title">
-      {{amount}} 粒
+      {{cost}} 粒
     </view>
     <t-input placeholder="请输入支付密码" align="center" model:value="{{textPassword}}" clearable />
     <!-- <button class="mini-queren" bindtap="submit">好！</button> -->
