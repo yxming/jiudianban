@@ -199,7 +199,7 @@ handleRadioChange(e) {
       }
     },
 
-    onDelete() {
+    onDelete(e) {
       var  _this = this
       const deleteIndex=e.currentTarget.dataset.index
       const deleteId = this.data.recycleArray[deleteIndex].id
