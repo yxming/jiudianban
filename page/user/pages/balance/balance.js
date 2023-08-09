@@ -194,7 +194,7 @@ Page({
       var err = true
       var info = ''
       if(cash<=0){
-        info = '额不正确！'
+        info = '余额不正确！'
       }else if(cash<rices){
         info = '余额不足！'
       }else if(this.data.alipay==''){
@@ -215,6 +215,8 @@ Page({
       }): this.setData({
         visible:false
       })
+
+     
     },
 
     callPayAction(){
