@@ -195,13 +195,9 @@ Page({
       var index = event.currentTarget.dataset.index;
       var item = this.data.menuData[index];
       var url = item.url;
-      if(index===2){
-         this.setData({ visible: true });
-      }else{
         wx.navigateTo({
           url: url
         });
-      }
     },
     onClickCells(){
       wx.navigateTo({
