@@ -36,10 +36,10 @@
     </scroll-view>
   </view>
   <view class="lower-pop-up-layer">
-    <view class="internalbutton" bindtap="handlePopup" data-isPutRices='false'>
+    <view class="internalbutton" bindtap="handlePopup" data-action='cashout'>
       <image style="width: 100%; height: 100%;" src="../image/Groupqmu.png" mode="" />
     </view>
-    <view class="internalbutton" style="width: 560rpx; height: 180rpx;" bindtap="handlePopup" data-isPutRices='true'>
+    <view class="internalbutton" style="width: 560rpx; height: 180rpx;" bindtap="handlePopup" data-action='cashin'>
       <image style="width: 100%; height: 100%;" src="../image/Groupcunmi.png" mode="" />
     </view>
   </view>
@@ -49,21 +49,21 @@
 <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom"  style="border-radius: 25px;">
   <view class="blocks">
     <view class="ejectBlock">
-      <view class="zhifuimage" wx:if="{{values===1}}" >
+      <view class="zhifuimage" wx:if="{{!isPutRices}}" >
         <image style="width: 100%; height: 100%;" src="../image/zhifubao.png" mode="" />
       </view>
-      <view class="haobox" wx:if="{{values===1}}" >请使用支付宝</view>
-      <view class="haobox" wx:if="{{values===1}}" style="margin-bottom: 30rpx;">微信支付功能正在开发中</view>
-      <input class="input" bindinput="handleInput" placeholder="{{textx}}"></input>
-      <view class="haobox" style="margin-top: 30rpx;" wx:if="{{values===1}}">1粒=1元</view>
-      <view class="haobox" wx:if="{{values===1}}" style="margin-bottom: 30rpx;">预计在3个工作日内到账</view>
+      <view class="haobox" wx:if="{{!isPutRices}}" >请使用支付宝</view>
+      <view class="haobox" wx:if="{{!isPutRices}}" style="margin-bottom: 30rpx;">微信支付功能正在开发中</view>
+      <input class="input" bindinput="handleInput" placeholder="{{textx}}" model:value="{{rices}}"></input>
+      <view class="haobox" style="margin-top: 30rpx;" wx:if="{{!isPutRices}}">1粒=1元</view>
+      <view class="haobox" wx:if="{{!isPutRices}}" style="margin-bottom: 30rpx;">预计在3个工作日内到账</view>
 
-      <input class="inputs" style="display: {{isPutRices?'':'none'}};" bindinput="handleInput" placeholder="请输入支付宝账号"></input>
-      <input class="inputs" style="display: {{isPutRices?'':'none'}};" bindinput="handleInput" placeholder="请输入姓名"></input>
-      <input class="inputs" style="display: {{isPutRices?'':'none'}};" bindinput="handleInput" placeholder="请输入手机号"></input>
+      <input class="inputs" style="display: {{!isPutRices?'':'none'}};" bindinput="handleInput" placeholder="请输入支付宝账号" model:value="{{alipay}}"></input>
+      <input class="inputs" style="display: {{!isPutRices?'':'none'}};" bindinput="handleInput" placeholder="请输入姓名" model:value="{{name}}"></input>
+      <input class="inputs" style="display: {{!isPutRices?'':'none'}};" bindinput="handleInput" placeholder="请输入手机号" model:value="{{phoneNumber}}"></input>
 
-      <view class="haobox" wx:if="{{values===0}}">1粒=1元</view>
-      <view class="DdBox" wx:if="{{values===1}}" bindtap="callCollAction">
+      <view class="haobox" wx:if="{{isPutRices}}">1粒=1元</view>
+      <view class="DdBox" wx:if="{{!isPutRices}}" bindtap="callCollAction">
         <image style="width: 100%; height: 100%;" src="../image/xiadan.png" mode="" />
       </view>
       <view class="DdBox" wx:else bindtap="callPayAction">

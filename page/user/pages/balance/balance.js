@@ -9,18 +9,11 @@ Page({
      */
     data: {
       rices:100,
-      addRice:true,
       balance:app.globalData.balance,
       cash:app.globalData.cash,
       inputValue: '', //用于显示输入语句
       searchinput: '', //用户输入的查询语
       cashrecord:[],
-      dataList: [
-          { date: '2023-07-01', cash: '100000', type: 'income' },
-          { date: '2023-07-02', cash: '200', type: 'expense' },
-         
-          // 其他数据项...
-        ],
       activeType: 'all', // 默认展示全部数据
       buttons: [
         {
@@ -35,19 +28,18 @@ Page({
       // 滑块内容
       nametexts:'全部',
       // 底部弹框
-      cur: {},
       position: [
         { value: 'bottom', text: '底部弹出' }
       ],
       // 
-      inputValue: '',
       textx:"请输入取米数量",
-      values:0,
       // 滑动块高度
       scrollHeight: 0,
-      showPopup: false,
-      // 取米输入框
-      naemd:''
+
+      alipay:'',
+      name:'',
+      phoneNumber:'',
+      isPutRices:false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -93,41 +85,26 @@ Page({
     // 底部弹框
     // 取钱
     handlePopup(e) {
-      const { item } = e.currentTarget.dataset;
-        const values = e.currentTarget.dataset.value;
-if(values=='1'){
-  this.setData({
-    textx:"请输入取米数量",
-    values:1,
-    naemd:''
-  }
-  )
-  this.setData(
-    {
-      cur: item,
+      const { action } = e.currentTarget.dataset;
+      var textx=''
+      var isPutRices = false
+      switch(action){
+        case 'cashin':
+          isPutRices = true
+          textx="请输入存米数量"
+          break
+        case 'cashout':
+          isPutRices = false
+          textx="请输入取米数量"
+          break
+      }
+      this.setData({
+        visible:true,
+        textx,
+        isPutRices
+      })
     },
-    () => {
-      this.setData({ visible: true });
-    },
-  );
-}else{
-  this.setData({
-    textx:"请输入存米数量",
-    values:0,
-    naemd:'none'
-  }
-  )
-  this.setData(
-    {
-      cur: item,
-    },
-    () => {
-      this.setData({ visible: true });
-    },
-  );
-}
-      
-    },
+
     onVisibleChange(e) {
       this.setData({
         visible: e.detail.visible,
@@ -135,17 +112,15 @@ if(values=='1'){
     },
     // 输入框内容
     handleInput: function (e) {
-      this.setData({
-        inputValue: e.detail.value
-      });
+      // this.setData({
+      //   inputValue: e.detail.value
+      // });
     },
     submit: function () {
       const inputValue = this.data.inputValue;
       // 在这里可以对输入的内容进行处理或提交操作
       console.log('输入的内容是：', inputValue);
     },
-
-
     
     loadBalance(wechatid){
       const db = app.globalData.db
@@ -212,11 +187,33 @@ if(values=='1'){
           })
     },
 
-    addRiceAction(obj){
-      console.log('addRiceAction',obj)
-      this.setData({
-        // 这个改了
-        addRice:true
+    callCollAction(){
+      var cash = this.data.cash
+      var rices = Number(this.data.rices)
+
+      var err = true
+      var info = ''
+      if(cash<=0){
+        info = '额不正确！'
+      }else if(cash<rices){
+        info = '余额不足！'
+      }else if(this.data.alipay==''){
+        info = '账号不能为空！'
+      }else if(this.data.name==''){
+        info = '姓名不能为空！'
+      }else if(this.data.phoneNumber==''){
+        info = '电话不能为空！'
+      }else{
+        err = false
+        this.getCashOut(rices)
+        this.saveCashToAliPayRecord(rices)
+      }
+
+      err?wx.showToast({
+        title: info,
+        icon:'error'
+      }): this.setData({
+        visible:false
       })
     },
 
@@ -224,7 +221,7 @@ if(values=='1'){
       console.log('add rices:',this.data.rices)
       this.putCashIn()
       this.setData({
-        addRice:false
+        visible:false
       })
     },
 
@@ -279,8 +276,7 @@ if(values=='1'){
     },
 
     getCashOut(val){
-      //
-      //this.addCashRecord(val,'expense')
+      this.addCashRecord(val,'expense')
     },
 
     toUseCash(){
@@ -289,12 +285,14 @@ if(values=='1'){
 
     addCashRecord(val,tag){
       var cash,balance
+      var value = val
       switch(tag){
         case 'expense':
           cash = this.data.cash - val
           balance = this.data.balance - val
           app.globalData.cash = cash
           app.globalData.balance = balance
+          value = -val
           break
         case 'income':
           cash = this.data.cash + val
@@ -304,12 +302,16 @@ if(values=='1'){
           break
       }
 
+      balance = Number(balance.toFixed(2))
+      cash = Number(cash.toFixed(2))
+      value = Number(value.toFixed(2))
+
       var strDate = util.formatDateTime(new Date())
       const db = app.globalData.db
       db.collection('cash_records')
       .add({
         data:{
-          cash:val,
+          cash:value,
           date:strDate,
           role:app.globalData.role,
           type:tag,
@@ -339,12 +341,35 @@ if(values=='1'){
       })
 
       var  cashrecord = this.data.cashrecord
-      cashrecord.splice(0,0,{date:strDate,cash:val,type:tag})
+      cashrecord.splice(0,0,{date:strDate,cash:value,type:tag})
 
       this.setData({
         balance,
         cash,
         cashrecord
+      })
+    },
+
+    saveCashToAliPayRecord(rices){
+      var strDate = util.formatDateTime(new Date())
+      const db = app.globalData.db
+      db.collection('alipay_records')
+      .add({
+        data:{
+          date:strDate,
+          role:app.globalData.role,
+          wechatid:app.globalData.openid,
+          alipayAccount:this.data.alipay,
+          name:this.data.name,
+          phone:this.data.phoneNumber,
+          cash:rices
+        },
+        success: function(res) {
+          // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+          console.log(res)
+        },
+        fail: console.error,
+        complete: console.log
       })
     },
 
