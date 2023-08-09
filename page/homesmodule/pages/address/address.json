@@ -4,5 +4,6 @@
       "t-input": "tdesign-miniprogram/input/input",
       "t-textarea": "tdesign-miniprogram/textarea/textarea"
     },
+    "navigationStyle":"custom",
     "component": true
 }

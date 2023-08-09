@@ -1,5 +1,18 @@
 <view class="backgroundD">
-  <view class="serviceCharge">
+  <view class="shangmbubox">
+    <view class="dohangind">大件代扔</view>
+  </view>
+  <!-- 顶部金额数 -->
+  <view class="totalAmountMoney">
+    <view class="moneyBox">{{money}}</view>
+    <view class="monetaryUnit">单位：米</view>
+  </view>
+<view class="addressBox">
+</view>
+
+
+
+  <!-- <view class="serviceCharge">
     <image style="width: 100%; height: 100%;" src="../img/updimg.png" mode="" />
     <view class="uptext">预估服务费</view>
     <view class="amountOfMoney">
@@ -8,37 +21,37 @@
     </view>
   </view>
   <view class="address">
-    <view class="pickUp">取件信息</view>
-    <!-- 这里是里面的信息 -->
-    <view class="addressSelectionBox">
+    <view class="pickUp">取件信息</view> -->
+  <!-- 这里是里面的信息 -->
+  <!-- <view class="addressSelectionBox">
       <view class="addressbox">
         <image style="width: 30rpx; height: 30rpx; margin-top: 10rpx;" src="../img/updimg.png" mode="" />
         <view class="addresstext" style="font-weight: bold;">取件地址</view>
-      </view>
-      <!-- 点他选择地址 -->
-      <view class="addressboxr">
+      </view> -->
+  <!-- 点他选择地址 -->
+  <!-- <view class="addressboxr">
         <image bindtap="powerDrawer" data-statu="open" style="width: 30rpx; height: 30rpx; margin-top: 10rpx; margin-right: 20rpx;" src="../img/updimg.png" mode="" />
         <view class="addresstext">{{dataaddre}}</view>
         <view class="addresstext">{{dataaddress}}</view>
       </view>
     </view>
     <view class="addressDisplay">{{province}} {{city}} {{area}} {{addressdatea}}</view>
-  </view>
+  </view> -->
   <!-- 家具规格 -->
-  <view class="myFurnitureBox">
+  <!-- <view class="myFurnitureBox">
     <view class="pickUp">我的家具 ( 共{{furnitureQuantity}}件 )</view>
     <view class="btn" size="large" variant="outline" theme="primary" bind:tap="handlePopup">选择家具规格</view>
     <view style="width: 320rpx; height: auto;margin: auto;margin-top: 10rpx; font-size: 25rpx; color: azure;">`家具过多请直接联系在线客服</view>
-  </view>
+  </view> -->
   <!-- <view class="bottomButton">立刻预约</view> -->
-  <button class="bottomButton" disabled='{{disabled}}'>立刻预约</button>
+  <!-- <button class="bottomButton" disabled='{{disabled}}'>立刻预约</button> -->
   <!-- 模态框 -->
   <!--mask-->
-  <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
-  <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
-    <!-- 这里是内容 -->
-    <!-- 输入框 -->
-    <view class="inputContent" style="margin-top: 30rpx;">
+  <!-- <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}"> -->
+  <!-- 这里是内容 -->
+  <!-- 输入框 -->
+  <!-- <view class="inputContent" style="margin-top: 30rpx;">
       <view class="inputContenttext">姓名</view>
       <input type="text" placeholder="请输入姓名" value="{{inputValue}}" bindinput="handleInput" />
     </view>
@@ -47,9 +60,9 @@
       <input type="text" placeholder="请输入手机号" value="{{inputValueo}}" bindinput="handleInputo" />
     </view>
     <view class="selection">
-      <view class="selectiontext">地区</view>
-      <!-- 三级联动 -->
-      <view class="input" bindtap="getbox" wx:if="{{!inputShow}}" style="color: #999;">请选择地址</view>
+      <view class="selectiontext">地区</view> -->
+  <!-- 三级联动 -->
+  <!-- <view class="input" bindtap="getbox" wx:if="{{!inputShow}}" style="color: #999;">请选择地址</view>
       <view class="input" bindtap="getbox" wx:if="{{inputShow}}">{{province}} {{city}} {{area}} </view>
       <view bindtap="getbox" style="width: 50rpx;height: 50rpx; ">
         <image style="width: 100%; height: 100%;margin-top: 25rpx;" src="../img/updimg.png" mode="" />
@@ -62,18 +75,18 @@
       <textarea bindinput="onInput" placeholder="请输入文字"></textarea>
     </view>
     <view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</view>
-  </view>
+  </view> -->
   <!-- 下弹框 -->
-  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
-    <view class="block">
-      <!-- 上面的标题 -->
-      <view class="header">
+  <!-- <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+    <view class="block"> -->
+  <!-- 上面的标题 -->
+  <!-- <view class="header">
         <view class="btns">估价信息</view>
         <view class="title">标题文字</view>
         <view class="btns btn--confirm" aria-role="button">X</view>
-      </view>
-      <!-- 上半部分的模块 -->
-      <view class="uoContentBox">
+      </view> -->
+  <!-- 上半部分的模块 -->
+  <!-- <view class="uoContentBox">
         <scroll-view scroll-x class="scroll-x">
           <view style="display: inline-block;" wx:for="{{activity_list}}" wx:key="{{item.activity_id}}" wx:for-index="index">
             <view class="{{item.active ? '' : 'acts'}}" bindtap="changeBlockStyle" data-index="{{index}}" style="{{blockStyles[index]}}">
@@ -84,9 +97,9 @@
             </view>
           </view>
         </scroll-view>
-      </view>
-      <!-- 下半部分手风琴 -->
-      <view class="container">
+      </view> -->
+  <!-- 下半部分手风琴 -->
+  <!-- <view class="container">
   <scroll-view class="scroll-view" scroll-y="{{true}}" style="height: 400rpx;">
     <view class="content">
       <block wx:for="{{ listDatas }}" wx:key="index">
@@ -105,13 +118,10 @@
   </scroll-view>
 </view>
     </view>
-  </t-popup>
+  </t-popup> -->
   <!-- 三级联动 -->
-  <!-- 省市区弹框 -->
-  <view class="box" wx:if="{{boxShow}}">
-    <!-- 阴影 -->
+  <!-- <view class="box" wx:if="{{boxShow}}">
     <view class="black" bindtap="hidebox"></view>
-    <!-- 内容 -->
     <view class="nr">
       <view class="item">
         <text bindtap="hidebox">取消</text>
@@ -135,5 +145,5 @@
         </picker-view>
       </view>
     </view>
-  </view>
+  </view> -->
 </view>
