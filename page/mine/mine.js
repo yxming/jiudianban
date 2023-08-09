@@ -38,13 +38,7 @@ Page({
                   type: '',
                   winner:'0'
                 },
-                {
-                  title: '支付密码',
-                  tit: '',
-                  url: '',
-                  type: '',
-                  winner:'0'
-                },
+               
                 {
                   title: '客服热线',
                   tit: '',

@@ -29,10 +29,16 @@
           {{item.title}}
         </view>
       </view>
-      <view class="riceBagDBorder" style="display: {{role===0?'':'none'}};" bind:tap="onClickCells">
+      <view class="riceBagDBorder" style="display: {{role==0?'':'none'}};" bind:tap="onClickCells">
         <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/shadowsd.png?sign=c50455be8d0dd00807d3588b2277d228&t=1691033908" mode="" />
         <view class="riceBagDBordertext">
           站点列表
+        </view>
+      </view>
+      <view class="riceBagDBorder" style="display: {{role==2 ||role==0?'':'none'}};" bind:tap="handlePopup">
+        <image style="width: 100%;height: 100%;" src="https://636c-cloud1-7go51v8te374de35-1318782235.tcb.qcloud.la/shadowsd.png?sign=c50455be8d0dd00807d3588b2277d228&t=1691033908" mode="" />
+        <view class="riceBagDBordertext">
+          支付密码
         </view>
       </view>
     </view>
