@@ -18,7 +18,7 @@
       <!-- <view class="sayHello" style=" padding-left: 10rpx;">{{name}}</view> -->
       <view class="sayHello" style="padding-left: 10rpx;">
         <view wx:if="{{userInfo.nickName}}">{{userInfo.nickName}} !</view>
-        <view wx:else>请登录 ！</view>
+        <view wx:else bind:tap="handleGetUserProfile">请登录 ！</view>
       </view>
     </view>
     <!-- 底部按钮 -->
