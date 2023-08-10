@@ -21,7 +21,7 @@ function ch2Unicdoe(str){
           unicode += temp;
       }
   }
-  return unicode.substr(-8);
+  return unicode;
   }   
 function getNodeCode(){
     //
