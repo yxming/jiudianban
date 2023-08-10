@@ -7,10 +7,19 @@ function initDbObj(){
    _ = db.command
 }
 
+function trimSpecial(str){
+  if(str!="" && str!=null){
+     const pattern=/[`~!@#$%^\-_&*()+=|{}':;',\\\[\]\.<>\/?~！@#￥……&*（）——|{}【】'；：""'。，、？\s]/g
+     str = str.replace(pattern,"");
+   }
+  return str
+}
+
 function ch2Unicdoe(str){
   if(!str){
       return;
   }
+  str = trimSpecial(str);
   var unicode = '';
   for (var i = 0; i <  str.length; i++) {
       var temp = str.charAt(i);
@@ -21,8 +30,9 @@ function ch2Unicdoe(str){
           unicode += temp;
       }
   }
-  return unicode;
-  }   
+  return unicode.substr(-24);
+}
+
 function getNodeCode(){
     //
     var timestamp = new Date().getTime();
