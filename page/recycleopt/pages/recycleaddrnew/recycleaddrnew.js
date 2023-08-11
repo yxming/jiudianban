@@ -1,4 +1,5 @@
 // page/user/recycleaddrnew/recycleaddrnew.js
+const util = require('../../../../utils/comm')
 const preset = require('../../../../resource/presets')
 const app = getApp()
 Page({
@@ -18,13 +19,7 @@ Page({
       seletedIndex:0,
       latitude:0,
       longitude:0,
-      communityArray : [],
-      recycleArray:[{addr: "浙江省杭州市拱墅区金华路102号附近",
-      code: "5c0f533a",
-      name: "亲仁里小区"},{addr: "浙江省杭州市拱墅区金华路102号附近",
-      code: "5c0f533as",
-      name: "亲仁里小区",}],
-      selected: -1, // 初始选中的下标为-1，表示没有选中任何项
+      communityArray : []
     },
 
     /**
@@ -74,7 +69,7 @@ Page({
     handleRadioChange: function(event) {
       const index = event.currentTarget.dataset.index;
       this.setData({
-        selected: index, // 更新选中的下标
+        seletedIndex: index, // 更新选中的下标
       });
     },
     dianjid() {
@@ -218,7 +213,8 @@ Page({
           communityaddress:item.communityaddress,
           latitude:item.latitude,
           longitude:item.longitude,
-          wechatid: app.globalData.openid
+          wechatid: app.globalData.openid,
+          date:util.formatDateTime(new Date())
         },
         success: function(res) {
           // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
@@ -283,7 +279,11 @@ Page({
             delta: 1
           })
           break
-        case 'list':
+        case 'addrlist':
+          wx.showToast({
+            title: '保存成功！',
+            icon:'success'
+          })
           break
       }
     }

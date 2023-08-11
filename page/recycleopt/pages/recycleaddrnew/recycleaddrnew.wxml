@@ -17,7 +17,7 @@
             <view class="contentDBox">{{item.addr}}</view>
           </view>
           <view class="icon-container" bindtap="handleRadioChange" data-index="{{index}}">
-            <image class="icon" src="{{index === selected ? '../image/Rectangles.png' : '../image/rectanglet.png'}}"></image>
+            <image class="icon" src="{{index === seletedIndex ? '../image/Rectangles.png' : '../image/rectanglet.png'}}"></image>
           </view>
         </view>
       </block>
