@@ -1,3 +1,4 @@
+const util = require('./utils/comm')
 App({
   globalData: {
     company:'一代生活',
@@ -202,6 +203,7 @@ App({
         paypwd:'123456',
         role:1,
         wechatid:wechatid,
+        date:util.formatDateTime(new Date())
       },
       success: function(res) {
         // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
