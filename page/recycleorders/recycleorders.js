@@ -210,7 +210,8 @@ Page({
       data:{
         cost:item.cost,
         amount:item.amount,
-        status:1
+        status:1,
+        endDate: util.formatDateTime(new Date())
       },
       success: function(res) {
         var orderlist = self.data.orderlist
