@@ -204,7 +204,6 @@ handleRadioChange(e) {
       const deleteIndex=e.currentTarget.dataset.index
       const deleteId = this.data.recycleArray[deleteIndex].id
 
-      console.log(deleteIndex)   
       const db = app.globalData.db
       db.collection('recycleaddr_list').where({
         _id:deleteId
@@ -234,13 +233,17 @@ handleRadioChange(e) {
             acceptDataFromOpenedPage: function (data) {
               console.log('accept event:',data.item)
               if(data.item){
+                /*
                 var list  = _this.data.recycleArray;
-                list.splice(0,0,data.item)
+                var index = list.length
+                list.splice(index,0,data.item)
                 
                 _this.setData({
                     recycleArray:list,
                     hasRecycleAddr:true
                 })
+                */
+                _this.getRecycleAddr(app.globalData.openid)
               }
             },
           },
