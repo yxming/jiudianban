@@ -1,5 +1,6 @@
 // page/recycleopt/pages/recycleorders/recycleorders.js
 const util = require('../../utils/comm.js')
+const payment = require('../../utils/paymentApi')
 const app = getApp()
 Page({
 
@@ -46,9 +47,10 @@ Page({
   },
 // 支付模块
   submit(e){
+      var _this = this
     if(this.data.textPassword===app.globalData.paypwd){
       var index  = this.data.index
-      var item = this.data.orderlist[index]
+      var item = this.data.orderlists[index]
       if(item.cost<=0 || item.cost>app.globalData.cash){
         wx.showToast({
           title: item.cost<=0?'金额错误！':'余额不足！',
@@ -58,9 +60,33 @@ Page({
           visible: false,
         })
       }else{
-        this.onUpdateOrder(item)
-        this.queryUserinfo(item.wechatbuy,Number(-item.cost))
-        this.queryUserinfo(item.wechatsale,Number(item.cost))
+        const db = wx.cloud.database()
+        db.collection('community_info').where({
+        communitycode:item.communitycode
+      }).field({
+        _id:0,
+        nodecode:1
+      }).get({
+        success:(res)=>{
+          if(res.data.length>0)
+          db.collection('node_info').where({
+            nodecode:res.data[0].nodecode
+          }).field({
+            _id:0,
+            managerid:1
+          }).get({
+            success:(res)=>{
+              if(res.data.length>0){
+                _this.onUpdateOrder(item)
+                payment.ProfitAssign(item.cost, 'recycle', {'manager':res.data[0].managerid,'saler':item.wechatsale})
+              }
+            },
+            fail:(err)=>{
+              console.log(err)
+            }
+          })
+        }
+      })
         this.setData({
           visible: false
         })
@@ -141,6 +167,7 @@ Page({
                 list.push({
                   'index':index++,
                   'orderid':element.orderid,
+                  'communitycode':element.communitycode,
                   'communityname':element.communityname,
                   'flat':element.flat,
                   'saler':element.caller,
