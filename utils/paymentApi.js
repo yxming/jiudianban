@@ -122,10 +122,10 @@ const db = app.globalData.db
     queryUserinfo(recyclerid, amount)
   }
   function payToServicer(servicerid, amount){
-    this.queryUserinfo(servicerid, amount)
+    queryUserinfo(servicerid, amount)
   }
   function updateMyself(amount){
-    this.payToUser(app.globalData.openid, -amount*(1+app.globalData.recyclerate))
+    payToUser(app.globalData.openid, -amount*(1+app.globalData.recyclerate))
   }
 
   function ProfitAssign(amount, type, receivers){
@@ -139,8 +139,8 @@ const db = app.globalData.db
             }
             if(receivers.saler){
               due = amount.toFixed(2)
-              this.payToUser(receivers.saler,Number(due))
-              this.updateMyself(Number(due))
+              payToUser(receivers.saler,Number(due))
+              updateMyself(Number(due))
             }
                             
             break
@@ -148,18 +148,18 @@ const db = app.globalData.db
 
           if(receivers.manager){
             due = amount*app.globalData.servicerate*app.globalData.managerservicerate
-            this.payToManager(receivers.manager, Number(due.toFixed(2)))
+            payToManager(receivers.manager, Number(due.toFixed(2)))
           }
 
           if(receivers.recycler){
             due = amount*app.globalData.servicerate*app.globalData.recyclerservicerate
-            this.payToRecycler(receivers.recycler, Number(due.toFixed(2)))
+            payToRecycler(receivers.recycler, Number(due.toFixed(2)))
           }
 
           if(receivers.servicer){
             due = amount*(1-app.globalData.servicerate)
-            this.payToServicer(receivers.servicer, Number(due.toFixed(2)))
-            this.updateMyself(Number(due.toFixed(2)))
+            payToServicer(receivers.servicer, Number(due.toFixed(2)))
+            updateMyself(Number(due.toFixed(2)))
           }
             break
     }
